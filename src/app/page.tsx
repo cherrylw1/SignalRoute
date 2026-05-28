@@ -828,16 +828,107 @@ export default function ChurnautHome() {
                     The foundation of Churnaut. Create unique tracked URLs for every email, campaign, or event. Assign reps, set expiry dates, and bulk-generate via CSV. One click, and identity is locked to the link.
                   </p>
                 </div>
-                <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
-                  [Tracked Link UI Placeholder]
+                
+                {/* Visual Mockup for Tracked Link Generator */}
+                <div className="w-full bg-slate-50 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/30 p-6 flex flex-col gap-4">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                    </div>
+                    <span className="text-[10px] font-semibold text-slate-500 font-mono">link_generator.sh</span>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Destination URL</span>
+                        <div className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-mono text-slate-700 truncate">
+                          churnaut.com/pricing
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Assign Representative</span>
+                        <div className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 flex items-center gap-1.5">
+                          <div className="w-4 h-4 rounded-full bg-indigo-500 text-[8px] text-white flex items-center justify-center font-bold">SJ</div>
+                          Sarah Jenkins (AE)
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Signal Trigger Parameters</span>
+                      <div className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-mono text-slate-600 flex justify-between items-center">
+                        <span>?cid=stripe_2026&amp;outbound=apollo</span>
+                        <span className="text-[9px] bg-indigo-50 text-indigo-600 px-1.5 py-0.5 rounded font-sans font-bold">Identified</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-1.5 p-3 bg-slate-900 text-white rounded-xl flex items-center justify-between gap-3 shadow-inner">
+                      <div className="flex flex-col gap-0.5 min-w-0">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Generated Route Link</span>
+                        <span className="text-xs font-mono truncate text-indigo-200">
+                          https://curn.at/r/sjenk_stripe
+                        </span>
+                      </div>
+                      <button className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-xs font-bold rounded-lg text-white shrink-0 shadow transition-colors">
+                        Copy
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Block 2: Visual Rules Engine & Variant Editor (Image left, Text right) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1 w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
-                  [Variant Editor UI Placeholder]
+                {/* Visual Mockup for Rules Engine */}
+                <div className="order-2 md:order-1 w-full bg-slate-50 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/30 p-6 flex flex-col justify-between relative overflow-hidden">
+                  <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600 shadow-sm shadow-indigo-400 animate-pulse"></span>
+                      Routing Rule: VIP Inbound
+                    </span>
+                    <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      ACTIVE
+                    </span>
+                  </div>
+
+                  <div className="my-2.5 flex flex-col gap-3 relative">
+                    <div className="absolute left-[17px] top-4 bottom-4 w-0.5 bg-slate-200"></div>
+
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm text-indigo-600 text-xs font-bold shrink-0">
+                        IF
+                      </div>
+                      <div className="flex-grow bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm min-w-0">
+                        <p className="text-xs font-bold text-slate-900 leading-tight">Visitor is Outbound Target</p>
+                        <p className="text-[10px] text-slate-500 mt-0.5 leading-none">Match: Sequence Email Click</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm text-purple-600 text-xs font-bold shrink-0">
+                        AND
+                      </div>
+                      <div className="flex-grow bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm min-w-0">
+                        <p className="text-xs font-bold text-slate-900 leading-tight">Deal Stage equals &apos;Contracting&apos;</p>
+                        <p className="text-[10px] text-slate-500 mt-0.5 leading-none">HubSpot CRM Sync: Updated 2m ago</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="w-9 h-9 rounded-xl bg-indigo-900 text-white flex items-center justify-center shadow-sm text-xs font-bold shrink-0">
+                        THEN
+                      </div>
+                      <div className="flex-grow bg-slate-900 border border-slate-800 p-2.5 rounded-xl shadow-md text-white min-w-0">
+                        <p className="text-xs font-bold leading-tight">Swap Page Variant</p>
+                        <p className="text-[10px] text-indigo-300 mt-0.5 leading-none">Inject Variant B (Sarah&apos;s Calendly)</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
                 <div className="order-1 md:order-2 flex flex-col gap-4">
                   <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Feature 02</span>
                   <h3 className="text-2xl font-bold text-slate-950">Visual Rules Engine & Variant Editor</h3>
@@ -856,8 +947,54 @@ export default function ChurnautHome() {
                     A single POST endpoint connects to Zapier, Make, HubSpot, and Zoho. Track total clicks, personalization trigger rates, and rep performance in a clean revenue intelligence dashboard.
                   </p>
                 </div>
-                <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
-                  [Webhooks & Analytics UI Placeholder]
+                
+                {/* Visual Mockup for Webhooks & Analytics */}
+                <div className="w-full bg-slate-50 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/30 p-5 flex flex-col justify-between relative overflow-hidden">
+                  <div className="flex items-center justify-between border-b border-slate-200/80 pb-2.5">
+                    <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+                      Webhook Response Payload
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-400">status: 200 OK</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-3">
+                    <div className="bg-slate-900 rounded-xl p-3 text-[10px] font-mono text-indigo-200 overflow-x-auto shadow-inner leading-relaxed">
+                      <div><span className="text-pink-400">&quot;event&quot;</span>: <span className="text-teal-400">&quot;route.resolved&quot;</span>,</div>
+                      <div><span className="text-pink-400">&quot;identity&quot;</span>: &#123;</div>
+                      <div className="pl-3"><span className="text-pink-400">&quot;company&quot;</span>: <span className="text-yellow-400">&quot;Stripe&quot;</span>,</div>
+                      <div className="pl-3"><span className="text-pink-400">&quot;owner&quot;</span>: <span className="text-yellow-400">&quot;Sarah Jenkins&quot;</span></div>
+                      <div>&#125;,</div>
+                      <div><span className="text-pink-400">&quot;latency_ms&quot;</span>: <span className="text-teal-400">342</span></div>
+                    </div>
+
+                    <div className="flex flex-col justify-between gap-2.5">
+                      <div className="bg-white border border-slate-200 p-2.5 rounded-xl shadow-sm">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Total Clicks</span>
+                        <div className="flex items-baseline gap-1.5 mt-0.5">
+                          <span className="text-base font-extrabold text-slate-900">12,482</span>
+                          <span className="text-[9px] font-bold text-emerald-600">+14.2%</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-white border border-slate-200 p-2.5 rounded-xl shadow-sm">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Trigger Rate</span>
+                        <div className="flex items-baseline gap-1.5 mt-0.5">
+                          <span className="text-base font-extrabold text-slate-900">94.2%</span>
+                          <span className="text-[9px] font-bold text-indigo-600">Deterministic</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-slate-200/80 flex items-center justify-between">
+                    <span className="text-[9px] font-semibold text-slate-400">Piped to HubSpot, Make, &amp; Zapier</span>
+                    <div className="flex gap-1.5">
+                      <span className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center text-[9px] font-extrabold text-slate-500 shadow-sm select-none">HS</span>
+                      <span className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center text-[9px] font-extrabold text-slate-500 shadow-sm select-none">ZP</span>
+                      <span className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center text-[9px] font-extrabold text-slate-500 shadow-sm select-none">MK</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
