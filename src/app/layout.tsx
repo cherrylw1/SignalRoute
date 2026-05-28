@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SignalRoute - AI Inbound Personalization & Deterministic Routing",
+  title: "Churnaut - AI Inbound Personalization & Deterministic Routing",
   description: "Route high-intent VIPs to sales instantly. Dynamic website personalization powered by 100% deterministic signals.",
 };
 

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Zap, 
   ArrowRight, 
   Mail, 
   Sparkles, 
@@ -147,7 +146,7 @@ const renderIntegrationIcon = (iconName: string) => {
   }
 };
 
-export default function SignalRouteHome() {
+export default function ChurnautHome() {
   const [isRevealed, setIsRevealed] = useState(false);
   const [activeHeroTab, setActiveHeroTab] = useState<"generic" | "vip">("generic");
 
@@ -213,8 +212,17 @@ export default function SignalRouteHome() {
               className="flex items-center gap-3.5 pointer-events-auto"
               transition={springTransition}
             >
-              <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center shadow-md">
-                <Zap className="w-7 h-7 text-white fill-white" />
+              <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center shadow-md p-2">
+                <svg viewBox="0 0 100 100" className="w-9 h-9 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
+                  <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
+                  <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
+                  <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
+                  <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+                  <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
+                  <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
+                  <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
               </div>
               <motion.span 
                 initial={{ opacity: 0, x: -10 }}
@@ -222,7 +230,7 @@ export default function SignalRouteHome() {
                 transition={{ delay: 0.3 }}
                 className="text-3xl font-extrabold text-slate-900 tracking-tight"
               >
-                SignalRoute
+                Churnaut
               </motion.span>
             </motion.div>
           </motion.div>
@@ -243,11 +251,20 @@ export default function SignalRouteHome() {
                   className="flex items-center gap-2.5 cursor-pointer relative z-50"
                   transition={springTransition}
                 >
-                  <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center shadow-sm">
-                    <Zap className="w-4.5 h-4.5 text-white fill-white" />
+                  <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center shadow-sm p-1.5">
+                    <svg viewBox="0 0 100 100" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
+                      <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
+                      <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
+                      <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
+                      <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+                      <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
+                      <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
+                      <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    </svg>
                   </div>
                   <span className="text-xl font-extrabold text-slate-900 tracking-tight">
-                    SignalRoute
+                    Churnaut
                   </span>
                 </motion.div>
               ) : (
@@ -697,7 +714,7 @@ export default function SignalRouteHome() {
                     Plugs into your existing stack.
                   </h2>
                   <p className="text-base text-slate-600 leading-relaxed">
-                    SignalRoute connects seamlessly with your CRM, engagement platforms, and favorite no-code automation platforms via API. Build custom workflows and vibe-code your own logic in minutes.
+                    Churnaut connects seamlessly with your CRM, engagement platforms, and favorite no-code automation platforms via API. Build custom workflows and vibe-code your own logic in minutes.
                   </p>
                   
                   <div className="flex gap-6 mt-2">
@@ -959,8 +976,17 @@ export default function SignalRouteHome() {
                 
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 text-white">
-                    <Zap className="w-5 h-5 fill-white text-white" />
-                    <span className="font-bold">SignalRoute</span>
+                    <svg viewBox="0 0 100 100" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
+                      <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
+                      <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
+                      <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
+                      <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+                      <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
+                      <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
+                      <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    </svg>
+                    <span className="font-bold">Churnaut</span>
                   </div>
                   <p className="text-xs text-slate-500 leading-relaxed max-w-[200px]">
                     Empowering sales pipelines with 100% deterministic intent signals and instant page morphing.
@@ -993,7 +1019,7 @@ export default function SignalRouteHome() {
               {/* Bottom Copyright bar */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-slate-900 text-[11px] text-slate-500">
                 <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <span>&copy; {new Date().getFullYear()} SignalRoute Inc. All rights reserved.</span>
+                  <span>&copy; {new Date().getFullYear()} Churnaut Inc. All rights reserved.</span>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-400 animate-pulse"></span>
                     <span>Personalization Edge: 100% Nominal</span>
