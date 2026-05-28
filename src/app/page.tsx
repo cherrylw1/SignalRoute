@@ -9,7 +9,6 @@ import {
   UserCheck, 
   ShieldCheck, 
   AlertTriangle,
-  FolderDot,
   Gauge,
   Workflow,
   Calendar,
@@ -20,22 +19,21 @@ import {
 // Integration dataset & icons for Marquee
 const row1Integrations = [
   { name: "HubSpot", category: "CRM Platform", icon: "hubspot" },
-  { name: "Google Ads", category: "Ad Platform", icon: "googleads" },
-  { name: "Calendly", category: "Scheduling", icon: "calendly" },
-  { name: "Klenty", category: "Outreach", icon: "klenty" },
+  { name: "Zoho CRM", category: "CRM Platform", icon: "zoho" },
   { name: "Salesforce", category: "CRM Platform", icon: "salesforce" },
+  { name: "Google Ads", category: "Ad Platform", icon: "googleads" },
+  { name: "LinkedIn Ads", category: "Ad Platform", icon: "linkedin" },
   { name: "Meta Ads", category: "Ad Platform", icon: "meta" },
-  { name: "Twilio", category: "Voice & SMS", icon: "twilio" },
 ];
 
 const row2Integrations = [
-  { name: "Zoho CRM", category: "CRM Platform", icon: "zoho" },
-  { name: "LinkedIn Ads", category: "Ad Platform", icon: "linkedin" },
+  { name: "TikTok Ads", category: "Ad Platform", icon: "tiktok" },
+  { name: "Calendly", category: "Scheduling", icon: "calendly" },
   { name: "Google Calendar", category: "Calendar", icon: "googlecalendar" },
+  { name: "Klenty", category: "Outreach", icon: "klenty" },
   { name: "Apollo", category: "Email Sequence", icon: "apollo" },
   { name: "Mailchimp", category: "Email Marketing", icon: "mailchimp" },
-  { name: "TikTok Ads", category: "Ad Platform", icon: "tiktok" },
-  { name: "HubSpot Meetings", category: "Meetings", icon: "hubspot" },
+  { name: "Twilio", category: "Voice & SMS", icon: "twilio" },
 ];
 
 const renderIntegrationIcon = (iconName: string) => {
@@ -301,7 +299,7 @@ export default function ChurnautHome() {
           {/* PAGE CONTENT CONTAINER */}
           <main className={`flex-grow w-full transition-opacity duration-1000 ease-in-out ${isRevealed ? "opacity-100" : "opacity-0"}`}>
             
-            {/* 2. THE HERO SECTION */}
+            {/* 1. THE HERO SECTION */}
             <section className="relative py-20 md:py-28 overflow-hidden">
               <div className="absolute inset-0 grid-bg-overlay opacity-[0.4] pointer-events-none z-0"></div>
               
@@ -326,7 +324,7 @@ export default function ChurnautHome() {
                   transition={{ delay: 0.2, ...springTransition }}
                   className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900"
                 >
-                  Stop Treating Every <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-fill-transparent text-transparent">Visitor the Same.</span>
+                  Your CRM knows <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-fill-transparent text-transparent">who they are.</span> Your website should too.
                 </motion.h1>
 
                 <motion.p 
@@ -335,7 +333,7 @@ export default function ChurnautHome() {
                   transition={{ delay: 0.3, ...springTransition }}
                   className="text-lg md:text-xl text-slate-600 font-medium max-w-2xl"
                 >
-                  Route high-intent VIPs to sales instantly. Dynamic website personalization powered by 100% deterministic signals.
+                  Turn every link you send into a personalized landing experience. Dynamic page routing powered by 100% deterministic signals.
                 </motion.p>
 
                 <motion.p 
@@ -344,7 +342,7 @@ export default function ChurnautHome() {
                   transition={{ delay: 0.4 }}
                   className="text-sm md:text-base text-slate-500 font-normal max-w-xl italic"
                 >
-                  {"\"Instantly book qualified meetings, shorten sales cycles, and eliminate friction for your best buyers.\""}
+                  {"\"Instantly book qualified meetings, shorten sales cycles, and eliminate friction for your VIP buyers. Assembled invisibly in under 400 milliseconds.\""}
                 </motion.p>
 
                 <motion.div 
@@ -521,84 +519,122 @@ export default function ChurnautHome() {
               </div>
             </section>
 
-            {/* 3. THE AGITATION SECTION (THE PROBLEM) */}
+            {/* 2. THE AGITATION SECTION (THE 4 FAILURES) */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-150px" }}
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
-              className="py-20 bg-slate-50 border-y border-slate-200"
+              className="py-24 bg-slate-50 border-y border-slate-200"
             >
-              <div className="max-w-3xl mx-auto px-6 text-center flex flex-col items-center gap-8">
+              <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-12">
                 
-                <div className="flex flex-col gap-3">
+                <div className="text-center flex flex-col gap-3 max-w-2xl">
                   <span className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 text-xs font-bold text-slate-700 tracking-wide uppercase self-center">
                     <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
                     The Funnel Bottleneck
                   </span>
                   <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
-                    Your inbound funnel is blind.
+                    The 4 failures of a blind inbound funnel.
                   </h2>
+                  <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+                    You spend tens of thousands driving traffic, but when prospects land, every visitor sees the exact same generic page.
+                  </p>
                 </div>
 
-                <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl">
-                  Right now, your highest-value targets wait in the same 24-hour queue as unqualified traffic. Account Executives and SDRs are wasting hours triaging generic leads while real revenue bounces off your generic homepage.
-                </p>
-
-                {/* Elegant diagram visualizing bottleneck */}
-                <div className="w-full max-w-xl bg-white border border-slate-200/80 p-8 rounded-2xl shadow-sm mt-4 relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                   
-                  <div className="grid grid-cols-3 gap-4 items-center">
-                    
-                    {/* Left: Input Traffic Sources */}
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200/50 rounded-lg text-xs font-semibold text-slate-700">
-                        <svg className="w-4.5 h-4.5 text-[#0077b5] fill-[#0077b5]" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        LinkedIn Ads
-                      </div>
-                      <div className="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200/50 rounded-lg text-xs font-semibold text-slate-700">
-                        <Mail className="w-4.5 h-4.5 text-indigo-500" />
-                        Outbound Email
-                      </div>
-                      <div className="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200/50 rounded-lg text-xs font-semibold text-slate-700">
-                        <Sparkles className="w-4.5 h-4.5 text-purple-500 fill-purple-500" />
-                        Google Search
-                      </div>
-                    </div>
-
-                    {/* Center: Bottleneck visual */}
-                    <div className="flex flex-col items-center justify-center relative">
-                      {/* Dashed connector paths converging */}
-                      <div className="w-full h-16 relative">
-                        <svg className="w-full h-full" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M 0 10 Q 50 30 100 30" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-                          <path d="M 0 30 Q 50 30 100 30" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-                          <path d="M 0 50 Q 50 30 100 30" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-                        </svg>
-                      </div>
-                      
-                      {/* Bottleneck Indicator badge */}
-                      <div className="absolute bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-700 shadow-sm flex items-center gap-1 z-10">
-                        <AlertTriangle className="w-3 h-3 text-amber-500" />
-                        Friction Dropoff
-                      </div>
-                    </div>
-
-                    {/* Right: Generic Single Form Gate */}
-                    <div className="flex flex-col items-center gap-2 p-4 bg-slate-100 border border-slate-200 rounded-xl">
-                      <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center">
-                        <FolderDot className="w-5 h-5 text-slate-600" />
-                      </div>
-                      <span className="text-[11px] font-bold text-slate-800 uppercase tracking-wide">Static Web Form</span>
-                      <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-                        24hr Wait Queue
-                      </span>
-                    </div>
-
+                  {/* Card 1 */}
+                  <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm flex flex-col gap-3">
+                    <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+                      VIP Buyers Wait
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      High-intent VIP buyers fill the same generic demo request form as everyone else and wait 24 hours for a reply. Then they bounce to a competitor who picks up the phone.
+                    </p>
                   </div>
 
+                  {/* Card 2 */}
+                  <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm flex flex-col gap-3">
+                    <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+                      Wasted Outbound
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      Cold email prospects land on a homepage with zero personalization, despite your rep knowing exactly who they are and what pain they need to solve.
+                    </p>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm flex flex-col gap-3">
+                    <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+                      Customer Confusion
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      Existing customers see &apos;Book a Demo&apos; CTAs designed for strangers, signalling that you don&apos;t know who they are.
+                    </p>
+                  </div>
+
+                  {/* Card 4 */}
+                  <div className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm flex flex-col gap-3">
+                    <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+                      SDR Burnout
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      SDRs waste hours every week triaging low-quality inbound leads that could have been filtered out at the website level.
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+            </motion.section>
+
+            {/* 3. WHAT WE ARE NOT (THE DIFFERENTIATOR) */}
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-150px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15 }}
+              className="py-24 max-w-4xl mx-auto px-6"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                
+                {/* Left block */}
+                <div className="md:col-span-5 flex flex-col gap-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 tracking-wide uppercase self-start">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                    Our Philosophy
+                  </span>
+                  <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    100% Deterministic. Zero Guesswork.
+                  </h2>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    We act only on verified data. If the signal fires, the identity and intent data is 100% accurate. If we don&apos;t know them, we show the default page.
+                  </p>
+                </div>
+
+                {/* Right block: Clean typographic bullet points */}
+                <div className="md:col-span-7 bg-white border border-slate-200/80 p-8 rounded-2xl shadow-sm flex flex-col gap-5">
+                  {[
+                    "NOT an IP deanonymization tool — we do not guess who visitors are from their IP address.",
+                    "NOT a chatbot or popup tool — we do not intercept visitors with annoying chat windows.",
+                    "NOT an A/B testing platform — we do not randomly vary experiences.",
+                    "NOT a data platform — we do not build visitor profiles over time for ad targeting."
+                  ].map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-rose-500">
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium text-slate-700">{bullet}</span>
+                    </div>
+                  ))}
                 </div>
 
               </div>
@@ -615,10 +651,10 @@ export default function ChurnautHome() {
             >
               <div className="text-center mb-16 flex flex-col gap-3">
                 <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">
-                  Transform how you route revenue.
+                  How it works: The Simple Version
                 </h2>
                 <p className="text-slate-500 max-w-lg mx-auto text-sm md:text-base">
-                  Ditch the guessing game. Act on factual identity metrics and trigger automated edge delivery models in real-time.
+                  Ditch the complexity. Install once, configure your routing rules, and watch visitor pages morph instantly.
                 </p>
               </div>
 
@@ -631,7 +667,7 @@ export default function ChurnautHome() {
                 className="grid grid-cols-1 md:grid-cols-3 gap-6"
               >
                 
-                {/* Card 1: The Signal */}
+                {/* Card 1: The Trigger */}
                 <motion.div 
                   variants={itemFadeInUp}
                   className="bento-card bg-white border border-slate-200 rounded-2xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
@@ -641,18 +677,18 @@ export default function ChurnautHome() {
                       <Layers className="w-6 h-6 text-slate-700 group-hover:text-white transition-colors" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-lg font-bold text-slate-950">Deterministic Identification</h3>
+                      <h3 className="text-lg font-bold text-slate-950">1. The Lightweight Snippet</h3>
                       <p className="text-sm text-slate-600 leading-relaxed">
-                        No probabilistic IP guessing. We act on verified data from tracked outbound links, ad parameters, and CRM deal stages.
+                        Install an ultra-lightweight (&lt;10kb) vanilla JavaScript snippet on your site once. It sits silently, never blocks page load, and watches for verified signals.
                       </p>
                     </div>
                   </div>
                   <div className="mt-8 pt-4 border-t border-slate-100 text-xs font-mono text-slate-400">
-                    param_resolv.js
+                    snippet.min.js
                   </div>
                 </motion.div>
 
-                {/* Card 2: The Logic */}
+                {/* Card 2: The Routing */}
                 <motion.div 
                   variants={itemFadeInUp}
                   className="bento-card bg-white border border-slate-200 rounded-2xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
@@ -662,14 +698,14 @@ export default function ChurnautHome() {
                       <Workflow className="w-6 h-6 text-slate-700 group-hover:text-white transition-colors" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-lg font-bold text-slate-950">Visual Rules Engine</h3>
+                      <h3 className="text-lg font-bold text-slate-950">2. The Instant API Call</h3>
                       <p className="text-sm text-slate-600 leading-relaxed">
-                        If X, then Y. Map your inbound traffic to custom experiences based on identity and intent, all without writing code.
+                        When a recognized signal fires (a tracked link, ad click, or CRM webhook), the snippet calls our API and receives routing instructions.
                       </p>
                     </div>
                   </div>
                   <div className="mt-8 pt-4 border-t border-slate-100 text-xs font-mono text-slate-400">
-                    rules_pipeline.bin
+                    route_api.bin
                   </div>
                 </motion.div>
 
@@ -683,22 +719,179 @@ export default function ChurnautHome() {
                       <Gauge className="w-6 h-6 text-slate-700 group-hover:text-white transition-colors" />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-lg font-bold text-slate-950">Sub-400ms Injection</h3>
+                      <h3 className="text-lg font-bold text-slate-950">3. Under-400ms DOM Swap</h3>
                       <p className="text-sm text-slate-600 leading-relaxed">
-                        Swap generic CTAs for personalized messaging, industry case studies, or direct rep calendars before the user even scrolls.
+                        We silently edit the page DOM before the visitor sees anything. The right CTA, the right rep&apos;s calendar, the right case study—injected invisibly.
                       </p>
                     </div>
                   </div>
                   <div className="mt-8 pt-4 border-t border-slate-100 text-xs font-mono text-slate-400">
-                    edge_injector.go
+                    dom_swapper.go
                   </div>
                 </motion.div>
 
               </motion.div>
+            </motion.section>
+
+            {/* 5. THE COMPLETE SIGNAL LIBRARY */}
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-150px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15 }}
+              className="py-24 bg-slate-50 border-y border-slate-200"
+            >
+              <div className="max-w-6xl mx-auto px-6">
+                
+                <div className="text-center mb-16 flex flex-col gap-3">
+                  <span className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 text-xs font-bold text-slate-700 tracking-wide uppercase self-center">
+                    <Database className="w-3.5 h-3.5 text-indigo-600" />
+                    Signals Library
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                    If you can track it, we can route it.
+                  </h2>
+                  <p className="text-slate-500 max-w-lg mx-auto text-sm md:text-base">
+                    Plug in any source. If a user triggers a signal, Churnaut catches it and adapts the experience.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                  
+                  {/* Column 1 */}
+                  <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner text-indigo-600">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-lg font-bold text-slate-950">Email & Outbound</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        Identify from tracked cold email links, sales sequence clicks (Apollo/Klenty), newsletter engagement, and webinar follow-ups.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Column 2 */}
+                  <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner text-indigo-600">
+                      <Sparkles className="w-5 h-5 text-purple-500 fill-purple-500" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-lg font-bold text-slate-950">Ads & CRM</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        Route based on LinkedIn Lead Gen forms, Google Ads GCLID search intent, Deal Stage-aware visits, and returning churned customers.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Column 3 */}
+                  <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner text-indigo-600">
+                      <Layers className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-lg font-bold text-slate-950">Product-Led & Partner</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        Adapt the page for free trial users hitting usage limits, incomplete onboarding users, partner referral links, and G2 profile clicks.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </motion.section>
+
+            {/* 6. CORE FEATURES DEEP DIVE */}
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-150px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15 }}
+              className="py-24 max-w-5xl mx-auto px-6 flex flex-col gap-20"
+            >
+              <div className="text-center max-w-2xl mx-auto flex flex-col gap-3">
+                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                  Built for modern growth teams.
+                </h2>
+                <p className="text-slate-500 text-sm md:text-base">
+                  Power your outbound operations and inbound routing with a complete control suite.
+                </p>
+              </div>
+
+              {/* Block 1: Tracked Link Generator (Text left, Image right) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="flex flex-col gap-4">
+                  <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Feature 01</span>
+                  <h3 className="text-2xl font-bold text-slate-950">Tracked Link Generator</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    The foundation of Churnaut. Create unique tracked URLs for every email, campaign, or event. Assign reps, set expiry dates, and bulk-generate via CSV. One click, and identity is locked to the link.
+                  </p>
+                </div>
+                <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
+                  [Tracked Link UI Placeholder]
+                </div>
+              </div>
+
+              {/* Block 2: Visual Rules Engine & Variant Editor (Image left, Text right) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="order-2 md:order-1 w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
+                  [Variant Editor UI Placeholder]
+                </div>
+                <div className="order-1 md:order-2 flex flex-col gap-4">
+                  <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Feature 02</span>
+                  <h3 className="text-2xl font-bold text-slate-950">Visual Rules Engine & Variant Editor</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    If X, then Y. Map inbound traffic to custom experiences without writing code. Pre-build page variants by simply pasting your website&apos;s CSS selectors. Swap text, inject HTML, or embed Calendly directly.
+                  </p>
+                </div>
+              </div>
+
+              {/* Block 3: Universal Webhooks & Analytics (Text left, Image right) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="flex flex-col gap-4">
+                  <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Feature 03</span>
+                  <h3 className="text-2xl font-bold text-slate-950">Universal Webhooks & Analytics</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    A single POST endpoint connects to Zapier, Make, HubSpot, and Zoho. Track total clicks, personalization trigger rates, and rep performance in a clean revenue intelligence dashboard.
+                  </p>
+                </div>
+                <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-100/50 flex items-center justify-center text-slate-400 font-mono text-xs">
+                  [Webhooks & Analytics UI Placeholder]
+                </div>
+              </div>
 
             </motion.section>
 
-            {/* 5. INTEGRATIONS & STACK */}
+            {/* 7. THE AI PHILOSOPHY */}
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-150px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15 }}
+              className="py-16 max-w-4xl mx-auto px-6"
+            >
+              <div className="bg-gradient-to-br from-white to-slate-50 text-slate-900 rounded-3xl p-8 md:p-12 shadow-lg border border-slate-200 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                {/* Subtle blue/indigo ambient glow inside */}
+                <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div className="flex-grow flex flex-col gap-4 relative z-10">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-[10px] font-bold text-slate-800 tracking-wide uppercase self-start border border-slate-200">
+                    <Sparkles className="w-3 h-3 text-indigo-500 fill-indigo-500" />
+                    Engineering Manifesto
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 leading-tight">
+                    AI for setup. Not for routing.
+                  </h3>
+                  <p className="text-sm md:text-base text-slate-600 leading-relaxed">
+                    There is NO AI in the real-time routing path. Adding an LLM to the routing path would ruin the speed. We use Gemini 2.5 AI solely in your dashboard to help you write variant copy and auto-generate your initial routing rules in minutes.
+                  </p>
+                </div>
+              </div>
+            </motion.section>
+
+            {/* 8. INTEGRATIONS & STACK */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -734,7 +927,7 @@ export default function ChurnautHome() {
                   </div>
                 </div>
 
-                {/* 1. Component Update: Continuous Flow Integration Marquee */}
+                {/* Component Update: Continuous Flow Integration Marquee */}
                 <div 
                   className="relative flex flex-col gap-6 py-6 overflow-hidden w-full max-w-lg mx-auto"
                   style={{
@@ -824,7 +1017,7 @@ export default function ChurnautHome() {
               </div>
             </motion.section>
 
-            {/* 6. TRANSPARENT PRICING */}
+            {/* 9. TRANSPARENT PRICING */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -901,7 +1094,7 @@ export default function ChurnautHome() {
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> Unlimited Rules
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Full Ad & Outbound Connectors
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Full Ad & Outbound Integrations
                       </li>
                       <li className="flex items-center gap-2">
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> Premium SLA Agreement
