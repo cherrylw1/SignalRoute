@@ -214,14 +214,16 @@ export default function ChurnautHome() {
             >
               <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center shadow-md p-2">
                 <svg viewBox="0 0 100 100" className="w-9 h-9 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
-                  <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
-                  <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
-                  <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
-                  <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-                  <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
-                  <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
-                  <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M 68 18 A 34 34 0 1 0 36 75 L 43 65 A 24 24 0 1 1 68 28 Z" fill="currentColor" />
+                  <circle cx="50" cy="46" r="15" stroke="currentColor" strokeWidth="4.5" fill="none" />
+                  <rect x="38" y="36.5" width="24" height="15" rx="7.5" fill="currentColor" />
+                  <path d="M 57.5 40 L 58.5 43.5 L 62 44.5 L 58.5 45.5 L 57.5 49 L 56.5 45.5 L 53 44.5 L 56.5 43.5 Z" fill="black" />
+                  <rect x="33.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                  <rect x="63.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                  <path d="M 37 60 C 37 56, 63 56, 63 60 L 61 63 C 61 63, 50 65, 39 63 Z" fill="currentColor" />
+                  <path d="M 42 63.5 C 46 65.5, 54 65.5, 58 63.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 20 70 C 24 85, 48 89, 70 65 L 65 61 C 45 81, 26 79, 23 68 Z" fill="currentColor" />
+                  <path d="M 72 63 L 83 52 L 80 49 L 75 56 L 68 53 L 67 59 Z M 71 58 L 65 64 M 76 61 L 70 67" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
                 </svg>
               </div>
               <motion.span 
@@ -253,14 +255,16 @@ export default function ChurnautHome() {
                 >
                   <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center shadow-sm p-1.5">
                     <svg viewBox="0 0 100 100" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
-                      <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
-                      <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
-                      <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
-                      <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-                      <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
-                      <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
-                      <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M 68 18 A 34 34 0 1 0 36 75 L 43 65 A 24 24 0 1 1 68 28 Z" fill="currentColor" />
+                      <circle cx="50" cy="46" r="15" stroke="currentColor" strokeWidth="4.5" fill="none" />
+                      <rect x="38" y="36.5" width="24" height="15" rx="7.5" fill="currentColor" />
+                      <path d="M 57.5 40 L 58.5 43.5 L 62 44.5 L 58.5 45.5 L 57.5 49 L 56.5 45.5 L 53 44.5 L 56.5 43.5 Z" fill="black" />
+                      <rect x="33.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                      <rect x="63.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                      <path d="M 37 60 C 37 56, 63 56, 63 60 L 61 63 C 61 63, 50 65, 39 63 Z" fill="currentColor" />
+                      <path d="M 42 63.5 C 46 65.5, 54 65.5, 58 63.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                      <path d="M 20 70 C 24 85, 48 89, 70 65 L 65 61 C 45 81, 26 79, 23 68 Z" fill="currentColor" />
+                      <path d="M 72 63 L 83 52 L 80 49 L 75 56 L 68 53 L 67 59 Z M 71 58 L 65 64 M 76 61 L 70 67" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
                     </svg>
                   </div>
                   <span className="text-xl font-extrabold text-slate-900 tracking-tight">
@@ -977,14 +981,16 @@ export default function ChurnautHome() {
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 text-white">
                     <svg viewBox="0 0 100 100" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M 75 26 A 32 32 0 1 0 75 74" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
-                      <circle cx="48" cy="46" r="16" stroke="currentColor" strokeWidth="5" />
-                      <rect x="36" y="38" width="24" height="13" rx="6.5" fill="currentColor" />
-                      <path d="M 52 42.5 L 53 41 L 54 42.5 L 55.5 43 L 54 43.5 L 53 45 L 52 43.5 L 50.5 43 Z" fill="white" />
-                      <path d="M 38 62 A 14 14 0 0 0 58 62" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-                      <path d="M 16 75 C 22 92, 54 94, 76 65" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" />
-                      <path d="M 74 65 L 86 52 L 81 67 L 77 69 Z" fill="currentColor" />
-                      <path d="M 71 70 L 65 76 M 75 74 L 70 79" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M 68 18 A 34 34 0 1 0 36 75 L 43 65 A 24 24 0 1 1 68 28 Z" fill="currentColor" />
+                      <circle cx="50" cy="46" r="15" stroke="currentColor" strokeWidth="4.5" fill="none" />
+                      <rect x="38" y="36.5" width="24" height="15" rx="7.5" fill="currentColor" />
+                      <path d="M 57.5 40 L 58.5 43.5 L 62 44.5 L 58.5 45.5 L 57.5 49 L 56.5 45.5 L 53 44.5 L 56.5 43.5 Z" fill="black" />
+                      <rect x="33.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                      <rect x="63.5" y="42" width="3" height="8" rx="1.5" fill="currentColor" />
+                      <path d="M 37 60 C 37 56, 63 56, 63 60 L 61 63 C 61 63, 50 65, 39 63 Z" fill="currentColor" />
+                      <path d="M 42 63.5 C 46 65.5, 54 65.5, 58 63.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                      <path d="M 20 70 C 24 85, 48 89, 70 65 L 65 61 C 45 81, 26 79, 23 68 Z" fill="currentColor" />
+                      <path d="M 72 63 L 83 52 L 80 49 L 75 56 L 68 53 L 67 59 Z M 71 58 L 65 64 M 76 61 L 70 67" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
                     </svg>
                     <span className="font-bold">Churnaut</span>
                   </div>
