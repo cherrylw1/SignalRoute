@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  ArrowRight, 
   Mail, 
   Sparkles, 
   UserCheck, 
@@ -147,6 +146,21 @@ const renderIntegrationIcon = (iconName: string) => {
 export default function ChurnautHome() {
   const [isRevealed, setIsRevealed] = useState(false);
   const [activeHeroTab, setActiveHeroTab] = useState<"generic" | "vip">("generic");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+
+  // Track window scroll to make navbar sticky and styled past hero
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Manage logo reveal timer
   useEffect(() => {
@@ -241,7 +255,13 @@ export default function ChurnautHome() {
       <div className="w-full flex flex-col min-h-screen">
           
           {/* STICKY FROSTED-GLASS HEADER */}
-          <header className={`sticky top-0 z-50 w-full transition-all duration-500 ${isRevealed ? "border-b border-slate-200 bg-white/80 backdrop-blur-md" : "border-b-transparent bg-transparent"}`}>
+          <header className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+            isRevealed 
+              ? isScrolled 
+                ? "bg-slate-950/80 border-b border-slate-800/80 text-white backdrop-blur-md shadow-lg"
+                : "bg-white/80 border-b border-slate-200 text-slate-900 backdrop-blur-md"
+              : "border-b-transparent bg-transparent"
+          }`}>
             <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
               
               {/* Logo (Layout morph target) */}
@@ -251,8 +271,8 @@ export default function ChurnautHome() {
                   className="flex items-center gap-2.5 cursor-pointer relative z-50"
                   transition={springTransition}
                 >
-                  <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center shadow-sm p-1.5">
-                    <svg viewBox="0 0 100 100" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shadow-sm p-1.5 transition-all duration-500 ${isScrolled ? "bg-white text-slate-950" : "bg-slate-900 text-white"}`}>
+                    <svg viewBox="0 0 100 100" className={`w-6 h-6 transition-colors duration-500 ${isScrolled ? "text-slate-950" : "text-white"}`} fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M 68 18 A 34 34 0 1 0 36 75 L 43 65 A 24 24 0 1 1 68 28 Z" fill="currentColor" />
                       <circle cx="50" cy="46" r="15" stroke="currentColor" strokeWidth="4.5" fill="none" />
                       <rect x="38" y="36.5" width="24" height="15" rx="7.5" fill="currentColor" />
@@ -265,7 +285,7 @@ export default function ChurnautHome() {
                       <path d="M 72 63 L 83 52 L 80 49 L 75 56 L 68 53 L 67 59 Z M 71 58 L 65 64 M 76 61 L 70 67" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
                     </svg>
                   </div>
-                  <span className="text-xl font-extrabold text-slate-900 tracking-tight">
+                  <span className={`text-xl font-extrabold tracking-tight transition-colors duration-500 ${isScrolled ? "text-white" : "text-slate-900"}`}>
                     Churnaut
                   </span>
                 </motion.div>
@@ -274,22 +294,28 @@ export default function ChurnautHome() {
               )}
 
               {/* Navigation Links */}
-              <nav className={`hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 transition-opacity duration-500 ${isRevealed ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                <a href="#features" className="hover:text-slate-900 transition-colors">Product</a>
-                <a href="#integrations" className="hover:text-slate-900 transition-colors">Integrations</a>
-                <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
+              <nav className={`hidden md:flex items-center gap-8 text-sm font-medium transition-opacity duration-500 ${isRevealed ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                <a href="#features" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Product</a>
+                <a href="#integrations" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Integrations</a>
+                <a href="#pricing" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Pricing</a>
               </nav>
 
               {/* Header CTA */}
               <div className={`flex items-center gap-4 transition-opacity duration-500 ${isRevealed ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                <button className="hidden sm:inline-block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                <button className={`hidden sm:inline-block text-sm font-medium transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>
                   Sign In
                 </button>
                 <a 
-                  href="#pricing" 
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm hover:shadow transition-all"
+                  href="https://cal.com/sharath.mb/demo" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg shadow-sm hover:shadow transition-all duration-500 ${
+                    isScrolled 
+                      ? "bg-white text-slate-950 hover:bg-slate-100" 
+                      : "bg-slate-900 text-white hover:bg-slate-800"
+                  }`}
                 >
-                  Get the Signal
+                  Book a Demo
                 </a>
               </div>
 
@@ -315,7 +341,7 @@ export default function ChurnautHome() {
                   className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 tracking-wide uppercase"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-indigo-500 fill-indigo-500" />
-                  Signal-driven Inbound routing
+                  REVENUE PERSONALIZATION PLATFORM
                 </motion.div>
 
                 <motion.h1 
@@ -333,7 +359,7 @@ export default function ChurnautHome() {
                   transition={{ delay: 0.3, ...springTransition }}
                   className="text-lg md:text-xl text-slate-600 font-medium max-w-2xl"
                 >
-                  Turn every link you send into a personalized landing experience. Dynamic page routing powered by 100% deterministic signals.
+                  More pipeline meetings. Faster deal cycles. Your website finally works as hard as your sales team.
                 </motion.p>
 
                 <motion.p 
@@ -349,14 +375,25 @@ export default function ChurnautHome() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="mt-4"
+                  className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
                   <a 
-                    href="#pricing"
-                    className="inline-flex items-center gap-2 px-7 py-4 text-base font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-lg hover:shadow-indigo-100 hover:shadow-2xl transition-all duration-300 group"
+                    href="https://cal.com/sharath.mb/demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-7 py-4 text-base font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-lg hover:shadow-indigo-100 hover:shadow-2xl transition-all duration-300"
                   >
-                    Start Routing Revenue
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+                    Book a Demo
+                  </a>
+                  <a 
+                    href="#features"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="inline-flex items-center justify-center px-7 py-4 text-base font-bold text-slate-700 bg-transparent hover:bg-slate-100 border border-slate-300 hover:border-slate-400 rounded-xl transition-all duration-300"
+                  >
+                    See How It Works &rarr;
                   </a>
                 </motion.div>
 
@@ -1172,6 +1209,32 @@ export default function ChurnautHome() {
                 </p>
               </div>
 
+              {/* Monthly/Yearly Toggle */}
+              <div className="flex justify-center mb-12">
+                <div className="inline-flex items-center gap-1 p-1 bg-slate-100 border border-slate-200/80 rounded-xl">
+                  <button
+                    onClick={() => setBillingPeriod("monthly")}
+                    className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${
+                      billingPeriod === "monthly"
+                        ? "bg-white text-slate-950 shadow-sm"
+                        : "text-slate-500 hover:text-slate-850"
+                    }`}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setBillingPeriod("yearly")}
+                    className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${
+                      billingPeriod === "yearly"
+                        ? "bg-white text-slate-950 shadow-sm"
+                        : "text-slate-500 hover:text-slate-855"
+                    }`}
+                  >
+                    Yearly (2 months free)
+                  </button>
+                </div>
+              </div>
+
               {/* Pricing Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 
@@ -1179,13 +1242,24 @@ export default function ChurnautHome() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden">
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-lg font-bold text-slate-900">Starter</h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-bold text-slate-900">Starter</h3>
+                        {billingPeriod === "yearly" && (
+                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
+                            2 months free
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs text-slate-500">For small teams testing validation</p>
                     </div>
                     
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-slate-900">$199</span>
-                      <span className="text-sm font-medium text-slate-500">/mo</span>
+                      <span className="text-4xl font-extrabold text-slate-900">
+                        {billingPeriod === "monthly" ? "$199" : "$1,990"}
+                      </span>
+                      <span className="text-sm font-medium text-slate-500">
+                        {billingPeriod === "monthly" ? "/mo" : "/yr"}
+                      </span>
                     </div>
 
                     <ul className="flex flex-col gap-3 text-xs font-semibold text-slate-600 border-t border-slate-100 pt-6">
@@ -1201,9 +1275,12 @@ export default function ChurnautHome() {
                     </ul>
                   </div>
 
-                  <button className="mt-8 w-full py-3 text-sm font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all">
-                    Get Started
-                  </button>
+                  <a 
+                    href="#"
+                    className="mt-8 w-full py-3 text-center text-sm font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all block"
+                  >
+                    Start Free
+                  </a>
                 </div>
 
                 {/* Plan 2: Growth (Highlighted) */}
@@ -1214,13 +1291,26 @@ export default function ChurnautHome() {
                   
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-lg font-bold text-slate-900">Growth</h3>
-                      <p className="text-xs text-slate-500">For scaling organizations routing traffic</p>
+                      <div className="flex items-center justify-between mr-24">
+                        <h3 className="text-lg font-bold text-slate-900">Growth</h3>
+                      </div>
+                      <div className="flex justify-between items-center mt-1">
+                        <p className="text-xs text-slate-500">For scaling organizations routing traffic</p>
+                        {billingPeriod === "yearly" && (
+                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
+                            2 months free
+                          </span>
+                        )}
+                      </div>
                     </div>
                     
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-slate-900">$399</span>
-                      <span className="text-sm font-medium text-slate-500">/mo</span>
+                      <span className="text-4xl font-extrabold text-slate-900">
+                        {billingPeriod === "monthly" ? "$399" : "$3,990"}
+                      </span>
+                      <span className="text-sm font-medium text-slate-500">
+                        {billingPeriod === "monthly" ? "/mo" : "/yr"}
+                      </span>
                     </div>
 
                     <ul className="flex flex-col gap-3 text-xs font-semibold text-slate-600 border-t border-slate-100 pt-6">
@@ -1239,22 +1329,36 @@ export default function ChurnautHome() {
                     </ul>
                   </div>
 
-                  <button className="mt-8 w-full py-3 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md shadow-indigo-200">
-                    Get Started
-                  </button>
+                  <a 
+                    href="#"
+                    className="mt-8 w-full py-3 text-center text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md shadow-indigo-200 block"
+                  >
+                    Start Free
+                  </a>
                 </div>
 
                 {/* Plan 3: Pro */}
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden">
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-lg font-bold text-slate-900">Pro</h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-bold text-slate-900">Pro</h3>
+                        {billingPeriod === "yearly" && (
+                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
+                            2 months free
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs text-slate-500">For enterprise-grade logic operations</p>
                     </div>
                     
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-slate-900">$799</span>
-                      <span className="text-sm font-medium text-slate-500">/mo</span>
+                      <span className="text-4xl font-extrabold text-slate-900">
+                        {billingPeriod === "monthly" ? "$799" : "$7,990"}
+                      </span>
+                      <span className="text-sm font-medium text-slate-500">
+                        {billingPeriod === "monthly" ? "/mo" : "/yr"}
+                      </span>
                     </div>
 
                     <ul className="flex flex-col gap-3 text-xs font-semibold text-slate-600 border-t border-slate-100 pt-6">
@@ -1273,9 +1377,12 @@ export default function ChurnautHome() {
                     </ul>
                   </div>
 
-                  <button className="mt-8 w-full py-3 text-sm font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all">
-                    Get Started
-                  </button>
+                  <a 
+                    href="#"
+                    className="mt-8 w-full py-3 text-center text-sm font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all block"
+                  >
+                    Contact Us
+                  </a>
                 </div>
 
               </div>
@@ -1291,17 +1398,19 @@ export default function ChurnautHome() {
               <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-slate-900 text-center md:text-left">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-3xl font-extrabold text-white">
-                    Deploy your first route today.
+                    See what your prospects would see — in 20 minutes.
                   </h3>
                   <p className="text-sm text-slate-400">
-                    Shorten pipelines, qualify leads deterministically, and hit sales targets.
+                    We&apos;ll show you a live demo on your actual website. No slides. No fluff.
                   </p>
                 </div>
                 <a 
-                  href="#pricing"
+                  href="https://cal.com/sharath.mb/demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 rounded-xl transition-all"
                 >
-                  Get Started
+                  Book a Demo &rarr;
                 </a>
               </div>
 
@@ -1385,6 +1494,25 @@ export default function ChurnautHome() {
 
             </div>
           </footer>
+
+          {/* Mobile Floating CTA Button */}
+          <div className="fixed bottom-6 left-0 right-0 px-6 flex justify-center z-50 md:hidden pointer-events-none">
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0, type: "spring", stiffness: 100, damping: 15 }}
+              className="pointer-events-auto"
+            >
+              <a
+                href="https://cal.com/sharath.mb/demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white bg-[#7c3aed] rounded-full shadow-lg shadow-purple-500/30 hover:bg-[#6d28d9] transition-all"
+              >
+                Book a Demo
+              </a>
+            </motion.div>
+          </div>
 
         </div>
       </div>
