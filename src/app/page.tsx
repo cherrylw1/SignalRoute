@@ -556,6 +556,59 @@ export default function ChurnautHome() {
               </div>
             </section>
 
+            {/* PART 1 - PARTNER LOGOS MARQUEE */}
+            <section className="py-12 bg-white overflow-hidden border-b border-slate-100">
+              <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-6">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] text-center block">
+                  Trusted by revenue teams at
+                </span>
+                
+                <div 
+                  className="relative flex overflow-hidden w-full py-4 animate-marquee-container"
+                  style={{
+                    maskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)",
+                    WebkitMaskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)"
+                  }}
+                >
+                  <div className="flex animate-marquee">
+                    {[
+                      { name: "Velox", tag: "SALES AUTOMATION" },
+                      { name: "Driftmark", tag: "B2B SAAS" },
+                      { name: "Stackpilot", tag: "REVOPS" },
+                      { name: "Novathread", tag: "OUTBOUND" },
+                      { name: "Clarix", tag: "PIPELINE INTELLIGENCE" },
+                      { name: "Mergepoint", tag: "GTM PLATFORM" }
+                    ].map((logo, idx) => (
+                      <div 
+                        key={`logo-1-${idx}`} 
+                        className="flex flex-col items-center justify-center mx-12 shrink-0 opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer select-none"
+                      >
+                        <span className="text-lg md:text-xl font-black text-slate-950 tracking-tight">{logo.name}</span>
+                        <span className="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">{logo.tag}</span>
+                      </div>
+                    ))}
+                    {[
+                      { name: "Velox", tag: "SALES AUTOMATION" },
+                      { name: "Driftmark", tag: "B2B SAAS" },
+                      { name: "Stackpilot", tag: "REVOPS" },
+                      { name: "Novathread", tag: "OUTBOUND" },
+                      { name: "Clarix", tag: "PIPELINE INTELLIGENCE" },
+                      { name: "Mergepoint", tag: "GTM PLATFORM" }
+                    ].map((logo, idx) => (
+                      <div 
+                        key={`logo-2-${idx}`} 
+                        className="flex flex-col items-center justify-center mx-12 shrink-0 opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer select-none"
+                      >
+                        <span className="text-lg md:text-xl font-black text-slate-950 tracking-tight">{logo.name}</span>
+                        <span className="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">{logo.tag}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
             {/* 2. THE AGITATION SECTION (THE 4 FAILURES) */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
@@ -1241,6 +1294,103 @@ export default function ChurnautHome() {
 
               </div>
             </motion.section>
+
+            {/* PART 2 - TESTIMONIALS SECTION */}
+            <section className="py-24 bg-[#09090f] w-full overflow-hidden border-y border-slate-900">
+              <div className="max-w-6xl mx-auto px-6 flex flex-col gap-16 items-center">
+                
+                <div className="text-center flex flex-col items-center gap-3">
+                  <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-slate-900 text-[10px] md:text-xs font-bold text-slate-200 tracking-wide uppercase self-center border border-slate-800">
+                    WHAT TEAMS ARE SAYING
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+                    Pipeline results. Not promises.
+                  </h2>
+                </div>
+
+                {/* Cards Grid with Staggered Scroll Animation */}
+                <motion.div 
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full"
+                >
+                  
+                  {/* Testimonial Card 1 */}
+                  <motion.div 
+                    variants={itemFadeInUp}
+                    className="bg-[#12121a] border border-white/5 p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/20 hover:border-white/10 transition-all duration-300 group"
+                  >
+                    <div className="flex flex-col gap-4">
+                      <span className="text-5xl font-serif text-purple-500 leading-none select-none -mb-2">&ldquo;</span>
+                      <p className="text-sm md:text-base text-slate-200 leading-relaxed font-medium">
+                        Our cold email click-to-meeting rate went from 6% to 22% in 6 weeks. Churnaut just works.
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-3.5 mt-8 border-t border-white/5 pt-5">
+                      <div className="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm select-none shrink-0 shadow-inner">
+                        RC
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-bold text-white leading-tight">Ryan Callahan</span>
+                        <span className="text-xs text-slate-400 leading-tight mt-0.5">Head of Growth, Velox</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Testimonial Card 2 */}
+                  <motion.div 
+                    variants={itemFadeInUp}
+                    className="bg-[#12121a] border border-white/5 p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/20 hover:border-white/10 transition-all duration-300 group"
+                  >
+                    <div className="flex flex-col gap-4">
+                      <span className="text-5xl font-serif text-purple-500 leading-none select-none -mb-2">&ldquo;</span>
+                      <p className="text-sm md:text-base text-slate-200 leading-relaxed font-medium">
+                        We used to lose deals silently. Scout tells us exactly which deals are dying and why — before it&apos;s too late.
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-3.5 mt-8 border-t border-white/5 pt-5">
+                      <div className="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm select-none shrink-0 shadow-inner">
+                        PN
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-bold text-white leading-tight">Priya Nair</span>
+                        <span className="text-xs text-slate-400 leading-tight mt-0.5">VP Sales, Stackpilot</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Testimonial Card 3 */}
+                  <motion.div 
+                    variants={itemFadeInUp}
+                    className="bg-[#12121a] border border-white/5 p-8 rounded-2xl flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/20 hover:border-white/10 transition-all duration-300 group"
+                  >
+                    <div className="flex flex-col gap-4">
+                      <span className="text-5xl font-serif text-purple-500 leading-none select-none -mb-2">&ldquo;</span>
+                      <p className="text-sm md:text-base text-slate-200 leading-relaxed font-medium">
+                        Every prospect that clicks our outbound links lands on a page that knows who they are. Pipeline velocity is up 40%.
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-3.5 mt-8 border-t border-white/5 pt-5">
+                      <div className="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm select-none shrink-0 shadow-inner">
+                        MO
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-bold text-white leading-tight">Marcus Obi</span>
+                        <span className="text-xs text-slate-400 leading-tight mt-0.5">Founder, Driftmark</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                </motion.div>
+
+              </div>
+            </section>
+
 
             {/* 9. TRANSPARENT PRICING */}
             <motion.section 
