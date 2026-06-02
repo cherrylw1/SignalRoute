@@ -12,7 +12,8 @@ import {
   Workflow,
   Calendar,
   Layers,
-  Database
+  Database,
+  X
 } from "lucide-react";
 
 // Integration dataset & icons for Marquee
@@ -148,6 +149,7 @@ export default function ChurnautHome() {
   const [activeHeroTab, setActiveHeroTab] = useState<"generic" | "vip">("generic");
   const [isScrolled, setIsScrolled] = useState(false);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  const [activeModal, setActiveModal] = useState<"about" | "privacy" | "terms" | "careers" | null>(null);
 
   // Track window scroll to make navbar sticky and styled past hero
   useEffect(() => {
@@ -1678,16 +1680,15 @@ export default function ChurnautHome() {
 
                 <div className="flex flex-col gap-3">
                   <span className="text-xs font-bold text-white uppercase tracking-wider">Company</span>
-                  <a href="#" className="text-xs hover:text-white transition-colors">About Us</a>
-                  <a href="#" className="text-xs hover:text-white transition-colors">Careers</a>
-                  <a href="#" className="text-xs hover:text-white transition-colors">Contact Support</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal("about"); }} className="text-xs hover:text-white transition-colors">About Us</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal("careers"); }} className="text-xs hover:text-white transition-colors">Careers</a>
+                  <a href="mailto:support@churnaut.com?subject=Churnaut Support Request" className="text-xs hover:text-white transition-colors">Contact Support</a>
                 </div>
 
                 <div className="flex flex-col gap-3">
                   <span className="text-xs font-bold text-white uppercase tracking-wider">Legal</span>
-                  <a href="#" className="text-xs hover:text-white transition-colors">Privacy Policy</a>
-                  <a href="#" className="text-xs hover:text-white transition-colors">Terms of Service</a>
-                  <a href="#" className="text-xs hover:text-white transition-colors">SOC2 Compliance</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal("privacy"); }} className="text-xs hover:text-white transition-colors">Privacy Policy</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal("terms"); }} className="text-xs hover:text-white transition-colors">Terms of Service</a>
                 </div>
 
               </div>
@@ -1695,7 +1696,7 @@ export default function ChurnautHome() {
               {/* Bottom Copyright bar */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-slate-900 text-[11px] text-slate-500">
                 <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <span>&copy; {new Date().getFullYear()} Churnaut Inc. All rights reserved.</span>
+                  <span>&copy; {new Date().getFullYear()} Churnaut Technologies Private Limited. All rights reserved.</span>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-400 animate-pulse"></span>
                     <span>Personalization Edge: 100% Nominal</span>
@@ -1744,6 +1745,334 @@ export default function ChurnautHome() {
               </a>
             </motion.div>
           </div>
+
+          {/* Footer Modals Overlay */}
+          <AnimatePresence>
+            {activeModal && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/85 z-[100] flex items-center justify-center p-4 md:p-6 backdrop-blur-sm"
+                onClick={() => setActiveModal(null)}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 30, scale: 0.95 }}
+                  transition={springTransition}
+                  className="max-w-2xl w-full bg-[#09090f] border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl relative flex flex-col max-h-[85vh] outline-none"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button (X) */}
+                  <button
+                    onClick={() => setActiveModal(null)}
+                    className="absolute top-5 right-5 w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors shadow-sm z-50"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+
+                  {/* Modal Body */}
+                  <div className="w-full h-full overflow-y-auto pr-1">
+                    {activeModal === "about" && (
+                      <div className="flex flex-col gap-6 text-left">
+                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">About Churnaut</h2>
+                          <p className="text-sm md:text-base text-indigo-400 font-semibold mt-1">
+                            Making every B2B website as smart as the sales team behind it.
+                          </p>
+                        </div>
+                        
+                        <div className="flex flex-col gap-4 text-sm md:text-base text-slate-350 leading-relaxed">
+                          <p>
+                            Churnaut Technologies Private Limited is a B2B SaaS company founded in 2026 and headquartered in Bengaluru, India.
+                          </p>
+                          <p>
+                            We build revenue personalization infrastructure for modern B2B sales and marketing teams. Our platform connects your CRM to your website — so every prospect that clicks a tracked link lands on a page that already knows who they are, what stage they&apos;re at, and what they need to see next.
+                          </p>
+                          
+                          <p className="font-bold text-white mt-2">Churnaut is built on two pillars:</p>
+                          
+                          <div className="flex flex-col gap-4 pl-3 border-l-2 border-indigo-500/50">
+                            <div className="flex flex-col gap-1">
+                              <span className="font-bold text-white text-sm md:text-base">Website Personalization</span>
+                              <span className="text-slate-350">
+                                deterministic, signal-based DOM personalization that fires in under 400ms. No guesswork. No IP deanonymization. Only verified signals.
+                              </span>
+                            </div>
+                            <div className="flex flex-col gap-1">
+                              <span className="font-bold text-white text-sm md:text-base">Scout AI</span>
+                              <span className="text-slate-355">
+                                an AI pipeline intelligence layer that scores every deal in your HubSpot pipeline, flags at-risk deals before they go cold, writes rep outreach automatically, and learns from every closed-lost deal.
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <p className="mt-2">
+                            We are a small, focused team that ships fast and stays close to our customers. Every new customer gets a founder-led onboarding session.
+                          </p>
+                          <p>
+                            Our mission is simple: your website should work as hard as your sales team.
+                          </p>
+                        </div>
+                        
+                        <div className="border-t border-slate-800 pt-5 text-xs text-slate-500 text-center font-medium mt-auto">
+                          Churnaut Technologies Private Limited &middot; Bengaluru, India &middot; hello@churnaut.com
+                        </div>
+                      </div>
+                    )}
+
+                    {activeModal === "privacy" && (
+                      <div className="flex flex-col gap-6 text-left">
+                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Privacy Policy</h2>
+                          <p className="text-xs text-slate-500 mt-1">Last updated: June 2026</p>
+                        </div>
+                        
+                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-355 leading-relaxed">
+                          {[
+                            {
+                              num: "1",
+                              title: "What We Collect",
+                              content: "We collect information you provide directly (name, email, company) when you sign up or book a demo. We also collect visitor tracking data through our JavaScript snippet installed on customer websites — this includes session IDs, UTM parameters, and ad click identifiers. We do not collect personally identifiable information from website visitors without a verified signal."
+                            },
+                            {
+                              num: "2",
+                              title: "How We Use Your Data",
+                              content: "We use your data to provide and improve the Churnaut platform, send product updates and support communications, and generate pipeline intelligence through Scout AI. We never sell your data to third parties. Ever."
+                            },
+                            {
+                              num: "3",
+                              title: "Data Storage & Security",
+                              content: "All data is stored in Supabase (PostgreSQL) with row-level security enabled. Data in transit is encrypted via TLS. Our CDN is served through Cloudflare. OAuth tokens are encrypted at rest."
+                            },
+                            {
+                              num: "4",
+                              title: "Cookies",
+                              content: "We use a single first-party cookie (_sr_visitor) to identify returning visitors for personalization purposes. This cookie expires after 30 days. We do not use third-party advertising cookies."
+                            },
+                            {
+                              num: "5",
+                              title: "Your Rights",
+                              content: "You can request deletion of your data at any time by emailing support@churnaut.com. We will process all deletion requests within 14 business days."
+                            },
+                            {
+                              num: "6",
+                              title: "Contact",
+                              content: "For privacy-related questions: support@churnaut.com"
+                            }
+                          ].map((sec) => (
+                            <div key={sec.num} className="flex flex-col gap-1.5">
+                              <h3 className="font-bold text-white text-sm md:text-base flex items-center gap-2">
+                                <span className="text-[10px] bg-slate-900 border border-slate-800 text-indigo-400 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
+                                {sec.title}
+                              </h3>
+                              <p className="text-slate-355 pl-7 text-xs md:text-sm">{sec.content}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {activeModal === "terms" && (
+                      <div className="flex flex-col gap-6 text-left">
+                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Terms of Service</h2>
+                          <p className="text-xs text-slate-500 mt-1">Last updated: June 2026</p>
+                        </div>
+                        
+                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-355 leading-relaxed">
+                          {[
+                            {
+                              num: "1",
+                              title: "Acceptance",
+                              content: "By accessing or using Churnaut, you agree to these Terms. If you do not agree, do not use the platform."
+                            },
+                            {
+                              num: "2",
+                              title: "Use of the Platform",
+                              content: "Churnaut is a B2B SaaS platform. You may use it only for lawful business purposes. You may not resell, reverse engineer, or attempt to extract the underlying source code of the platform."
+                            },
+                            {
+                              num: "3",
+                              title: "Your Data",
+                              content: "You retain ownership of all data you bring into Churnaut — including CRM data, visitor data, and routing rules. We process this data on your behalf to provide the service."
+                            },
+                            {
+                              num: "4",
+                              title: "Payment & Cancellation",
+                              content: "Subscription fees are billed monthly or annually. You may cancel at any time. No refunds are issued for partial billing periods. Annual plans are non-refundable after 14 days."
+                            },
+                            {
+                              num: "5",
+                              title: "Limitation of Liability",
+                              content: "Churnaut is provided as-is. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform. Our total liability shall not exceed the amount you paid us in the last 3 months."
+                            },
+                            {
+                              num: "6",
+                              title: "Changes to Terms",
+                              content: "We may update these Terms at any time. We will notify you by email at least 14 days before material changes take effect."
+                            },
+                            {
+                              num: "7",
+                              title: "Governing Law",
+                              content: "These Terms are governed by the laws of India. Any disputes shall be resolved in the courts of Bengaluru, Karnataka."
+                            },
+                            {
+                              num: "8",
+                              title: "Contact",
+                              content: "For legal inquiries: support@churnaut.com"
+                            }
+                          ].map((sec) => (
+                            <div key={sec.num} className="flex flex-col gap-1.5">
+                              <h3 className="font-bold text-white text-sm md:text-base flex items-center gap-2">
+                                <span className="text-[10px] bg-slate-900 border border-slate-800 text-indigo-400 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
+                                {sec.title}
+                              </h3>
+                              <p className="text-slate-355 pl-7 text-xs md:text-sm">{sec.content}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {activeModal === "careers" && (
+                      <div className="flex flex-col gap-6 text-left">
+                        <div className="flex flex-col gap-2.5 border-b border-slate-800 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Join Churnaut</h2>
+                          <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+                            We&apos;re a small team building something genuinely new in B2B sales tech. We move fast, stay close to customers, and give everyone real ownership of their work. Both roles are fully remote.
+                          </p>
+                        </div>
+                        
+                        <div className="flex flex-col gap-6">
+                          {/* Job Card 1 */}
+                          <div className="bg-[#12121a] border border-white/5 p-6 rounded-2xl flex flex-col gap-4 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+                              <div className="flex flex-col">
+                                <h3 className="text-base md:text-lg font-bold text-white">Sales Development Representative (SDR)</h3>
+                                <span className="text-xs text-indigo-400 font-semibold mt-0.5">India (Any City)</span>
+                              </div>
+                              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-900/60 px-2.5 py-1 rounded-full self-start">
+                                Full-Time &middot; Remote
+                              </span>
+                            </div>
+                            
+                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-355">
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">About the role:</span>
+                                <p className="leading-relaxed">
+                                  As our first SDR, you&apos;ll own the top of our outbound pipeline. You&apos;ll research and prospect B2B SaaS companies, run cold email and LinkedIn sequences, qualify inbound demo requests, and hand off warm opportunities to the founder. You&apos;ll be working directly with the founding team — no layers, no bureaucracy.
+                                </p>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What you&apos;ll do:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>Research and build targeted prospect lists of B2B SaaS companies (50-500 employees)</li>
+                                  <li>Write and send personalized cold email and LinkedIn outreach sequences</li>
+                                  <li>Qualify inbound leads and book discovery calls</li>
+                                  <li>Maintain clean CRM records and track outreach performance</li>
+                                  <li>Collaborate directly with the founder on messaging and ICP refinement</li>
+                                </ul>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What we&apos;re looking for:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>0-1 years of experience (freshers welcome)</li>
+                                  <li>Strong written English — clear, concise, human</li>
+                                  <li>Genuine curiosity about B2B SaaS and sales</li>
+                                  <li>Self-starter who doesn&apos;t need to be micromanaged</li>
+                                  <li>Bonus: experience with Apollo, Instantly, or any outbound tool</li>
+                                </ul>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What you get:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>Fully remote — work from anywhere in India</li>
+                                  <li>Competitive fresher stipend + performance bonus</li>
+                                  <li>Direct mentorship from the founder</li>
+                                  <li>Ground floor opportunity at an early-stage SaaS company</li>
+                                </ul>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-slate-950 border border-slate-900 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
+                              <span className="text-xs font-bold text-slate-300">To apply:</span>
+                              <p className="text-xs text-slate-400 leading-relaxed">
+                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-400 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-900 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-mono text-[10px]">SDR Application — [Your Name]</code>
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Divider */}
+                          <div className="border-t border-slate-800/80 my-2"></div>
+
+                          {/* Job Card 2 */}
+                          <div className="bg-[#12121a] border border-white/5 p-6 rounded-2xl flex flex-col gap-4 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+                              <div className="flex flex-col">
+                                <h3 className="text-base md:text-lg font-bold text-white">Customer Success Manager (CSM)</h3>
+                                <span className="text-xs text-indigo-400 font-semibold mt-0.5">India (Any City)</span>
+                              </div>
+                              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-900/60 px-2.5 py-1 rounded-full self-start">
+                                Full-Time &middot; Remote
+                              </span>
+                            </div>
+                            
+                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-355">
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">About the role:</span>
+                                <p className="leading-relaxed">
+                                  As our first CSM, you&apos;ll own the post-sale experience for every Churnaut customer. You&apos;ll onboard new customers, help them get their first personalization rules live, monitor their usage, and make sure they&apos;re seeing results. You&apos;ll be the person customers trust — and the internal voice that makes our product better.
+                                </p>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What you&apos;ll do:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>Own onboarding for all new customers — from signup to first rule live</li>
+                                  <li>Run check-in calls and help customers expand their use of the platform</li>
+                                  <li>Monitor customer health metrics and flag at-risk accounts early</li>
+                                  <li>Gather product feedback and relay it to the founding team</li>
+                                  <li>Build onboarding resources, guides, and templates</li>
+                                </ul>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What we&apos;re looking for:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>0-1 years of experience (freshers welcome)</li>
+                                  <li>Strong communication skills — written and verbal</li>
+                                  <li>Patient, empathetic, and detail-oriented</li>
+                                  <li>Comfortable learning a technical SaaS product quickly</li>
+                                  <li>Bonus: background in sales, marketing, or RevOps</li>
+                                </ul>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <span className="font-bold text-white">What you get:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                  <li>Fully remote — work from anywhere in India</li>
+                                  <li>Competitive fresher stipend + performance bonus</li>
+                                  <li>Direct mentorship from the founder</li>
+                                  <li>Real ownership of the customer experience from day one</li>
+                                </ul>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-slate-950 border border-slate-900 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
+                              <span className="text-xs font-bold text-slate-300">To apply:</span>
+                              <p className="text-xs text-slate-400 leading-relaxed">
+                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-400 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-900 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-mono text-[10px]">CSM Application — [Your Name]</code>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
       </div>
