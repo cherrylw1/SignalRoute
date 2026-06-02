@@ -1623,23 +1623,23 @@ export default function ChurnautHome() {
                         e.preventDefault();
                         document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-300 bg-transparent hover:bg-slate-900/50 hover:text-white border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-300"
+                      className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-300 bg-transparent hover:bg-slate-900/50 hover:text-white border border-white/40 hover:border-white/60 rounded-xl transition-all duration-300"
                     >
                       See Pricing &darr;
                     </a>
                   </div>
 
                   {/* Trust Signals */}
-                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-slate-500 font-medium mt-1">
-                    <span>✓ No credit card required</span>
-                    <span className="text-slate-850 hidden sm:inline">•</span>
-                    <span>✓ 20-minute founder-led demo</span>
-                    <span className="text-slate-850 hidden sm:inline">•</span>
-                    <span>✓ Live on your website same day</span>
+                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-slate-200 font-semibold mt-1">
+                    <span className="flex items-center gap-1.5"><span className="text-[#22c55e] font-bold">✓</span> No credit card required</span>
+                    <span className="text-slate-500 hidden sm:inline">•</span>
+                    <span className="flex items-center gap-1.5"><span className="text-[#22c55e] font-bold">✓</span> 20-minute founder-led demo</span>
+                    <span className="text-slate-500 hidden sm:inline">•</span>
+                    <span className="flex items-center gap-1.5"><span className="text-[#22c55e] font-bold">✓</span> Live on your website same day</span>
                   </div>
 
                   {/* Urgency Line */}
-                  <p className="text-xs italic text-slate-500 mt-0.5">
+                  <p className="text-xs italic text-slate-300 mt-0.5">
                     We personally onboard every new customer. Spots are limited.
                   </p>
                 </div>
