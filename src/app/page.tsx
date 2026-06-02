@@ -1037,34 +1037,6 @@ export default function ChurnautHome() {
 
             </motion.section>
 
-            {/* 7. THE AI PHILOSOPHY */}
-            <motion.section 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-150px" }}
-              transition={{ type: "spring", stiffness: 80, damping: 15 }}
-              className="py-16 max-w-4xl mx-auto px-6"
-            >
-              <div className="bg-gradient-to-br from-white to-slate-50 text-slate-900 rounded-3xl p-8 md:p-12 shadow-lg border border-slate-200 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-                {/* Subtle blue/indigo ambient glow inside */}
-                <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div className="flex-grow flex flex-col gap-4 relative z-10">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-[10px] font-bold text-slate-800 tracking-wide uppercase self-start border border-slate-200">
-                    <Sparkles className="w-3 h-3 text-indigo-500 fill-indigo-500" />
-                    Engineering Manifesto
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 leading-tight">
-                    AI for setup. Not for routing.
-                  </h3>
-                  <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-                    There is NO AI in the real-time routing path. Adding an LLM to the routing path would ruin the speed. We use Gemini 2.5 AI solely in your dashboard to help you write variant copy and auto-generate your initial routing rules in minutes.
-                  </p>
-                </div>
-              </div>
-            </motion.section>
-
             {/* SCOUT AI SECTION */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
@@ -1137,7 +1109,7 @@ export default function ChurnautHome() {
                   href="https://cal.com/sharath.mb/demo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-700 bg-transparent hover:bg-slate-100 border border-slate-300 hover:border-slate-400 rounded-xl transition-all duration-300"
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-lg transition-all duration-300"
                 >
                   See Scout in action &rarr;
                 </a>
