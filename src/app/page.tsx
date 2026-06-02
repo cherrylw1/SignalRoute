@@ -304,9 +304,14 @@ export default function ChurnautHome() {
 
               {/* Header CTA */}
               <div className={`flex items-center gap-4 transition-opacity duration-500 ${isRevealed ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                <button className={`hidden sm:inline-block text-sm font-medium transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>
+                <a 
+                  href="https://app.churnaut.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`hidden sm:inline-block text-sm font-medium transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}
+                >
                   Sign In
-                </button>
+                </a>
                 <a 
                   href="https://cal.com/sharath.mb/demo" 
                   target="_blank"
