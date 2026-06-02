@@ -1596,23 +1596,53 @@ export default function ChurnautHome() {
             <div className="max-w-6xl mx-auto px-6 flex flex-col gap-12">
               
               {/* Footer Banner CTA */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-slate-900 text-center md:text-left">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-3xl font-extrabold text-white">
+              <div className="flex flex-col items-center text-center gap-8 pb-12 border-b border-slate-900 w-full">
+                <div className="flex flex-col gap-2.5">
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                     See what your prospects would see — in 20 minutes.
                   </h3>
-                  <p className="text-sm text-slate-400">
-                    We&apos;ll show you a live demo on your actual website. No slides. No fluff.
+                  <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto">
+                    We&apos;ll show you a live demo on your actual website. No slides. No fluff. Just results.
                   </p>
                 </div>
-                <a 
-                  href="https://cal.com/sharath.mb/demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 rounded-xl transition-all"
-                >
-                  Book a Demo &rarr;
-                </a>
+                
+                <div className="flex flex-col items-center gap-4">
+                  {/* Buttons */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a 
+                      href="https://cal.com/sharath.mb/demo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl shadow-lg transition-all duration-300"
+                    >
+                      Book a Demo &rarr;
+                    </a>
+                    <a 
+                      href="#pricing"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-300 bg-transparent hover:bg-slate-900/50 hover:text-white border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-300"
+                    >
+                      See Pricing &darr;
+                    </a>
+                  </div>
+
+                  {/* Trust Signals */}
+                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-slate-500 font-medium mt-1">
+                    <span>✓ No credit card required</span>
+                    <span className="text-slate-850 hidden sm:inline">•</span>
+                    <span>✓ 20-minute founder-led demo</span>
+                    <span className="text-slate-850 hidden sm:inline">•</span>
+                    <span>✓ Live on your website same day</span>
+                  </div>
+
+                  {/* Urgency Line */}
+                  <p className="text-xs italic text-slate-500 mt-0.5">
+                    We personally onboard every new customer. Spots are limited.
+                  </p>
+                </div>
               </div>
 
               {/* Sitemap Links */}
