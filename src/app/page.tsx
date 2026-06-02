@@ -1753,7 +1753,7 @@ export default function ChurnautHome() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/85 z-[100] flex items-center justify-center p-4 md:p-6 backdrop-blur-sm"
+                className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 md:p-6 backdrop-blur-sm"
                 onClick={() => setActiveModal(null)}
               >
                 <motion.div
@@ -1761,30 +1761,30 @@ export default function ChurnautHome() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 30, scale: 0.95 }}
                   transition={springTransition}
-                  className="max-w-2xl w-full bg-[#09090f] border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl relative flex flex-col max-h-[85vh] outline-none"
+                  className="max-w-2xl w-full bg-white border border-slate-200 rounded-3xl p-6 md:p-10 shadow-2xl relative flex flex-col max-h-[85vh] outline-none"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Close Button (X) */}
                   <button
                     onClick={() => setActiveModal(null)}
-                    className="absolute top-5 right-5 w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors shadow-sm z-50"
+                    className="absolute top-5 right-5 w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200 hover:text-slate-950 flex items-center justify-center transition-colors shadow-sm z-50"
                     aria-label="Close modal"
                   >
                     <X className="w-4 h-4" />
                   </button>
 
                   {/* Modal Body */}
-                  <div className="w-full h-full overflow-y-auto pr-1">
+                  <div className="w-full h-full overflow-y-auto pr-1 custom-modal-scrollbar">
                     {activeModal === "about" && (
                       <div className="flex flex-col gap-6 text-left">
-                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
-                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">About Churnaut</h2>
-                          <p className="text-sm md:text-base text-indigo-400 font-semibold mt-1">
+                        <div className="flex flex-col gap-1 border-b border-slate-200 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">About Churnaut</h2>
+                          <p className="text-sm md:text-base text-[#7c3aed] font-semibold mt-1">
                             Making every B2B website as smart as the sales team behind it.
                           </p>
                         </div>
                         
-                        <div className="flex flex-col gap-4 text-sm md:text-base text-slate-350 leading-relaxed">
+                        <div className="flex flex-col gap-4 text-sm md:text-base text-slate-900 leading-relaxed">
                           <p>
                             Churnaut Technologies Private Limited is a B2B SaaS company founded in 2026 and headquartered in Bengaluru, India.
                           </p>
@@ -1792,18 +1792,18 @@ export default function ChurnautHome() {
                             We build revenue personalization infrastructure for modern B2B sales and marketing teams. Our platform connects your CRM to your website — so every prospect that clicks a tracked link lands on a page that already knows who they are, what stage they&apos;re at, and what they need to see next.
                           </p>
                           
-                          <p className="font-bold text-white mt-2">Churnaut is built on two pillars:</p>
+                          <p className="font-bold text-slate-900 mt-2">Churnaut is built on two pillars:</p>
                           
                           <div className="flex flex-col gap-4 pl-3 border-l-2 border-indigo-500/50">
                             <div className="flex flex-col gap-1">
-                              <span className="font-bold text-white text-sm md:text-base">Website Personalization</span>
-                              <span className="text-slate-350">
+                              <span className="font-bold text-slate-900 text-sm md:text-base">Website Personalization</span>
+                              <span className="text-slate-900">
                                 deterministic, signal-based DOM personalization that fires in under 400ms. No guesswork. No IP deanonymization. Only verified signals.
                               </span>
                             </div>
                             <div className="flex flex-col gap-1">
-                              <span className="font-bold text-white text-sm md:text-base">Scout AI</span>
-                              <span className="text-slate-355">
+                              <span className="font-bold text-slate-900 text-sm md:text-base">Scout AI</span>
+                              <span className="text-slate-900">
                                 an AI pipeline intelligence layer that scores every deal in your HubSpot pipeline, flags at-risk deals before they go cold, writes rep outreach automatically, and learns from every closed-lost deal.
                               </span>
                             </div>
@@ -1817,7 +1817,7 @@ export default function ChurnautHome() {
                           </p>
                         </div>
                         
-                        <div className="border-t border-slate-800 pt-5 text-xs text-slate-500 text-center font-medium mt-auto">
+                        <div className="border-t border-slate-200 pt-5 text-xs text-slate-500 text-center font-medium mt-auto">
                           Churnaut Technologies Private Limited &middot; Bengaluru, India &middot; hello@churnaut.com
                         </div>
                       </div>
@@ -1825,12 +1825,12 @@ export default function ChurnautHome() {
 
                     {activeModal === "privacy" && (
                       <div className="flex flex-col gap-6 text-left">
-                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
-                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Privacy Policy</h2>
+                        <div className="flex flex-col gap-1 border-b border-slate-200 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">Privacy Policy</h2>
                           <p className="text-xs text-slate-500 mt-1">Last updated: June 2026</p>
                         </div>
                         
-                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-355 leading-relaxed">
+                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-900 leading-relaxed">
                           {[
                             {
                               num: "1",
@@ -1864,11 +1864,11 @@ export default function ChurnautHome() {
                             }
                           ].map((sec) => (
                             <div key={sec.num} className="flex flex-col gap-1.5">
-                              <h3 className="font-bold text-white text-sm md:text-base flex items-center gap-2">
-                                <span className="text-[10px] bg-slate-900 border border-slate-800 text-indigo-400 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
+                              <h3 className="font-bold text-slate-900 text-sm md:text-base flex items-center gap-2">
+                                <span className="text-[10px] bg-slate-100 border border-slate-200 text-indigo-600 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
                                 {sec.title}
                               </h3>
-                              <p className="text-slate-355 pl-7 text-xs md:text-sm">{sec.content}</p>
+                              <p className="text-slate-900 pl-7 text-xs md:text-sm">{sec.content}</p>
                             </div>
                           ))}
                         </div>
@@ -1877,12 +1877,12 @@ export default function ChurnautHome() {
 
                     {activeModal === "terms" && (
                       <div className="flex flex-col gap-6 text-left">
-                        <div className="flex flex-col gap-1 border-b border-slate-800 pb-5">
-                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Terms of Service</h2>
+                        <div className="flex flex-col gap-1 border-b border-slate-200 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">Terms of Service</h2>
                           <p className="text-xs text-slate-500 mt-1">Last updated: June 2026</p>
                         </div>
                         
-                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-355 leading-relaxed">
+                        <div className="flex flex-col gap-5 text-xs md:text-sm text-slate-900 leading-relaxed">
                           {[
                             {
                               num: "1",
@@ -1926,11 +1926,11 @@ export default function ChurnautHome() {
                             }
                           ].map((sec) => (
                             <div key={sec.num} className="flex flex-col gap-1.5">
-                              <h3 className="font-bold text-white text-sm md:text-base flex items-center gap-2">
-                                <span className="text-[10px] bg-slate-900 border border-slate-800 text-indigo-400 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
+                              <h3 className="font-bold text-slate-900 text-sm md:text-base flex items-center gap-2">
+                                <span className="text-[10px] bg-slate-100 border border-slate-200 text-indigo-600 w-5 h-5 rounded-md flex items-center justify-center font-bold">{sec.num}</span>
                                 {sec.title}
                               </h3>
-                              <p className="text-slate-355 pl-7 text-xs md:text-sm">{sec.content}</p>
+                              <p className="text-slate-900 pl-7 text-xs md:text-sm">{sec.content}</p>
                             </div>
                           ))}
                         </div>
@@ -1939,36 +1939,36 @@ export default function ChurnautHome() {
 
                     {activeModal === "careers" && (
                       <div className="flex flex-col gap-6 text-left">
-                        <div className="flex flex-col gap-2.5 border-b border-slate-800 pb-5">
-                          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Join Churnaut</h2>
-                          <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+                        <div className="flex flex-col gap-2.5 border-b border-slate-200 pb-5">
+                          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">Join Churnaut</h2>
+                          <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                             We&apos;re a small team building something genuinely new in B2B sales tech. We move fast, stay close to customers, and give everyone real ownership of their work. Both roles are fully remote.
                           </p>
                         </div>
                         
                         <div className="flex flex-col gap-6">
                           {/* Job Card 1 */}
-                          <div className="bg-[#12121a] border border-white/5 p-6 rounded-2xl flex flex-col gap-4 shadow-sm">
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+                          <div className="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                               <div className="flex flex-col">
-                                <h3 className="text-base md:text-lg font-bold text-white">Sales Development Representative (SDR)</h3>
-                                <span className="text-xs text-indigo-400 font-semibold mt-0.5">India (Any City)</span>
+                                <h3 className="text-base md:text-lg font-bold text-slate-900">Sales Development Representative (SDR)</h3>
+                                <span className="text-xs text-[#7c3aed] font-semibold mt-0.5">India (Any City)</span>
                               </div>
-                              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-900/60 px-2.5 py-1 rounded-full self-start">
+                              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full self-start">
                                 Full-Time &middot; Remote
                               </span>
                             </div>
                             
-                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-355">
+                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-905">
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">About the role:</span>
-                                <p className="leading-relaxed">
+                                <span className="font-bold text-slate-900">About the role:</span>
+                                <p className="leading-relaxed text-slate-605">
                                   As our first SDR, you&apos;ll own the top of our outbound pipeline. You&apos;ll research and prospect B2B SaaS companies, run cold email and LinkedIn sequences, qualify inbound demo requests, and hand off warm opportunities to the founder. You&apos;ll be working directly with the founding team — no layers, no bureaucracy.
                                 </p>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What you&apos;ll do:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What you&apos;ll do:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>Research and build targeted prospect lists of B2B SaaS companies (50-500 employees)</li>
                                   <li>Write and send personalized cold email and LinkedIn outreach sequences</li>
                                   <li>Qualify inbound leads and book discovery calls</li>
@@ -1977,8 +1977,8 @@ export default function ChurnautHome() {
                                 </ul>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What we&apos;re looking for:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What we&apos;re looking for:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>0-1 years of experience (freshers welcome)</li>
                                   <li>Strong written English — clear, concise, human</li>
                                   <li>Genuine curiosity about B2B SaaS and sales</li>
@@ -1987,8 +1987,8 @@ export default function ChurnautHome() {
                                 </ul>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What you get:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What you get:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>Fully remote — work from anywhere in India</li>
                                   <li>Competitive fresher stipend + performance bonus</li>
                                   <li>Direct mentorship from the founder</li>
@@ -1997,39 +1997,39 @@ export default function ChurnautHome() {
                               </div>
                             </div>
                             
-                            <div className="bg-slate-950 border border-slate-900 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
-                              <span className="text-xs font-bold text-slate-300">To apply:</span>
-                              <p className="text-xs text-slate-400 leading-relaxed">
-                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-400 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-900 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-mono text-[10px]">SDR Application — [Your Name]</code>
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
+                              <span className="text-xs font-bold text-slate-900">To apply:</span>
+                              <p className="text-xs text-slate-600 leading-relaxed">
+                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-600 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-100 border border-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono text-[10px]">SDR Application — [Your Name]</code>
                               </p>
                             </div>
                           </div>
 
                           {/* Divider */}
-                          <div className="border-t border-slate-800/80 my-2"></div>
+                          <div className="border-t border-slate-200 my-2"></div>
 
                           {/* Job Card 2 */}
-                          <div className="bg-[#12121a] border border-white/5 p-6 rounded-2xl flex flex-col gap-4 shadow-sm">
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+                          <div className="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                               <div className="flex flex-col">
-                                <h3 className="text-base md:text-lg font-bold text-white">Customer Success Manager (CSM)</h3>
-                                <span className="text-xs text-indigo-400 font-semibold mt-0.5">India (Any City)</span>
+                                <h3 className="text-base md:text-lg font-bold text-slate-900">Customer Success Manager (CSM)</h3>
+                                <span className="text-xs text-[#7c3aed] font-semibold mt-0.5">India (Any City)</span>
                               </div>
-                              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-900/60 px-2.5 py-1 rounded-full self-start">
+                              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full self-start">
                                 Full-Time &middot; Remote
                               </span>
                             </div>
                             
-                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-355">
+                            <div className="flex flex-col gap-3 text-xs md:text-sm text-slate-905">
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">About the role:</span>
-                                <p className="leading-relaxed">
+                                <span className="font-bold text-slate-900">About the role:</span>
+                                <p className="leading-relaxed text-slate-605">
                                   As our first CSM, you&apos;ll own the post-sale experience for every Churnaut customer. You&apos;ll onboard new customers, help them get their first personalization rules live, monitor their usage, and make sure they&apos;re seeing results. You&apos;ll be the person customers trust — and the internal voice that makes our product better.
                                 </p>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What you&apos;ll do:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What you&apos;ll do:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>Own onboarding for all new customers — from signup to first rule live</li>
                                   <li>Run check-in calls and help customers expand their use of the platform</li>
                                   <li>Monitor customer health metrics and flag at-risk accounts early</li>
@@ -2038,8 +2038,8 @@ export default function ChurnautHome() {
                                 </ul>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What we&apos;re looking for:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What we&apos;re looking for:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>0-1 years of experience (freshers welcome)</li>
                                   <li>Strong communication skills — written and verbal</li>
                                   <li>Patient, empathetic, and detail-oriented</li>
@@ -2048,8 +2048,8 @@ export default function ChurnautHome() {
                                 </ul>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold text-white">What you get:</span>
-                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed">
+                                <span className="font-bold text-slate-900">What you get:</span>
+                                <ul className="list-disc list-inside flex flex-col gap-1 pl-1 leading-relaxed text-slate-605">
                                   <li>Fully remote — work from anywhere in India</li>
                                   <li>Competitive fresher stipend + performance bonus</li>
                                   <li>Direct mentorship from the founder</li>
@@ -2058,10 +2058,10 @@ export default function ChurnautHome() {
                               </div>
                             </div>
                             
-                            <div className="bg-slate-950 border border-slate-900 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
-                              <span className="text-xs font-bold text-slate-300">To apply:</span>
-                              <p className="text-xs text-slate-400 leading-relaxed">
-                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-400 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-900 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-mono text-[10px]">CSM Application — [Your Name]</code>
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 mt-2 flex flex-col gap-1.5">
+                              <span className="text-xs font-bold text-slate-900">To apply:</span>
+                              <p className="text-xs text-slate-600 leading-relaxed">
+                                Send your resume and a 3-line note on why you want this role to <a href="mailto:careers@churnaut.com" className="text-indigo-600 hover:underline">careers@churnaut.com</a> with subject line <code className="bg-slate-100 border border-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono text-[10px]">CSM Application — [Your Name]</code>
                               </p>
                             </div>
                           </div>

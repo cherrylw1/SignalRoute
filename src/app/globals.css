@@ -47,3 +47,22 @@ body {
   animation-play-state: paused;
 }
 
+/* Custom scrollbar utility for modals */
+.custom-modal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-modal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-modal-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+}
+
+.custom-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(15, 23, 42, 0.3);
+}
+
+
