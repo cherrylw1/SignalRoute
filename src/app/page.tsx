@@ -1065,6 +1065,85 @@ export default function ChurnautHome() {
               </div>
             </motion.section>
 
+            {/* SCOUT AI SECTION */}
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-150px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15 }}
+              className="py-24 max-w-6xl mx-auto px-6 border-t border-slate-200" 
+              id="scout"
+            >
+              <div className="text-center mb-16 flex flex-col items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 text-xs font-bold text-slate-700 tracking-wide uppercase self-center">
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600 fill-indigo-600" />
+                  SCOUT AI — PIPELINE INTELLIGENCE
+                </span>
+                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mt-2">
+                  Your AI sales manager. Always watching. Never sleeping.
+                </h2>
+                <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base">
+                  While you personalize the inbound, Scout monitors every deal in your pipeline and tells your reps exactly what to do next.
+                </p>
+              </div>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                
+                {/* Card 1 */}
+                <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm shadow-red-400"></span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-bold text-slate-950">Know which deals are dying</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      Scout scores every deal RED, AMBER, or GREEN based on activity, close date, and deal value. No more surprises at end of quarter.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner text-indigo-600">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-bold text-slate-950">Reps get told exactly what to do</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      When a deal goes cold, Scout writes the outreach email and sends it directly to the rep. One click to send — no thinking required.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col gap-6 hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shadow-inner text-indigo-600">
+                    <Workflow className="w-5 h-5" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-bold text-slate-950">Learn from every loss</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      Scout analyses every closed-lost deal and tells you exactly why you lost and what pattern to avoid next time.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Centered CTA */}
+              <div className="mt-12 flex justify-center">
+                <a 
+                  href="https://cal.com/sharath.mb/demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-700 bg-transparent hover:bg-slate-100 border border-slate-300 hover:border-slate-400 rounded-xl transition-all duration-300"
+                >
+                  See Scout in action &rarr;
+                </a>
+              </div>
+            </motion.section>
+
             {/* 8. INTEGRATIONS & STACK */}
             <motion.section 
               initial={{ opacity: 0, y: 50 }}
