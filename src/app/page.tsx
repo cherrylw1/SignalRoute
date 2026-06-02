@@ -1458,7 +1458,7 @@ export default function ChurnautHome() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500">For small teams testing validation</p>
+                      <p className="text-xs text-slate-500">For solo reps testing personalization</p>
                     </div>
                     
                     <div className="flex items-baseline gap-1">
@@ -1475,10 +1475,22 @@ export default function ChurnautHome() {
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> 1 Domain
                       </li>
                       <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> 500 tracked visits/mo
+                      </li>
+                      <li className="flex items-center gap-2">
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> 5 Routing Rules
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Core CRM Integrations
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> HubSpot integration only
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Tracked link generator
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Basic analytics
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Email support
                       </li>
                     </ul>
                   </div>
@@ -1503,7 +1515,7 @@ export default function ChurnautHome() {
                         <h3 className="text-lg font-bold text-slate-900">Growth</h3>
                       </div>
                       <div className="flex justify-between items-center mt-1">
-                        <p className="text-xs text-slate-500">For scaling organizations routing traffic</p>
+                        <p className="text-xs text-slate-500">For revenue teams that want pipeline results</p>
                         {billingPeriod === "yearly" && (
                           <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
                             2 months free
@@ -1526,13 +1538,31 @@ export default function ChurnautHome() {
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> 3 Domains
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Unlimited Rules
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> 5,000 tracked visits/mo
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Full Ad & Outbound Integrations
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Unlimited routing rules
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Premium SLA Agreement
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> All CRMs — HubSpot, Zoho, Pipedrive, Salesforce
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Full ad signals — Google, LinkedIn, Meta, TikTok
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Scout AI — deal scoring, nudges, obituaries, ICP builder
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> AI Copywriter — 5 CTA variants per rule
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Bulk CSV link generation
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Weekly digest emails
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Priority email support
                       </li>
                     </ul>
                   </div>
@@ -1557,7 +1587,7 @@ export default function ChurnautHome() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500">For enterprise-grade logic operations</p>
+                      <p className="text-xs text-slate-500">For larger teams needing scale and control</p>
                     </div>
                     
                     <div className="flex items-baseline gap-1">
@@ -1574,13 +1604,25 @@ export default function ChurnautHome() {
                         <ShieldCheck className="w-4 h-4 text-emerald-500" /> 10 Domains
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> API Access & Webhooks
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Unlimited tracked visits
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Custom Inbound Signals
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Everything in Growth
                       </li>
                       <li className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Priority Support Rep
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> API access & webhooks
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Custom signal types
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Dedicated onboarding rep
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> SLA agreement
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" /> Priority support with guaranteed response time
                       </li>
                     </ul>
                   </div>
