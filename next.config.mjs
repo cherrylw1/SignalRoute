@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    browsersListForSwc: true,
+  },
   async redirects() {
     return [
       {
@@ -10,5 +13,4 @@ const nextConfig = {
     ];
   },
 };
-
 export default nextConfig;
