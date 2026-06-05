@@ -300,6 +300,7 @@ export default function ChurnautHome() {
                 <a href="#features" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Product</a>
                 <a href="#integrations" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Integrations</a>
                 <a href="#pricing" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Pricing</a>
+                <a href="/blog" className={`transition-colors duration-500 ${isScrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"}`}>Blog</a>
               </nav>
 
               {/* Header CTA */}
@@ -1723,6 +1724,7 @@ export default function ChurnautHome() {
                   <a href="#features" className="text-xs hover:text-white transition-colors">Features</a>
                   <a href="#integrations" className="text-xs hover:text-white transition-colors">Integrations</a>
                   <a href="#pricing" className="text-xs hover:text-white transition-colors">Pricing Plans</a>
+                  <a href="/blog" className="text-xs hover:text-white transition-colors">Blog</a>
                 </div>
 
                 <div className="flex flex-col gap-3">
