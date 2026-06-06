@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog - Churnaut",
-  description: "Explore deep-dives, playbooks, and strategies for revenue personalization, dynamic routing, and B2B pipeline intelligence.",
+  title: "Blog - Website Personalization & B2B Outbound Strategies | Churnaut",
+  description: "Practical guides for B2B SaaS teams on website personalization, outbound conversion, HubSpot pipeline intelligence, and signal-based personalization.",
 };
 
 export default async function BlogIndexPage() {

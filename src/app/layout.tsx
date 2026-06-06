@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Churnaut - AI Inbound Personalization & Deterministic Routing",
-  description: "Route high-intent VIPs to sales instantly. Dynamic website personalization powered by 100% deterministic signals.",
+  title: "Churnaut - Website Personalization for B2B SaaS Outbound Teams",
+  description: "Churnaut personalizes your website for every prospect automatically. Know who clicked your cold email or ad — and show them a page built for them. Connects to HubSpot, Pipedrive, Instantly, Smartlead and more.",
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
