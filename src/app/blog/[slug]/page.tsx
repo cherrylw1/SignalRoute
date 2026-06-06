@@ -42,6 +42,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   // Parse markdown content to HTML
+  marked.setOptions({ gfm: true });
   const htmlContent = await marked(post.content);
 
   return (
