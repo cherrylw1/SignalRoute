@@ -121,7 +121,7 @@ HubSpot is the most data-rich tool in most B2B SaaS stacks. The irony is that th
 
 Connecting the two is not technically complex in 2026. It requires a snippet, an OAuth connection, and a set of routing rules that you configure once. After that, every prospect in your pipeline lands on a page that reflects where they actually are — not where the average visitor is.
 
-For teams running active outbound with HubSpot as their CRM, it is one of the highest-leverage improvements you can make to your conversion funnel this quarter.
+For teams running active outbound with HubSpot as their CRM, it is one of the highest-leverage improvements you can make to your conversion funnel this quarter. For a broader look at all available tools, see [best website personalization tools for B2B SaaS in 2026](/blog/best-website-personalization-tools-b2b-saas). For the full technical breakdown of how signal-based personalization works, read the [complete guide](/blog/signal-based-personalization-guide).
 
 ---
 

@@ -150,7 +150,7 @@ Problem 2 — You are sending emails and running ads to specific people, and you
 
 Most B2B SaaS companies under $15M ARR are solving Problem 2, not Problem 1. They are running sequences, sending LinkedIn messages, running targeted ads to defined prospect lists. The visitor is not anonymous — the rep knows exactly who they emailed. The right tool for that motion is not a $60,000 ABM platform.
 
-That is the gap Churnaut is built to fill.
+That is the gap Churnaut is built to fill. If you were previously evaluating Mutiny, [here is what to consider instead](/blog/mutiny-alternative). For a deeper explanation of how signal-based personalization works technically, see our [complete guide to signal-based personalization](/blog/signal-based-personalization-guide).
 
 ---
 

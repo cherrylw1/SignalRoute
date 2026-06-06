@@ -207,7 +207,7 @@ Every new outreach sequence you launch automatically generates personalized visi
 
 The setup cost is front-loaded. The ongoing cost — once the webhook connections and routing rules are in place — is close to zero per prospect. A team that sets this up correctly in Q1 is running personalized experiences for every outbound prospect for the rest of the year without additional work.
 
-That compounding dynamic is what separates personalization infrastructure from one-off conversion optimizations. It is not a campaign. It is a system.
+That compounding dynamic is what separates personalization infrastructure from one-off conversion optimizations. It is not a campaign. It is a system. For a comparison of tools that implement this approach, see [best website personalization tools for B2B SaaS in 2026](/blog/best-website-personalization-tools-b2b-saas). If Mutiny was on your shortlist, read [why teams are looking for a Mutiny alternative in 2026](/blog/mutiny-alternative). For HubSpot-specific implementation, see [how to personalize your website using HubSpot signals](/blog/website-personalization-hubspot).
 
 ---
 

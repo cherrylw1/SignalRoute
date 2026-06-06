@@ -103,7 +103,7 @@ Pick your homepage. Pick your highest-volume outbound signal — probably cold e
 
 Measure the click-to-meeting rate for tracked link visitors versus untracked visitors over four weeks. The difference will tell you whether the investment in a more complete personalization setup is worth it.
 
-For most B2B SaaS teams running active outbound, it is.
+For most B2B SaaS teams running active outbound, it is. To see which tools make this possible, read [best website personalization tools for B2B SaaS in 2026](/blog/best-website-personalization-tools-b2b-saas). If you use HubSpot, see exactly [how to connect HubSpot data to your website](/blog/website-personalization-hubspot). For the full technical picture, read the [complete guide to signal-based personalization](/blog/signal-based-personalization-guide).
 
 ---
 
