@@ -1503,7 +1503,7 @@ export default function ChurnautHome() {
                     href="#"
                     className="mt-8 w-full py-3 text-center text-sm font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all block"
                   >
-                    Start Free
+                    Start 14-day free trial
                   </a>
                 </div>
 
@@ -1587,7 +1587,7 @@ export default function ChurnautHome() {
                     href="#"
                     className="mt-8 w-full py-3 text-center text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-md shadow-indigo-200 block"
                   >
-                    Start Free
+                    Start 14-day free trial
                   </a>
                 </div>
 
