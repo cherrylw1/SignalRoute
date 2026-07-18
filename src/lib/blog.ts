@@ -8,6 +8,7 @@ export interface BlogPost {
   description: string;
   slug: string;
   content: string;
+  readingMinutes: number;
 }
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
@@ -32,6 +33,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         title: data.title || '',
         date: data.date || '',
         description: data.description || '',
+        readingMinutes: Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 220)),
       } as BlogPost;
     });
 
@@ -62,6 +64,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
             title: data.title || '',
             date: data.date || '',
             description: data.description || '',
+            readingMinutes: Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 220)),
           } as BlogPost;
         }
       }

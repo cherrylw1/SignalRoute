@@ -1,32 +1,9 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.churnaut.com";
-
-  // Fetch all dynamic blog posts
   const posts = await getAllBlogPosts();
-
-  const blogPostUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date().toISOString(),
-      changeFrequency: "weekly" as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    ...blogPostUrls,
-  ];
+  const routes = ["", "/product", "/scout", "/pricing", "/about", "/careers", "/blog", "/privacy", "/terms"];
+  return [...routes.map((route) => ({ url: `${baseUrl}${route}`, lastModified: new Date("2026-07-18"), changeFrequency: route === "" || route === "/blog" ? "weekly" as const : "monthly" as const, priority: route === "" ? 1 : route === "/privacy" || route === "/terms" ? .3 : .8 })), ...posts.map(post => ({ url: `${baseUrl}/blog/${post.slug}`, lastModified: new Date(post.date), changeFrequency: "monthly" as const, priority: .7 }))];
 }
