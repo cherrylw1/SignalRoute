@@ -15,7 +15,7 @@ export function MotionController() {
 
     const revealNodes = Array.from(
       document.querySelectorAll<HTMLElement>(
-        "main > section:not(.hero), .page-hero-inner, .feature-card, .blog-card, .plan-card, .article-header, .blog-content, .legal-shell, .footer-cta",
+        "main > section:not(.hero):not(.signal-film), .page-hero-inner, .feature-card, .blog-card, .plan-card, .article-header, .blog-content, .legal-shell, .footer-cta",
       ),
     );
 
@@ -85,6 +85,20 @@ export function MotionController() {
         const step = progress < 0.12 ? 0 : progress < 0.34 ? 1 : progress < 0.55 ? 2 : progress < 0.76 ? 3 : 4;
         mechanism.style.setProperty("--signal-progress", `${progress * 100}%`);
         mechanism.dataset.step = String(step);
+      }
+
+      const film = document.querySelector<HTMLElement>(".signal-film");
+      if (film) {
+        const rect = film.getBoundingClientRect();
+        const travel = Math.max(film.offsetHeight - window.innerHeight, 1);
+        const progress = clamp(-rect.top / travel);
+        const stage = Math.min(4, Math.floor(progress * 4) + 1);
+        film.style.setProperty("--film-progress", String(progress));
+        film.style.setProperty("--film-draw", `${progress * 100}%`);
+        film.style.setProperty("--film-x", `${7 + progress * 82}%`);
+        film.dataset.filmStage = String(stage);
+        const counter = film.querySelector<HTMLElement>(".film-counter");
+        if (counter) counter.textContent = `0${stage} / 04`;
       }
     };
 

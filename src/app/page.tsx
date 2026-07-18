@@ -3,6 +3,7 @@ import { PageShell } from "@/components/page-shell";
 import { PricingCards } from "@/components/pricing-cards";
 import { HeroSignalScene } from "@/components/hero-signal-scene";
 import { PrivacyBoundary, ScoutEvidenceScene, SignalMechanism } from "@/components/home-signal-system";
+import { ScrollSignalFilm } from "@/components/scroll-signal-film";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export default async function Home() {
@@ -24,6 +25,8 @@ export default async function Home() {
         </div>
         <p className="hero-footnote">ONE LINK / ONE KNOWN VISITOR / ONE MOMENT THAT MATTERS</p>
       </section>
+
+      <ScrollSignalFilm />
 
       <section className="signal-system section-pad">
         <div className="signal-system-intro"><p className="section-index">01 / THE SIGNAL</p><div><h2>One link carries the context <strong>all the way through.</strong></h2><p>When someone clicks a tracked link you sent, they are no longer anonymous traffic. Churnaut connects the person, the page and the CRM context your rep already earned.</p></div></div>
