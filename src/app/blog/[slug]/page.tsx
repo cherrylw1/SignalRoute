@@ -21,5 +21,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
   marked.setOptions({ gfm: true });
   const htmlContent = await marked(post.content);
-  return <PageShell><article className="article-shell"><Link href="/blog" className="article-back">← All field notes</Link><header className="article-header"><time>{new Date(post.date).toLocaleDateString("en-US", {month:"long",day:"numeric",year:"numeric"})} · {post.readingMinutes} MIN READ</time><h1>{post.title}</h1><p>{post.description}</p></header><div className="blog-content" dangerouslySetInnerHTML={{__html: htmlContent}} /></article></PageShell>;
+  return <PageShell><article className="article-shell"><Link href="/blog" className="article-back">All Field Notes</Link><header className="article-header"><time>{new Date(post.date).toLocaleDateString("en-US", {month:"long",day:"numeric",year:"numeric"})} · {post.readingMinutes} MIN READ</time><h1>{post.title}</h1><p>{post.description}</p></header><div className="blog-content" dangerouslySetInnerHTML={{__html: htmlContent}} /></article></PageShell>;
 }

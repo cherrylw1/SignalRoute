@@ -5,10 +5,8 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-cta">
-        <p className="eyebrow eyebrow-light">THE MOMENT IS HAPPENING NOW</p>
-        <h2>Don&apos;t let the signal<br />go <em>quiet.</em></h2>
-        <p>Meet the people already leaning in, and make your next move while it still matters.</p>
-        <a className="button button-cream" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action <span>↗</span></a>
+        <div><p className="section-index">THE MOMENT IS HAPPENING NOW</p><h2>Don&apos;t let the signal <strong>go quiet.</strong></h2><p>Meet the people already leaning in, and make your next move while it still matters.</p><a className="button button-signal" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a></div>
+        <div className="footer-signal" aria-hidden="true"><div><small>JUST NOW / PRICING</small><b>Maya from Northstar is back.</b><span>Third high-intent visit this week</span></div><i /><p>KNOWN FROM YOUR LINK</p></div>
       </div>
       <div className="footer-grid">
         <div className="footer-brand">

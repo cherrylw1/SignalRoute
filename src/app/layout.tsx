@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { MotionController } from "@/components/motion-controller";
 import "./globals.css";
 
 const geist = localFont({
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Churnaut",
-    title: "Churnaut — Your CRM knows who they are. Your website should too.",
+    title: "Churnaut — Your outreach found the person. Churnaut catches the moment.",
     description:
       "Recognize known prospects from tracked links, personalize their visit, and act while intent is fresh.",
-    images: [{ url: "/og.png", width: 1733, height: 908, alt: "Churnaut signal landscape — Know the moment they're ready to talk." }],
+    images: [{ url: "/og.png", width: 1734, height: 907, alt: "Churnaut signal route from outbound message to personalized page and sales alert." }],
   },
   twitter: {
     card: "summary_large_image",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body><MotionController />{children}</body>
     </html>
   );
 }

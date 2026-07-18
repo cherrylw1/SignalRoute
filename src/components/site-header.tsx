@@ -31,7 +31,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         </nav>
         <div className="nav-actions">
           <a className="text-link desktop-only" href="https://app.churnaut.com" target="_blank" rel="noreferrer">Sign in</a>
-          <a className="button button-ink desktop-only" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo <span>↗</span></a>
+          <a className="button button-ink desktop-only" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo</a>
           <button className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>
             <span>{open ? "Close" : "Menu"}</span><i /><i />
           </button>
@@ -41,7 +41,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         {links.map((link, index) => <Link key={link.href} href={link.href}><span>0{index + 1}</span>{link.label}</Link>)}
         <div className="mobile-nav-actions">
           <a href="https://app.churnaut.com" target="_blank" rel="noreferrer">Sign in</a>
-          <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo ↗</a>
+          <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo</a>
         </div>
       </div>
     </header>

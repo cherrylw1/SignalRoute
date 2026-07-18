@@ -5,5 +5,5 @@ const plans = [
 ];
 
 export function PricingCards() {
-  return <div className="plan-grid">{plans.map(plan => <article className={`plan-card ${plan.featured ? "plan-card-featured" : ""}`} key={plan.name}>{plan.featured && <span className="popular-badge">MOST POPULAR</span>}<span className="plan-label">{plan.name.toUpperCase()}</span><h3>{plan.price} <span>/ month</span></h3><p>{plan.summary}</p><a className={`button ${plan.featured ? "button-cream" : "button-outline"}`} href={plan.href} target="_blank" rel="noreferrer">{plan.cta} <span>→</span></a><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul></article>)}</div>;
+  return <div className="plan-grid">{plans.map((plan,index) => <article className={`plan-card ${plan.featured ? "plan-card-featured" : ""}`} key={plan.name}>{plan.featured && <span className="popular-badge">FULL SIGNAL SYSTEM</span>}<div className="plan-topline"><span className="plan-label">0{index+1} / {plan.name.toUpperCase()}</span><small>MONTHLY</small></div><h3>{plan.price} <span>/ month</span></h3><p>{plan.summary}</p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><a className={`button ${plan.featured ? "button-signal" : "button-outline"}`} href={plan.href} target="_blank" rel="noreferrer">{plan.cta}</a></article>)}</div>;
 }
