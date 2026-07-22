@@ -4,6 +4,7 @@ import { PricingCards } from "@/components/pricing-cards";
 import { HeroSignalScene } from "@/components/hero-signal-scene";
 import { PrivacyBoundary, ScoutEvidenceScene, SignalMechanism } from "@/components/home-signal-system";
 import { ScrollSignalFilm } from "@/components/scroll-signal-film";
+import { LaunchFilmLink, LaunchFilmSection } from "@/components/launch-film";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export default async function Home() {
@@ -18,13 +19,15 @@ export default async function Home() {
             <p className="hero-live"><i /> A known prospect is on your site</p>
             <h1>Your outreach found the person.<br /><strong>Churnaut catches the moment.</strong></h1>
             <p className="lede">Carry the context your rep earned into the website visit. Personalize the page, see who leaned in and act with evidence while intent is still fresh.</p>
-            <div className="hero-actions"><a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a><Link className="button button-signal" href="/product">Follow the signal</Link></div>
+            <div className="hero-actions"><a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a><LaunchFilmLink /></div>
             <ul className="hero-proof" aria-label="Churnaut product principles"><li>Known from your link</li><li>No IP guessing</li><li>Built for B2B sales</li></ul>
           </div>
           <div className="hero-visual"><HeroSignalScene /></div>
         </div>
         <p className="hero-footnote">ONE LINK / ONE KNOWN VISITOR / ONE MOMENT THAT MATTERS</p>
       </section>
+
+      <LaunchFilmSection />
 
       <ScrollSignalFilm />
 
