@@ -34,13 +34,13 @@ export default async function Home() {
         <div className="pricing-home-heading">
           <div>
             <h2 id="pricing-home-title">Start with the signal. <strong>Grow into the system.</strong></h2>
-            <p>Clear monthly plans for teams that want to recognize known prospects, personalize their visit and understand what happens next.</p>
+            <p>Choose monthly or annual plans for teams that want to recognize known prospects, personalize their visit and understand what happens next.</p>
             <Link className="button button-outline" href="/pricing">See plan details</Link>
           </div>
           <p className="pricing-home-aside">Every plan is built around the same promise: carry the context your rep earned into the moment a prospect is ready to act.</p>
         </div>
         <PricingCards />
-        <p className="pricing-home-note">Billing is currently offered through founder-led onboarding. Usage limits reset monthly. <Link href="/pricing">Read the plan questions&nbsp;↗</Link></p>
+        <p className="pricing-home-note">Billing is currently offered through founder-led onboarding. Annual billing saves two months; usage limits reset monthly. <Link href="/pricing">Read the plan questions&nbsp;↗</Link></p>
       </section>
 
       <LaunchFilmSection />
