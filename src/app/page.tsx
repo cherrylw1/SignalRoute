@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
+import { PricingCards } from "@/components/pricing-cards";
 import { HeroSignalScene } from "@/components/hero-signal-scene";
 import { PrivacyBoundary, ScoutEvidenceScene, SignalMechanism } from "@/components/home-signal-system";
 import { LaunchFilmLink, LaunchFilmSection } from "@/components/launch-film";
@@ -29,12 +30,25 @@ export default async function Home() {
 
       <section className="privacy-system section-pad home-privacy"><div className="privacy-system-copy"><h2>Signal, <strong>not surveillance.</strong></h2><p>Churnaut starts with a link your prospect chose to click. It does not depend on probabilistic company identification or hidden IP matching.</p><Link className="button button-ink" href="/privacy">Read our approach</Link></div><PrivacyBoundary /></section>
 
+      <section className="pricing-home section-pad" id="pricing" aria-labelledby="pricing-home-title">
+        <div className="pricing-home-heading">
+          <div>
+            <h2 id="pricing-home-title">Start with the signal. <strong>Grow into the system.</strong></h2>
+            <p>Clear monthly plans for teams that want to recognize known prospects, personalize their visit and understand what happens next.</p>
+            <Link className="button button-outline" href="/pricing">See plan details</Link>
+          </div>
+          <p className="pricing-home-aside">Every plan is built around the same promise: carry the context your rep earned into the moment a prospect is ready to act.</p>
+        </div>
+        <PricingCards />
+        <p className="pricing-home-note">Billing is currently offered through founder-led onboarding. Usage limits reset monthly. <Link href="/pricing">Read the plan questions&nbsp;↗</Link></p>
+      </section>
+
       <LaunchFilmSection />
 
       <section className="home-explore section-pad" aria-labelledby="home-explore-title">
         <div className="home-explore-heading">
           <div><h2 id="home-explore-title">Keep exploring <strong>the signal system.</strong></h2><p>Clear monthly plans for founder-led teams first, with room to grow into a complete signal system.</p></div>
-          <div className="home-explore-links"><Link href="/pricing" className="home-explore-link"><span>Pricing</span><strong>Start with the signal. Grow into the system.</strong><i aria-hidden="true">↗</i></Link><Link href="/blog" className="home-explore-link"><span>Field notes</span><strong>Ideas for teams that pay attention.</strong><i aria-hidden="true">↗</i></Link></div>
+          <div className="home-explore-links"><Link href="/product" className="home-explore-link"><span>Product</span><strong>See the signal system in detail.</strong><i aria-hidden="true">↗</i></Link><Link href="/blog" className="home-explore-link"><span>Field notes</span><strong>Ideas for teams that pay attention.</strong><i aria-hidden="true">↗</i></Link></div>
         </div>
       </section>
     </PageShell>

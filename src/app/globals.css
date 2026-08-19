@@ -674,3 +674,117 @@ button, input { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .home-explore-link { transition: none; }
 }
+
+/* Homepage pricing: a clear conversion moment, using the same plan data as /pricing. */
+.pricing-home {
+  color: #143934;
+  background: #f4efe3;
+}
+.pricing-home-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, .75fr);
+  gap: clamp(42px, 8vw, 120px);
+  align-items: end;
+  margin-bottom: 48px;
+}
+.pricing-home-heading h2 {
+  max-width: 760px;
+  margin: 0 0 20px;
+  color: #143934;
+  font: 760 clamp(3rem, 5vw, 5.6rem)/.94 var(--sans);
+  letter-spacing: -.07em;
+}
+.pricing-home-heading h2 strong {
+  display: block;
+  color: #df6344;
+  font-weight: inherit;
+}
+.pricing-home-heading > div > p:not(.pricing-home-aside) {
+  max-width: 560px;
+  margin: 0;
+  color: #61756e;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.pricing-home-heading .button {
+  margin-top: 22px;
+}
+.pricing-home-aside {
+  max-width: 340px;
+  margin: 0 0 4px auto;
+  color: #61756e;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.pricing-home .plan-grid {
+  gap: 12px;
+}
+.pricing-home .plan-card {
+  min-height: 420px;
+  padding: 28px;
+  border-color: rgba(20,57,52,.18);
+  border-radius: 18px 18px 60px 18px;
+  background: #fffdf8;
+  box-shadow: none;
+}
+.pricing-home .plan-card-featured {
+  border-color: #143934;
+  background: radial-gradient(circle at 80% 110%, #d99954, transparent 42%), radial-gradient(circle at 0 -10%, #d77a5c, transparent 34%), #143934;
+  box-shadow: 12px 14px 0 #ff875d;
+}
+.pricing-home .plan-card h3 {
+  margin-top: 22px;
+}
+.pricing-home-note {
+  margin: 24px 0 0;
+  color: #61756e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.pricing-home-note a {
+  color: #bd4c32;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .pricing-home-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pricing-home-aside {
+    max-width: 560px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .pricing-home {
+    padding-top: 78px;
+    padding-bottom: 78px;
+  }
+  .pricing-home-heading {
+    margin-bottom: 36px;
+  }
+  .pricing-home-heading h2 {
+    font-size: clamp(2.7rem, 12vw, 4rem);
+  }
+  .pricing-home-heading > div > p:not(.pricing-home-aside),
+  .pricing-home-aside {
+    font-size: 14px;
+  }
+  .pricing-home .plan-card {
+    min-height: 460px;
+    border-radius: 0;
+  }
+  .pricing-home .plan-card:first-child {
+    border-radius: 18px 18px 0 0;
+  }
+  .pricing-home .plan-card:last-child {
+    border-radius: 0 0 56px 0;
+  }
+  .pricing-home .plan-card-featured {
+    box-shadow: none;
+  }
+}
