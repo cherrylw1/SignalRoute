@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export function LaunchFilmLink() {
   return (
     <a className="button button-signal hero-film-trigger" href="#product-film">
-      <span>See what happens after the click</span>
+      <span>Watch the signal unfold</span>
       <i aria-hidden="true">↓</i>
     </a>
   );
