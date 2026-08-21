@@ -1,55 +1,79 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageShell } from "@/components/page-shell";
 import { PricingCards } from "@/components/pricing-cards";
-import { HeroSignalScene } from "@/components/hero-signal-scene";
-import { PrivacyBoundary, ScoutEvidenceScene, SignalMechanism } from "@/components/home-signal-system";
 import { LaunchFilmLink, LaunchFilmSection } from "@/components/launch-film";
+import { SignalJourney } from "@/components/signal-journey";
 
 export default async function Home() {
   return (
     <PageShell overlay>
-      <section className="hero">
-        <div className="hero-sky" aria-hidden="true"><i /><i /><i /></div>
-        <div className="hero-contours" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <h1>Your outreach found the person.<br /><strong>Churnaut catches the moment.</strong></h1>
-            <p className="lede">Carry the context your rep earned into the website visit. Personalize the page, see who leaned in and act with evidence while intent is still fresh.</p>
-            <div className="hero-actions"><a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a><LaunchFilmLink /></div>
+      <section className="home-hero">
+        <Image className="home-hero-image" src="/signal-landscape.png" alt="A luminous landscape of connected buyer signals" fill priority sizes="100vw" />
+        <div className="home-hero-wash" aria-hidden="true" />
+        <div className="home-hero-copy">
+          <h1>Know the moment your buyer is ready.</h1>
+          <p>Carry known-buyer context into every visit, personalize the page, and act while intent is still fresh.</p>
+          <div className="home-hero-actions">
+            <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a>
+            <LaunchFilmLink />
           </div>
-          <div className="hero-visual"><HeroSignalScene /></div>
+        </div>
+        <div className="home-hero-note"><span>Context travels with the click</span><i aria-hidden="true" /></div>
+      </section>
+
+      <section className="home-thesis" aria-labelledby="home-thesis-title">
+        <div>
+          <h2 id="home-thesis-title">A website visit should not erase the conversation.</h2>
+          <p>When a prospect clicks a link your team sent, Churnaut keeps that context connected to what happens next.</p>
+        </div>
+        <div className="home-thesis-points">
+          <p><strong>Recognize</strong><span>Know who arrived from the link they chose to click.</span></p>
+          <p><strong>Personalize</strong><span>Shape the page around context your team already earned.</span></p>
+          <p><strong>Act</strong><span>See meaningful intent and respond while the moment is fresh.</span></p>
         </div>
       </section>
 
-      <section className="signal-system section-pad">
-        <div className="signal-system-intro"><p className="section-index">How it works</p><div><h2>One link carries the context <strong>all the way through.</strong></h2><p>When someone clicks a tracked link you sent, they are no longer anonymous traffic. Churnaut connects the person, the page and the CRM context your rep already earned.</p></div></div>
-        <SignalMechanism />
+      <SignalJourney />
+
+      <section className="home-scout" aria-labelledby="home-scout-title">
+        <div className="home-scout-copy">
+          <h2 id="home-scout-title">Your pipeline changes quietly. Scout explains why.</h2>
+          <p>Scout reads the story beneath CRM activity and website signals, then grounds the next move in evidence.</p>
+          <Link className="button button-ink" href="/scout">Meet Scout AI</Link>
+        </div>
+        <div className="home-scout-reads">
+          <article><span>Momentum</span><h3>See which deals are gathering energy.</h3><p>Bring website behavior and CRM activity into one readable story.</p></article>
+          <article><span>Risk</span><h3>Notice drift before it becomes silence.</h3><p>Understand what changed instead of relying on a stale deal stage.</p></article>
+          <article><span>Next move</span><h3>Act with evidence, not guesswork.</h3><p>Give the rep a reason and a direction for the follow-up.</p></article>
+        </div>
       </section>
 
-      <section className="scout-system section-pad"><div className="scout-system-copy"><p className="section-index">Scout AI</p><h2>Your pipeline has a pulse. <strong>Scout explains the change.</strong></h2><p>Scout reads the story beneath CRM activity and website signals: deals gathering momentum, deals drifting and the evidence behind the next move.</p><Link className="button button-signal" href="/scout">Meet Scout AI</Link></div><ScoutEvidenceScene /></section>
-
-      <section className="privacy-system section-pad home-privacy"><div className="privacy-system-copy"><h2>Signal, <strong>not surveillance.</strong></h2><p>Churnaut starts with a link your prospect chose to click. It does not depend on probabilistic company identification or hidden IP matching.</p><Link className="button button-ink" href="/privacy">Read our approach</Link></div><PrivacyBoundary /></section>
+      <section className="home-privacy" aria-labelledby="home-privacy-title">
+        <h2 id="home-privacy-title">Signal, not surveillance.</h2>
+        <div>
+          <p>Churnaut begins with a link your prospect chose to click. Identity comes from that direct relationship, not hidden IP matching.</p>
+          <Link className="text-arrow-link" href="/privacy">Read our privacy approach <span aria-hidden="true">↗</span></Link>
+        </div>
+      </section>
 
       <section className="pricing-home section-pad" id="pricing" aria-labelledby="pricing-home-title">
         <div className="pricing-home-heading">
+          <h2 id="pricing-home-title">Choose how far you want the signal to travel.</h2>
           <div>
-            <h2 id="pricing-home-title">Start with the signal. <strong>Grow into the system.</strong></h2>
-            <p>Choose monthly or annual plans for teams that want to recognize known prospects, personalize their visit and understand what happens next.</p>
-            <Link className="button button-outline" href="/pricing">See plan details</Link>
+            <p>Monthly and annual plans for teams ready to recognize known prospects, personalize visits, and understand what happens next.</p>
+            <Link className="text-arrow-link" href="/pricing">Compare every detail <span aria-hidden="true">↗</span></Link>
           </div>
-          <p className="pricing-home-aside">Every plan is built around the same promise: carry the context your rep earned into the moment a prospect is ready to act.</p>
         </div>
         <PricingCards />
-        <p className="pricing-home-note">Billing is currently offered through founder-led onboarding. Annual billing saves two months; usage limits reset monthly. <Link href="/pricing">Read the plan questions&nbsp;↗</Link></p>
+        <p className="pricing-home-note">Billing is currently offered through founder-led onboarding. Annual billing saves two months, and usage limits reset monthly.</p>
       </section>
 
       <LaunchFilmSection />
 
       <section className="home-explore section-pad" aria-labelledby="home-explore-title">
-        <div className="home-explore-heading">
-          <div><h2 id="home-explore-title">Keep exploring <strong>the signal system.</strong></h2><p>Clear monthly plans for founder-led teams first, with room to grow into a complete signal system.</p></div>
-          <div className="home-explore-links"><Link href="/product" className="home-explore-link"><span>Product</span><strong>See the signal system in detail.</strong><i aria-hidden="true">↗</i></Link><Link href="/blog" className="home-explore-link"><span>Field notes</span><strong>Ideas for teams that pay attention.</strong><i aria-hidden="true">↗</i></Link></div>
-        </div>
+        <h2 id="home-explore-title">Go deeper.</h2>
+        <div className="home-explore-links"><Link href="/product" className="home-explore-link"><span>Product</span><strong>See the complete signal system.</strong><i aria-hidden="true">↗</i></Link><Link href="/blog" className="home-explore-link"><span>Field notes</span><strong>Read practical ideas for attentive teams.</strong><i aria-hidden="true">↗</i></Link></div>
       </section>
     </PageShell>
   );

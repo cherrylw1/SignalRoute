@@ -63,19 +63,11 @@ export function LaunchFilmSection() {
   return (
     <section className="launch-film-section" id="product-film" aria-labelledby="product-film-title">
       <div className="launch-film-heading">
-        <p className="section-index">CHURNAUT / PRODUCT STORY / 01:00</p>
-        <div>
-          <h2 id="product-film-title">See the buyer moment <strong>unfold.</strong></h2>
-          <p>From the first signal to the next best action—one connected journey, shown in full.</p>
-        </div>
+        <h2 id="product-film-title">See the buyer moment unfold.</h2>
+        <p>From the first signal to the next best action, the complete Churnaut journey in one minute.</p>
       </div>
 
       <div className="launch-film-stage">
-        <div className="launch-film-topline" aria-hidden="true">
-          <span><i /> BUYER CONTEXT, IN MOTION</span>
-          <span>1920 × 1080 / WITH CAPTIONS</span>
-        </div>
-
         <video
           ref={videoRef}
           src="/media/churnaut-launch-2026.mp4"
@@ -108,10 +100,6 @@ export function LaunchFilmSection() {
             <span>{muted ? "Turn sound on" : "Sound on"}</span>
           </button>
         </div>
-      </div>
-
-      <div className="launch-film-footnote" aria-hidden="true">
-        <span>SEE THE CONTEXT</span><i /><span>SHAPE THE EXPERIENCE</span><i /><span>MOVE AT THE RIGHT MOMENT</span>
       </div>
     </section>
   );
