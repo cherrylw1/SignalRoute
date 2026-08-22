@@ -913,7 +913,7 @@ button, input { font: inherit; }
 .home-hero-actions .button-signal:hover { background: rgba(255,253,248,.72); }
 .home-hero-product { min-width: 0; position: relative; aspect-ratio: 16 / 10.4; overflow: hidden; border: 1px solid rgba(20,57,52,.23); border-radius: 28px 28px 86px 28px; background: #211814; box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 35px 90px rgba(37,63,53,.18); transform: rotate(1.2deg); transition: transform .7s cubic-bezier(.22,1,.36,1), box-shadow .7s ease; }
 .home-hero-product:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 48px 100px rgba(37,63,53,.24); }
-.home-hero-product > img { object-fit: cover; }
+.home-hero-product > img { object-fit: contain; background: #211814; }
 .home-hero-product:after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,18,16,.06), transparent 58%, rgba(11,18,16,.24)); }
 .home-hero-product-bar { position: absolute; z-index: 2; inset: 19px 22px auto; display: flex; justify-content: space-between; color: #d7c8bb; font: 650 8px var(--font-mono), monospace; letter-spacing: .12em; }
 .home-hero-product-bar span { display: flex; align-items: center; gap: 8px; }
@@ -938,7 +938,7 @@ button, input { font: inherit; }
 
 .home-scout { grid-template-columns: minmax(0, 1.14fr) minmax(0, .86fr); gap: clamp(46px, 7vw, 110px); }
 .home-scout-product { min-height: 520px; position: relative; overflow: hidden; grid-column: 1; border: 1px solid rgba(20,57,52,.22); border-radius: 28px 28px 86px 28px; background: #211814; box-shadow: 18px 20px 0 rgba(255,135,93,.52), 0 32px 78px rgba(38,67,54,.16); }
-.home-scout-product > img { object-fit: cover; }
+.home-scout-product > img { object-fit: contain; background: #211814; }
 .home-scout-product:after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(15,18,16,.04), transparent 60%, rgba(15,18,16,.25)); }
 .home-scout-product-bar { position: absolute; z-index: 2; inset: 19px 22px auto; display: flex; justify-content: space-between; color: #d7c8bb; font: 650 8px var(--font-mono), monospace; letter-spacing: .12em; }
 .home-scout-product-bar span { display: flex; align-items: center; gap: 8px; }

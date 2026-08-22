@@ -63,8 +63,6 @@ export function SignalJourney() {
           {stages.map((stage, index) => (
             <div className={`signal-journey-frame ${activeStage === index ? "is-active" : ""}`} key={stage.title} aria-hidden={activeStage !== index}>
               <Image src={stage.image} alt={stage.alt} fill sizes="(max-width: 900px) 100vw, 62vw" />
-              <div className="signal-journey-frame-wash" />
-              <div className="signal-journey-caption"><span>{stage.title}</span><strong>{activeStage + 1} / {stages.length}</strong></div>
             </div>
           ))}
         </div>

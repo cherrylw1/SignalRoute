@@ -25,8 +25,6 @@ export default async function Home() {
           </div>
           <div className="home-hero-product" aria-label="Churnaut product film frame">
             <Image src="/media/journey-visit.png" alt="Churnaut account intelligence view showing a live buyer signal" fill priority sizes="(max-width: 900px) 100vw, 55vw" />
-            <div className="home-hero-product-bar"><span><i aria-hidden="true" /> CHURNAUT / LIVE INTENT</span><strong>01 / 03</strong></div>
-            <div className="home-hero-product-caption"><span>See the whole account.</span><b>Context that survives the visit.</b></div>
           </div>
         </div>
         <div className="home-hero-note"><span>Context travels with the click</span><i aria-hidden="true" /></div>
@@ -47,7 +45,7 @@ export default async function Home() {
       <SignalJourney />
 
       <section className="home-scout" aria-labelledby="home-scout-title">
-        <div className="home-scout-product"><Image src="/media/journey-action.png" alt="Churnaut next best action view connecting intent signals to a teammate" fill sizes="(max-width: 900px) 100vw, 58vw" /><div className="home-scout-product-bar"><span><i aria-hidden="true" /> NEXT BEST ACTION</span><strong>03 / 03</strong></div></div>
+        <div className="home-scout-product"><Image src="/media/journey-action.png" alt="Churnaut next best action view connecting intent signals to a teammate" fill sizes="(max-width: 900px) 100vw, 58vw" /></div>
         <div className="home-scout-copy">
           <p className="section-index">SCOUT AI / EVIDENCE, NOT GUESSWORK</p>
           <h2 id="home-scout-title">Your pipeline changes quietly. Scout explains why.</h2>
