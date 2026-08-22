@@ -5,16 +5,25 @@ import { useEffect, useRef, useState } from "react";
 
 const stages = [
   {
+    eyebrow: "01 / THE HANDOFF",
     title: "Carry the context",
     body: "A tracked link connects the visit to the person and outreach that brought them there.",
+    image: "/media/journey-context.png",
+    alt: "Churnaut handoff view showing campaign, research, and return context",
   },
   {
+    eyebrow: "02 / LIVE INTENT",
     title: "Shape the visit",
     body: "The page can respond to known context instead of treating an interested buyer like anonymous traffic.",
+    image: "/media/journey-visit.png",
+    alt: "Churnaut account intelligence view showing a live buyer signal",
   },
   {
+    eyebrow: "03 / NEXT BEST ACTION",
     title: "Move at the right moment",
     body: "Churnaut shows what changed, while Scout helps your team understand the next move.",
+    image: "/media/journey-action.png",
+    alt: "Churnaut next best action view connecting intent signals to a teammate",
   },
 ];
 
@@ -44,23 +53,20 @@ export function SignalJourney() {
   return (
     <section className="signal-journey" id="how-it-works" aria-labelledby="signal-journey-title">
       <div className="signal-journey-intro">
+        <p className="section-index">THE CHURNAUT LOOP / 01 / 03</p>
         <h2 id="signal-journey-title">One signal, carried all the way through.</h2>
         <p>Churnaut keeps the context your rep earned alive from the first click to the next sales action.</p>
       </div>
 
       <div className="signal-journey-layout">
-        <div className={`signal-journey-visual signal-journey-stage-${activeStage + 1}`} aria-hidden="true">
-          <Image src="/signal-landscape.png" alt="" fill sizes="(max-width: 900px) 100vw, 58vw" />
-          <div className="signal-journey-wash" />
-          <div className="signal-journey-route">
-            {stages.map((stage, index) => (
-              <i key={stage.title} className={index <= activeStage ? "is-active" : ""} />
-            ))}
-          </div>
-          <div className="signal-journey-caption">
-            <span>{stages[activeStage].title}</span>
-            <strong>{activeStage + 1} / {stages.length}</strong>
-          </div>
+        <div className="signal-journey-visual" aria-live="polite">
+          {stages.map((stage, index) => (
+            <div className={`signal-journey-frame ${activeStage === index ? "is-active" : ""}`} key={stage.title} aria-hidden={activeStage !== index}>
+              <Image src={stage.image} alt={stage.alt} fill sizes="(max-width: 900px) 100vw, 62vw" />
+              <div className="signal-journey-frame-wash" />
+              <div className="signal-journey-caption"><span>{stage.title}</span><strong>{activeStage + 1} / {stages.length}</strong></div>
+            </div>
+          ))}
         </div>
 
         <div className="signal-journey-stages">
@@ -72,6 +78,7 @@ export function SignalJourney() {
               className={activeStage === index ? "is-active" : ""}
             >
               <span>{index + 1}</span>
+              <small>{stage.eyebrow}</small>
               <h3>{stage.title}</h3>
               <p>{stage.body}</p>
             </article>

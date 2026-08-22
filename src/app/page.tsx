@@ -9,14 +9,24 @@ export default async function Home() {
   return (
     <PageShell overlay>
       <section className="home-hero">
-        <Image className="home-hero-image" src="/signal-landscape.png" alt="A luminous landscape of connected buyer signals" fill priority sizes="100vw" />
-        <div className="home-hero-wash" aria-hidden="true" />
-        <div className="home-hero-copy">
-          <h1>Know the moment your buyer is ready.</h1>
-          <p>Carry known-buyer context into every visit, personalize the page, and act while intent is still fresh.</p>
-          <div className="home-hero-actions">
-            <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a>
-            <LaunchFilmLink />
+        <div className="home-hero-noise" aria-hidden="true" />
+        <div className="home-hero-grid">
+          <div className="home-hero-copy">
+            <p className="home-hero-kicker"><i aria-hidden="true" /> Buyer context, carried forward</p>
+            <h1>Turn the click into the next <em>right</em> move.</h1>
+            <p>Churnaut connects outbound links to known visits, personalized pages, and evidence-backed sales actions.</p>
+            <div className="home-hero-proof" aria-label="What Churnaut does">
+              <span>Recognize the buyer</span><span>Shape the visit</span><span>Act with context</span>
+            </div>
+            <div className="home-hero-actions">
+              <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a>
+              <LaunchFilmLink />
+            </div>
+          </div>
+          <div className="home-hero-product" aria-label="Churnaut product film frame">
+            <Image src="/media/journey-visit.png" alt="Churnaut account intelligence view showing a live buyer signal" fill priority sizes="(max-width: 900px) 100vw, 55vw" />
+            <div className="home-hero-product-bar"><span><i aria-hidden="true" /> CHURNAUT / LIVE INTENT</span><strong>01 / 03</strong></div>
+            <div className="home-hero-product-caption"><span>See the whole account.</span><b>Context that survives the visit.</b></div>
           </div>
         </div>
         <div className="home-hero-note"><span>Context travels with the click</span><i aria-hidden="true" /></div>
@@ -25,7 +35,7 @@ export default async function Home() {
       <section className="home-thesis" aria-labelledby="home-thesis-title">
         <div>
           <h2 id="home-thesis-title">A website visit should not erase the conversation.</h2>
-          <p>When a prospect clicks a link your team sent, Churnaut keeps that context connected to what happens next.</p>
+          <p>Churnaut is a B2B SaaS platform for carrying the context from your outreach into the visit, then turning that intent into a clear next action.</p>
         </div>
         <div className="home-thesis-points">
           <p><strong>Recognize</strong><span>Know who arrived from the link they chose to click.</span></p>
@@ -37,7 +47,9 @@ export default async function Home() {
       <SignalJourney />
 
       <section className="home-scout" aria-labelledby="home-scout-title">
+        <div className="home-scout-product"><Image src="/media/journey-action.png" alt="Churnaut next best action view connecting intent signals to a teammate" fill sizes="(max-width: 900px) 100vw, 58vw" /><div className="home-scout-product-bar"><span><i aria-hidden="true" /> NEXT BEST ACTION</span><strong>03 / 03</strong></div></div>
         <div className="home-scout-copy">
+          <p className="section-index">SCOUT AI / EVIDENCE, NOT GUESSWORK</p>
           <h2 id="home-scout-title">Your pipeline changes quietly. Scout explains why.</h2>
           <p>Scout reads the story beneath CRM activity and website signals, then grounds the next move in evidence.</p>
           <Link className="button button-ink" href="/scout">Meet Scout AI</Link>

@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-cta">
         <div><h2>Don&apos;t let the signal go quiet.</h2><p>Meet the people already leaning in, and make your next move while it still matters.</p><a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">See Churnaut in action</a></div>
-        <p className="footer-cta-note">Known from the link. Understood through the visit. Ready for the next move.</p>
+        <p className="footer-cta-note"><span>Known from the link.</span><span>Understood through the visit.</span><span>Ready for the next move.</span></p>
       </div>
       <div className="footer-grid">
         <div className="footer-brand">
