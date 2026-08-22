@@ -911,8 +911,8 @@ button, input { font: inherit; }
 .home-hero-actions .button-ink:hover { color: #fffdf8; background: #092824; }
 .home-hero-actions .button-signal { color: #143934; border-color: rgba(20,57,52,.2); background: transparent; }
 .home-hero-actions .button-signal:hover { background: rgba(255,253,248,.72); }
-.home-hero-product { min-width: 0; position: relative; aspect-ratio: 16 / 10.4; overflow: hidden; border: 1px solid rgba(20,57,52,.23); border-radius: 28px 28px 86px 28px; background: #211814; box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 35px 90px rgba(37,63,53,.18); transform: rotate(1.2deg); transition: transform .7s cubic-bezier(.22,1,.36,1), box-shadow .7s ease; }
-.home-hero-product:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 48px 100px rgba(37,63,53,.24); }
+.home-hero-product { min-width: 0; position: relative; aspect-ratio: 16 / 10.4; overflow: hidden; border: 1px solid rgba(20,57,52,.23); border-radius: 28px 28px 86px 28px; background: #211814; box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 35px 90px rgba(37,63,53,.18); transform: none; transition: transform .7s cubic-bezier(.22,1,.36,1), box-shadow .7s ease; }
+.home-hero-product:hover { transform: translateY(-5px); box-shadow: 18px 20px 0 rgba(159,202,194,.68), 0 48px 100px rgba(37,63,53,.24); }
 .home-hero-product > img { object-fit: contain; background: #211814; }
 .home-hero-product:after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,18,16,.06), transparent 58%, rgba(11,18,16,.24)); }
 .home-hero-product-bar { position: absolute; z-index: 2; inset: 19px 22px auto; display: flex; justify-content: space-between; color: #d7c8bb; font: 650 8px var(--font-mono), monospace; letter-spacing: .12em; }
