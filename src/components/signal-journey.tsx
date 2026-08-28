@@ -38,12 +38,14 @@ export function SignalJourney() {
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const index = Number((visible.target as HTMLElement).dataset.stage);
-        setActiveStage(index);
+          .sort((a, b) => {
+            const aTop = Math.abs(a.boundingClientRect.top - window.innerHeight * 0.5);
+            const bTop = Math.abs(b.boundingClientRect.top - window.innerHeight * 0.5);
+            return aTop - bTop;
+          })[0];
+        if (visible) setActiveStage(Number((visible.target as HTMLElement).dataset.stage));
       },
-      { threshold: [0.35, 0.6, 0.8], rootMargin: "-18% 0px -18%" },
+      { threshold: [0.1, 0.35, 0.6], rootMargin: "-28% 0px -28%" },
     );
 
     stageRefs.current.forEach((node) => node && observer.observe(node));
@@ -53,18 +55,35 @@ export function SignalJourney() {
   return (
     <section className="signal-journey" id="how-it-works" aria-labelledby="signal-journey-title">
       <div className="signal-journey-intro">
-        <p className="section-index">THE CHURNAUT LOOP / 01 / 03</p>
+        <p className="section-index">THE CHURNAUT LOOP / SCROLL TO TRACE THE SIGNAL</p>
         <h2 id="signal-journey-title">One signal, carried all the way through.</h2>
         <p>Churnaut keeps the context your rep earned alive from the first click to the next sales action.</p>
       </div>
 
       <div className="signal-journey-layout">
-        <div className="signal-journey-visual" aria-live="polite">
+        <div className={`signal-journey-visual signal-journey-visual-${activeStage + 1}`} aria-live="polite">
+          <div className="signal-journey-visual-head" aria-hidden="true">
+            <span><i /> KNOWN VISITOR ROUTE</span>
+            <strong>{String(activeStage + 1).padStart(2, "0")} / 03</strong>
+          </div>
+          <div className="signal-journey-visual-frames">
           {stages.map((stage, index) => (
             <div className={`signal-journey-frame ${activeStage === index ? "is-active" : ""}`} key={stage.title} aria-hidden={activeStage !== index}>
               <Image src={stage.image} alt={stage.alt} fill sizes="(max-width: 900px) 100vw, 62vw" />
             </div>
           ))}
+          </div>
+          <svg className="signal-journey-route" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+            <path className="signal-journey-route-base" d="M3 10 C 28 10, 42 10, 52 10 S 74 10, 97 10" />
+            <path className="signal-journey-route-progress" d="M3 10 C 28 10, 42 10, 52 10 S 74 10, 97 10" />
+            <circle className="signal-journey-node signal-journey-node-1" cx="3" cy="10" r="2.2" />
+            <circle className="signal-journey-node signal-journey-node-2" cx="52" cy="10" r="2.2" />
+            <circle className="signal-journey-node signal-journey-node-3" cx="97" cy="10" r="2.2" />
+          </svg>
+          <div className="signal-journey-caption">
+            <span>{stages[activeStage].title}</span>
+            <strong>{activeStage === 0 ? "CONTEXT ATTACHED" : activeStage === 1 ? "SESSION RECOGNIZED" : "NEXT MOVE READY"}</strong>
+          </div>
         </div>
 
         <div className="signal-journey-stages">
@@ -75,7 +94,7 @@ export function SignalJourney() {
               ref={(node) => { stageRefs.current[index] = node; }}
               className={activeStage === index ? "is-active" : ""}
             >
-              <span>{index + 1}</span>
+              <span className="signal-journey-step">{String(index + 1).padStart(2, "0")}</span>
               <small>{stage.eyebrow}</small>
               <h3>{stage.title}</h3>
               <p>{stage.body}</p>

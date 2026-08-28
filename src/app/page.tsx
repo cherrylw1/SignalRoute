@@ -23,8 +23,11 @@ export default async function Home() {
               <LaunchFilmLink />
             </div>
           </div>
-          <div className="home-hero-product" aria-label="Churnaut product film frame">
+          <div className="home-hero-product" aria-label="Churnaut account intelligence view showing a live buyer signal">
+            <div className="home-hero-product-bar" aria-hidden="true"><span><i /> LIVE ACCOUNT INTELLIGENCE</span><strong>01 / 03</strong></div>
             <Image src="/media/journey-visit.png" alt="Churnaut account intelligence view showing a live buyer signal" fill priority sizes="(max-width: 900px) 100vw, 55vw" />
+            <div className="home-hero-product-note" aria-hidden="true"><span>KNOWN VISIT</span><strong>Northstar Labs</strong><em>Returning account · high intent</em></div>
+            <div className="home-hero-product-route" aria-hidden="true"><i /><i /><i /></div>
           </div>
         </div>
         <div className="home-hero-note"><span>Context travels with the click</span><i aria-hidden="true" /></div>

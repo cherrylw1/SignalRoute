@@ -1579,3 +1579,130 @@ button, input { font: inherit; }
   opacity: 1 !important;
   text-shadow: none;
 }
+
+/* Signal-led homepage motion system. Every movement is tied to the visitor's route. */
+.home-hero-product {
+  isolation: isolate;
+  will-change: transform;
+}
+.home-hero-product-bar {
+  z-index: 4;
+  color: rgba(247,239,229,.84);
+  text-shadow: 0 1px 12px rgba(0,0,0,.35);
+}
+.home-hero-product-bar strong { font-weight: 700; letter-spacing: .16em; }
+.home-hero-product-note {
+  position: absolute;
+  z-index: 4;
+  left: 22px;
+  bottom: 20px;
+  display: grid;
+  gap: 4px;
+  max-width: 220px;
+  padding: 12px 14px;
+  color: #173936;
+  border: 1px solid rgba(255,255,255,.68);
+  border-radius: 12px;
+  background: rgba(255,253,248,.88);
+  box-shadow: 0 10px 28px rgba(8,25,21,.2);
+  backdrop-filter: blur(14px);
+}
+.home-hero-product-note span { color: #bd4c32; font: 700 8px var(--font-mono), monospace; letter-spacing: .13em; }
+.home-hero-product-note strong { font-size: 15px; letter-spacing: -.03em; }
+.home-hero-product-note em { color: #61756e; font-size: 10px; font-style: normal; }
+.home-hero-product-route {
+  position: absolute;
+  z-index: 4;
+  right: 24px;
+  bottom: 27px;
+  width: 36%;
+  height: 24px;
+  opacity: .82;
+}
+.home-hero-product-route:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(255,253,248,.75);
+}
+.home-hero-product-route i {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fffdf8;
+  border-radius: 50%;
+  background: #df6344;
+  transform: translate(-50%,-50%);
+}
+.home-hero-product-route i:nth-child(1) { left: 0; animation: route-node 2.4s ease-in-out infinite; }
+.home-hero-product-route i:nth-child(2) { left: 50%; background: #dfff5b; animation: route-node 2.4s .45s ease-in-out infinite; }
+.home-hero-product-route i:nth-child(3) { left: 100%; animation: route-node 2.4s .9s ease-in-out infinite; }
+
+.signal-journey-visual {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 22px;
+  background: #173936;
+  box-shadow: 0 30px 80px rgba(28,61,51,.18), 14px 14px 0 rgba(159,202,194,.55);
+}
+.signal-journey-visual-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #b8cbc2;
+  font: 650 9px var(--font-mono), monospace;
+  letter-spacing: .12em;
+}
+.signal-journey-visual-head span { display: inline-flex; align-items: center; gap: 8px; }
+.signal-journey-visual-head i { width: 7px; height: 7px; border-radius: 50%; background: #df6344; box-shadow: 0 0 0 5px rgba(223,99,68,.16); }
+.signal-journey-visual-head strong { color: #dfff5b; font-weight: 700; }
+.signal-journey-visual-frames { position: relative; min-height: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 17px 17px 52px 17px; background: #f6f0e7; }
+.signal-journey-frame { position: absolute; inset: 0; opacity: 0; transform: scale(1.045); transition: opacity .62s ease, transform 1.15s cubic-bezier(.16,1,.3,1); }
+.signal-journey-frame.is-active { opacity: 1; transform: scale(1); }
+.signal-journey-frame img { object-fit: cover; }
+.signal-journey-route { position: absolute; z-index: 3; left: 10%; right: 10%; bottom: 86px; width: 80%; height: 24px; overflow: visible; }
+.signal-journey-route path { fill: none; stroke-linecap: round; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.signal-journey-route-base { stroke: rgba(255,253,248,.7); }
+.signal-journey-route-progress { stroke: #df6344; stroke-width: 2; stroke-dasharray: 94; stroke-dashoffset: 94; transition: stroke-dashoffset .9s cubic-bezier(.16,1,.3,1); }
+.signal-journey-visual-2 .signal-journey-route-progress { stroke-dashoffset: 47; }
+.signal-journey-visual-3 .signal-journey-route-progress { stroke-dashoffset: 0; }
+.signal-journey-node { fill: #9eb7a3; stroke: #fffdf8; stroke-width: 1.6; transform-origin: center; transition: fill .35s ease, r .35s ease; }
+.signal-journey-visual-1 .signal-journey-node-1,
+.signal-journey-visual-2 .signal-journey-node-2,
+.signal-journey-visual-3 .signal-journey-node-3 { fill: #df6344; }
+.signal-journey-caption { position: relative; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 54px; padding: 0 15px; color: #173936; border: 1px solid rgba(255,255,255,.55); border-radius: 12px; background: rgba(255,253,248,.92); box-shadow: 0 10px 28px rgba(7,25,22,.16); }
+.signal-journey-caption span { font-size: 14px; font-weight: 740; letter-spacing: -.02em; }
+.signal-journey-caption strong { color: #bd4c32; font: 700 8px var(--font-mono), monospace; letter-spacing: .1em; }
+.signal-journey-stages article { min-height: 72dvh; gap: 0; }
+.signal-journey-stages article > span.signal-journey-step { width: 42px; height: 42px; color: #143934; border: 1px solid rgba(20,57,52,.28); background: rgba(255,253,248,.45); font: 700 10px var(--font-mono), monospace; letter-spacing: .06em; }
+.signal-journey-stages article.is-active > span.signal-journey-step { color: #fffdf8; border-color: #df6344; background: #df6344; box-shadow: 0 0 0 8px rgba(223,99,68,.12); }
+.signal-journey-stages article small { margin-top: 34px; color: #bd4c32; font: 700 9px var(--font-mono), monospace; letter-spacing: .12em; }
+.signal-journey-stages h3 { max-width: 470px; margin: 18px 0 18px; }
+
+@keyframes route-node { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.45); } }
+
+@media (max-width: 900px) {
+  .home-hero-product { margin-top: 26px; box-shadow: 10px 12px 0 rgba(159,202,194,.6), 0 25px 60px rgba(37,63,53,.16); }
+  .signal-journey-visual { height: min(68dvh, 680px); min-height: 520px; position: sticky; top: 18px; }
+  .signal-journey-stages article { min-height: 54dvh; }
+}
+@media (max-width: 620px) {
+  .home-hero-product { aspect-ratio: 1 / 1.08; border-radius: 20px 20px 58px 20px; }
+  .home-hero-product-note { left: 14px; bottom: 14px; }
+  .home-hero-product-route { right: 15px; bottom: 22px; width: 34%; }
+  .signal-journey-visual { position: relative; top: auto; height: min(72dvh, 560px); min-height: 430px; padding: 14px; gap: 11px; border-radius: 20px; box-shadow: 9px 11px 0 rgba(159,202,194,.55); }
+  .signal-journey-visual-head { font-size: 8px; }
+  .signal-journey-route { bottom: 72px; }
+  .signal-journey-caption { min-height: 48px; padding-inline: 12px; }
+  .signal-journey-caption strong { font-size: 7px; }
+  .signal-journey-stages article { min-height: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-product-route i { animation: none; }
+  .signal-journey-frame,.signal-journey-route-progress,.signal-journey-node { transition: none; }
+}
