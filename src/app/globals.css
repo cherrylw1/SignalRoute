@@ -2061,3 +2061,21 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 @media (prefers-reduced-motion: reduce) {
   .reference-scroll-card { transition:none !important; }
 }
+
+/* One calm frame at a time: each stage owns the full viewport width, so the
+   handoff reads as a deliberate sequence instead of a crowded conveyor belt. */
+.reference-horizontal { height:560vh; }
+.reference-horizontal-head { margin-bottom:clamp(18px,3vh,28px); }
+.reference-horizontal-layout { height:calc(100% - 58px); }
+.reference-horizontal-canvas { height:min(680px,calc(100svh - 112px)); }
+.reference-horizontal-track { gap:0; width:400%; padding-left:0; }
+.reference-horizontal-track figure { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:18px; width:25%; height:100%; flex:0 0 25%; padding:0; }
+.reference-scroll-card { min-height:0; aspect-ratio:auto; height:100%; background:#111214; }
+.reference-scroll-card img { object-fit:cover; object-position:center; }
+@media (max-width:620px) {
+  .reference-horizontal { height:520vh; }
+  .reference-horizontal-head { margin-bottom:18px; }
+  .reference-horizontal-layout { height:calc(100% - 42px); }
+  .reference-horizontal-canvas { height:min(590px,calc(100svh - 104px)); }
+  .reference-horizontal-track figure { gap:14px; padding:0; }
+}
