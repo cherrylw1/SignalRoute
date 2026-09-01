@@ -146,8 +146,19 @@ export function HorizontalSignalStory() {
     <section className="reference-horizontal" id="how-it-works" ref={ref} data-stage={active + 1} aria-labelledby="horizontal-title">
       <div className="reference-horizontal-pin">
         <div className="reference-horizontal-head"><p className="reference-kicker">THE KNOWN-VISITOR JOURNEY</p><strong>{String(active + 1).padStart(2, "0")} / 04</strong></div>
-        <div className="reference-horizontal-layout">
-          <div className="reference-horizontal-canvas" ref={canvasRef}><div className="reference-horizontal-track" ref={trackRef}>{signalStages.map((stage, i) => <figure key={stage.kicker} className={i === active ? "is-active" : ""}><div className="reference-scroll-card"><Image src={stage.image} alt={stage.alt} fill priority={i === 0} sizes="(max-width: 900px) 70vw, 34vw" /></div><figcaption className="reference-scroll-card-info"><div><span>{stage.kicker}</span><strong id={i === 0 ? "horizontal-title" : undefined}>{stage.title}</strong></div><small>{stage.body}</small><b>{String(i + 1).padStart(2, "0")} / 04</b></figcaption></figure>)}</div></div>
+        <div className="journey-viewport" ref={canvasRef}>
+          <div className="journey-track" ref={trackRef}>
+            {signalStages.map((stage, i) => (
+              <figure key={stage.kicker} className={`journey-slide ${i === active ? "is-active" : ""}`}>
+                <div className="journey-image"><Image src={stage.image} alt={stage.alt} fill priority={i === 0} sizes="(max-width: 620px) 82vw, 380px" /></div>
+                <figcaption className="journey-caption">
+                  <span>{stage.kicker}</span>
+                  <strong id={i === 0 ? "horizontal-title" : undefined}>{stage.title}</strong>
+                  <small>{stage.body}</small>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
         <p className="reference-horizontal-instruction">SCROLL <span>TO MOVE THE SIGNAL</span></p>
       </div>

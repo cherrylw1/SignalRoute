@@ -2062,25 +2062,44 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   .reference-scroll-card { transition:none !important; }
 }
 
-/* One calm frame at a time: the complete card is centered in a compact stage,
-   while the next frame stays just beyond the crop until its handoff. */
-.reference-horizontal { height:560vh; }
-.reference-horizontal-head { margin-bottom:clamp(18px,3vh,28px); }
-.reference-horizontal-layout { height:calc(100% - 58px); }
-.reference-horizontal-canvas { width:min(440px,86vw); height:min(760px,calc(100svh - 24px)); margin:0 auto; }
-.reference-horizontal-track { gap:0; width:400%; padding-left:0; }
-.reference-horizontal-track { display:flex; position:relative; overflow:visible; }
-.reference-horizontal-track figure { position:relative; inset:auto; display:block; width:25%; height:auto; flex:0 0 25%; padding:0; }
-.reference-scroll-card { min-height:0; width:100%; aspect-ratio:1122 / 1402; height:auto; border:0; border-radius:0; background:transparent; box-shadow:none; }
-.reference-scroll-card img { object-fit:contain; object-position:center; }
-.reference-horizontal-track .reference-scroll-card-info { padding:10px 0 0; }
-.reference-horizontal-track figure.is-active .reference-scroll-card { transform:none; border-color:transparent; box-shadow:none; }
+/* Open journey rail: every stage is a standalone portrait image with its own
+   caption. A full viewport of white space separates consecutive stages. */
+.reference-horizontal { height:560vh; background:#f7f7f4; }
+.reference-horizontal-pin { padding:27px 0 34px; background:#f7f7f4; }
+.reference-horizontal-head { position:relative; z-index:2; margin:0; padding-inline:clamp(22px,5vw,74px); }
+.journey-viewport { position:relative; width:100%; height:calc(100svh - 70px); overflow:hidden; }
+.journey-track {
+  --journey-card-width:clamp(280px,27vw,380px);
+  display:flex;
+  align-items:flex-start;
+  gap:calc(100vw - var(--journey-card-width));
+  width:max-content;
+  height:100%;
+  padding:clamp(42px,6vh,66px) calc((100vw - var(--journey-card-width))/2) 0;
+  will-change:transform;
+}
+.journey-slide { width:var(--journey-card-width); flex:0 0 var(--journey-card-width); margin:0; }
+.journey-image { position:relative; width:100%; aspect-ratio:1122 / 1402; overflow:hidden; background:transparent; }
+.journey-image img { object-fit:contain; object-position:center; }
+.journey-caption { display:block; width:100%; padding:9px 0 0; color:var(--ref-ink); background:transparent; }
+.journey-caption span { display:block; margin:0 0 6px; color:var(--ref-orange); font:700 8px/1 var(--font-mono),monospace; letter-spacing:.13em; }
+.journey-caption strong { display:block; color:var(--ref-ink); font:740 clamp(17px,1.45vw,21px)/1.08 var(--sans); letter-spacing:-.04em; }
+.journey-caption small { display:block; max-width:360px; margin-top:7px; color:#6f706c; font:400 12px/1.42 var(--sans); }
+.reference-horizontal-instruction { right:clamp(22px,5vw,74px); bottom:18px; }
 @media (max-width:620px) {
   .reference-horizontal { height:520vh; }
-  .reference-horizontal-head { margin-bottom:18px; }
-  .reference-horizontal-layout { height:calc(100% - 42px); }
-  .reference-horizontal-canvas { width:100%; height:min(590px,calc(100svh - 104px)); }
-  .reference-horizontal-track figure { gap:14px; padding:0; }
-  .reference-scroll-card { width:100%; aspect-ratio:1122 / 1402; }
-  .reference-horizontal-track .reference-scroll-card-info { padding-top:8px; }
+  .reference-horizontal-pin { padding-top:20px; padding-bottom:28px; }
+  .reference-horizontal-head { padding-inline:15px; }
+  .journey-viewport { height:calc(100svh - 54px); }
+  .journey-track {
+    --journey-card-width:min(82vw,320px);
+    padding-top:42px;
+  }
+  .journey-caption { padding-top:8px; }
+  .journey-caption strong { font-size:17px; }
+  .journey-caption small { font-size:11px; }
+  .reference-horizontal-instruction { right:15px; bottom:12px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .journey-track { will-change:auto; }
 }
