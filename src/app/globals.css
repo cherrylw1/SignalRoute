@@ -3636,6 +3636,620 @@ html.lenis, html.lenis body { height:auto; }
   .proof-radar-sweep-cone { display:none; }
 }
 
+/* Cable Patch-Bay Styles */
+.patchbay-section {
+  background:#0d2927;
+  color:#f7f2e8;
+  position:relative;
+}
+.patchbay-head { margin-bottom:35px; }
+.patchbay-title-row {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.patchbay-actions {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.patchbay-ctrl-btn {
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.14);
+  color:#c4d8ce;
+  font:650 11.5px/1 var(--sans);
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.patchbay-ctrl-btn:hover {
+  background:#dfff5b;
+  color:#143934;
+  font-weight:750;
+}
+.patchbay-chassis {
+  position:relative;
+  border-radius:24px;
+  background:#143934;
+  border:1px solid rgba(255,255,255,0.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.2), 0 30px 80px rgba(0,0,0,0.5);
+  overflow:hidden;
+  user-select:none;
+}
+.patchbay-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 20px;
+  background:rgba(0,0,0,0.25);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.patchbay-screws {
+  display:flex;
+  gap:8px;
+}
+.screw {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #888, #333);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.3);
+  display:block;
+}
+.patchbay-status-meter {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font:700 9.5px/1 var(--font-mono),monospace;
+  letter-spacing:.08em;
+  color:#dfff5b;
+}
+.patchbay-status-dot {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#26a66b;
+  box-shadow:0 0 6px #26a66b;
+}
+.patchbay-cables-svg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+.patchbay-grid {
+  display:grid;
+  grid-template-columns:1fr 60px 1fr;
+  align-items:stretch;
+  padding:32px;
+  gap:20px;
+  position:relative;
+  z-index:5;
+}
+.patchbay-column {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.column-label {
+  font:700 9.5px/1 var(--font-mono),monospace;
+  letter-spacing:.1em;
+  color:#8da599;
+}
+.nodes-stack {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.node-card {
+  padding:16px 20px;
+  border-radius:14px;
+  background:rgba(0,0,0,0.22);
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  transition:border-color .2s ease, background .2s ease;
+}
+.node-card.is-connected {
+  background:rgba(223,255,91,0.04);
+  border-color:rgba(223,255,91,0.3);
+}
+.node-meta strong {
+  display:block;
+  font:700 13px/1.2 var(--sans);
+  color:#f7f2e8;
+}
+.node-meta small {
+  display:block;
+  color:#8da599;
+  font:600 10.5px var(--sans);
+  margin-top:2px;
+}
+.patch-socket {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#0d2927;
+  border:2.5px solid #dfff5b;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:grab;
+  flex-shrink:0;
+}
+.patch-socket:active { cursor:grabbing; }
+.socket-inner {
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  box-shadow:0 0 8px currentColor;
+  transition:background .2s ease;
+}
+.patchbay-mid-rack {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 0;
+}
+.rack-rail {
+  width:2px;
+  height:30%;
+  background:rgba(255,255,255,0.1);
+}
+.rack-vu-display {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.rack-vu-display .vu-bar {
+  width:12px;
+  height:4px;
+  border-radius:2px;
+  background:rgba(223,255,91,0.2);
+}
+.rack-vu-display .v-1 { background:#dfff5b; box-shadow:0 0 6px #dfff5b; }
+.rack-vu-display .v-2 { background:#dfff5b; box-shadow:0 0 6px #dfff5b; }
+.rack-vu-display .v-3 { background:#df6344; box-shadow:0 0 6px #df6344; }
+.patchbay-bottombar {
+  padding:10px 20px;
+  background:rgba(0,0,0,0.35);
+  border-top:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+}
+.patchbay-bottombar small {
+  font:700 8.5px/1 var(--font-mono),monospace;
+  letter-spacing:.12em;
+  color:#768f84;
+}
+
+/* Camera Tunnel Scrollytelling */
+.camera-tunnel-section {
+  background:#143934;
+  color:#f7f2e8;
+  position:relative;
+}
+.tunnel-head { margin-bottom:35px; }
+.tunnel-title-row {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.tunnel-scrubber {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:4px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+}
+.scrubber-step-btn {
+  position:relative;
+  padding:6px 14px;
+  border-radius:999px;
+  border:none;
+  background:transparent;
+  color:#8da599;
+  font:700 11px/1 var(--font-mono),monospace;
+  cursor:pointer;
+  transition:color .2s ease;
+}
+.scrubber-step-btn.is-active {
+  color:#143934;
+}
+.scrubber-active-pill {
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  background:#dfff5b;
+  z-index:1;
+}
+.tunnel-chamber {
+  position:relative;
+  min-height:380px;
+  border-radius:24px;
+  background:#0d2927;
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  perspective:1200px;
+}
+.tunnel-grid-bg {
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(223,255,91,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223,255,91,0.04) 1px, transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;
+}
+.tunnel-laser-ring {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:440px;
+  height:440px;
+  border-radius:50%;
+  border:1px dashed rgba(223,255,91,0.15);
+  pointer-events:none;
+}
+.tunnel-stage-card {
+  padding:44px;
+  position:relative;
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  height:100%;
+}
+.tunnel-card-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.tunnel-stage-kicker {
+  font:700 9.5px/1 var(--font-mono),monospace;
+  letter-spacing:.12em;
+  color:#df6344;
+}
+.tunnel-stage-badge {
+  font:700 9px/1 var(--font-mono),monospace;
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(223,255,91,0.15);
+  color:#dfff5b;
+}
+.tunnel-card-body {
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+}
+.tunnel-icon-box {
+  font-size:40px;
+  width:72px;
+  height:72px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.tunnel-copy-box h3 {
+  margin:0 0 8px;
+  font:800 clamp(22px,2.4vw,30px)/1.15 var(--sans);
+  color:#f7f2e8;
+  letter-spacing:-.04em;
+}
+.tunnel-copy-box p {
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  color:#adc0b7;
+  max-width:640px;
+}
+.tunnel-card-specs {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:auto;
+}
+.tunnel-spec-pill {
+  font:600 10.5px/1 var(--font-mono),monospace;
+  padding:5px 10px;
+  border-radius:6px;
+  background:rgba(0,0,0,0.35);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#dfff5b;
+}
+.tunnel-progress-track {
+  width:100%;
+  height:3px;
+  background:rgba(255,255,255,0.08);
+  position:relative;
+  z-index:5;
+}
+.tunnel-progress-bar {
+  height:100%;
+  background:#dfff5b;
+  box-shadow:0 0 10px #dfff5b;
+  transition:width .35s ease;
+}
+
+/* Telemetry Terminal */
+.telemetry-section {
+  background:#0d2927;
+  color:#f7f2e8;
+  position:relative;
+}
+.telemetry-head { margin-bottom:35px; }
+.telemetry-title-row {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.telemetry-controls {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.telemetry-view-btn {
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  color:#8da599;
+  font:650 11px/1 var(--sans);
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.telemetry-view-btn.is-active {
+  background:#dfff5b;
+  color:#143934;
+  font-weight:750;
+}
+.telemetry-inject-btn {
+  padding:6px 14px;
+  border-radius:999px;
+  background:#df6344;
+  color:#fff;
+  border:none;
+  font:700 11px/1 var(--sans);
+  cursor:pointer;
+  box-shadow:0 0 14px rgba(223,99,68,0.4);
+}
+.telemetry-terminal-frame {
+  border-radius:20px;
+  background:#091a18;
+  border:1px solid rgba(223,255,91,0.2);
+  box-shadow:inset 0 0 30px rgba(0,0,0,0.8), 0 24px 60px rgba(0,0,0,0.5);
+  overflow:hidden;
+}
+.telemetry-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 18px;
+  background:rgba(0,0,0,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.telemetry-dots { display:flex; gap:5px; }
+.t-dot { width:8px; height:8px; border-radius:50%; }
+.t-red { background:#ff5f56; }
+.t-yellow { background:#ffbd2e; }
+.t-green { background:#27c93f; }
+.telemetry-title-bar {
+  font:700 9px/1 var(--font-mono),monospace;
+  letter-spacing:.1em;
+  color:#8da599;
+}
+.telemetry-status-tag {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font:700 8.5px/1 var(--font-mono),monospace;
+  color:#dfff5b;
+}
+.telemetry-live-pip {
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#dfff5b;
+  box-shadow:0 0 6px #dfff5b;
+}
+.telemetry-feed {
+  padding:12px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font:500 12px/1.4 var(--font-mono),monospace;
+}
+.telemetry-row {
+  display:grid;
+  grid-template-columns:90px 140px 150px 90px 160px 1fr;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.04);
+}
+.telemetry-row.is-new {
+  background:rgba(223,255,91,0.08);
+  border-color:rgba(223,255,91,0.25);
+}
+.telemetry-time { color:#64766f; }
+.telemetry-domain { color:#f7f2e8; font-weight:700; }
+.telemetry-type { color:#df6344; font-size:11px; }
+.telemetry-latency { color:#dfff5b; font-weight:700; }
+.telemetry-intent { color:#c4ded2; }
+.telemetry-status { color:#26a66b; font-weight:700; }
+.telemetry-hex { color:#768f84; font-size:10px; }
+.telemetry-footer {
+  padding:10px 18px;
+  background:rgba(0,0,0,0.4);
+  border-top:1px solid rgba(255,255,255,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font:700 8.5px/1 var(--font-mono),monospace;
+  color:#64766f;
+  letter-spacing:.08em;
+}
+
+/* Tactile Dials & VU Meter Styles */
+.tactile-dials-stack {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.tactile-dial-card {
+  padding:16px 20px;
+  border-radius:16px;
+  background:#fbf8f0;
+  border:1px solid rgba(20,57,52,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.tactile-dial-header {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1;
+}
+.tactile-dial-label {
+  font:650 12.5px var(--sans);
+  color:#556c64;
+}
+.tactile-dial-val {
+  font:850 clamp(20px,2vw,24px)/1 var(--sans);
+  color:#143934;
+  letter-spacing:-.03em;
+}
+.tactile-dial-controls {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.tactile-knob-housing {
+  position:relative;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#143934;
+  box-shadow:0 8px 18px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:ns-resize;
+}
+.tactile-knob-disc {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg at 50% 50%, #2f4f4b, #143934, #2f4f4b, #143934, #2f4f4b);
+  border:1.5px solid rgba(255,255,255,0.15);
+  box-shadow:inset 0 2px 4px rgba(255,255,255,0.2);
+  position:relative;
+  will-change:transform;
+}
+.knob-indicator-dot {
+  position:absolute;
+  top:6px;
+  left:50%;
+  transform:translateX(-50%);
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#dfff5b;
+  box-shadow:0 0 6px #dfff5b;
+}
+.tactile-vu-column {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.vu-title {
+  font:700 7px var(--font-mono),monospace;
+  color:#768f84;
+  letter-spacing:.1em;
+}
+.tactile-vu-meter {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:3px;
+  border-radius:4px;
+  background:#143934;
+}
+.vu-segment {
+  width:14px;
+  height:2.5px;
+  border-radius:1px;
+  background:rgba(255,255,255,0.1);
+  transition:background .1s ease;
+}
+.vu-segment.is-lit {
+  background:#dfff5b;
+  box-shadow:0 0 4px #dfff5b;
+}
+.vu-segment.is-peak {
+  background:#df6344;
+  box-shadow:0 0 4px #df6344;
+}
+.calc-mode-toggle {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  padding:3px;
+  border-radius:999px;
+  background:rgba(20,57,52,0.08);
+  border:1px solid rgba(20,57,52,0.12);
+}
+.mode-btn {
+  padding:5px 12px;
+  border-radius:999px;
+  border:none;
+  background:transparent;
+  color:#64766f;
+  font:650 11px/1 var(--sans);
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.mode-btn.is-active {
+  background:#143934;
+  color:#dfff5b;
+  font-weight:750;
+}
+
+@media (max-width:900px) {
+  .patchbay-grid { grid-template-columns:1fr; }
+  .patchbay-mid-rack { display:none; }
+  .telemetry-row { grid-template-columns:80px 1fr 1fr; }
+  .telemetry-hex, .telemetry-intent { display:none; }
+}
+
+
 /* Hero Fiber-Optic Splines & Badge Targeting */
 .hero-spline-canvas {
   position:absolute;

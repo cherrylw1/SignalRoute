@@ -145,3 +145,98 @@ export function playSlideSound(normalized = 0.5) {
     // Ignore audio errors
   }
 }
+
+export function playRelaySnapSound() {
+  if (!isAudioEnabled) return;
+  const ctx = getContext();
+  if (!ctx) return;
+
+  try {
+    // Heavy solenoid transient
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(140, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.04);
+
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.04);
+
+    // Sharp mechanical latch click
+    const clickOsc = ctx.createOscillator();
+    const clickGain = ctx.createGain();
+    clickOsc.type = "triangle";
+    clickOsc.frequency.setValueAtTime(1200, ctx.currentTime);
+    clickOsc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.02);
+
+    clickGain.gain.setValueAtTime(0.08, ctx.currentTime);
+    clickGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.02);
+
+    clickOsc.connect(clickGain);
+    clickGain.connect(ctx.destination);
+    clickOsc.start(ctx.currentTime);
+    clickOsc.stop(ctx.currentTime + 0.02);
+  } catch {
+    // Ignore audio errors
+  }
+}
+
+export function playRatchetTick() {
+  if (!isAudioEnabled) return;
+  const ctx = getContext();
+  if (!ctx) return;
+
+  try {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    const randomFreq = 1800 + Math.random() * 600;
+    osc.type = "triangle";
+    osc.frequency.setValueAtTime(randomFreq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.012);
+
+    gain.gain.setValueAtTime(0.035, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.012);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.012);
+  } catch {
+    // Ignore audio errors
+  }
+}
+
+export function playPrismChime() {
+  if (!isAudioEnabled) return;
+  const ctx = getContext();
+  if (!ctx) return;
+
+  try {
+    const freqs = [1046.5, 1318.5, 1567.98]; // C6, E6, G6
+    freqs.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(f, ctx.currentTime + i * 0.04);
+
+      gain.gain.setValueAtTime(0.03, ctx.currentTime + i * 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0005, ctx.currentTime + i * 0.04 + 0.45);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(ctx.currentTime + i * 0.04);
+      osc.stop(ctx.currentTime + i * 0.04 + 0.45);
+    });
+  } catch {
+    // Ignore audio errors
+  }
+}

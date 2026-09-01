@@ -6,6 +6,9 @@ import { BentoGrid } from "@/components/bento-grid";
 import { SplitLens } from "@/components/split-lens";
 import { PipelineCalculator } from "@/components/pipeline-calculator";
 import { DynamicIsland } from "@/components/dynamic-island";
+import { CablePatchBay } from "@/components/cable-patch-bay";
+import { CameraTunnel } from "@/components/camera-tunnel";
+import { TelemetryTerminal } from "@/components/telemetry-terminal";
 import {
   ReferenceCursor,
   ReferenceEntry,
@@ -35,9 +38,12 @@ export default function Home() {
 
       <ProgressiveStatement />
       <SignalSimulator />
+      <CameraTunnel />
       <BentoGrid />
+      <CablePatchBay />
       <SplitLens />
       <ReferenceProof />
+      <TelemetryTerminal />
       <PipelineCalculator />
 
       <section className="reference-privacy" id="privacy" aria-labelledby="reference-privacy-title">
