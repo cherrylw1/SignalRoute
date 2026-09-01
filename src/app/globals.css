@@ -2033,10 +2033,10 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 .reference-horizontal-pin { background:#f7f7f4; }
 .reference-horizontal-layout { display:block; width:100%; }
 .reference-horizontal-canvas { width:100%; height:min(680px,calc(100svh - 78px)); aspect-ratio:auto; overflow:hidden; border:0; border-radius:0; background:transparent; box-shadow:none; }
-.reference-horizontal-track { display:flex; align-items:flex-start; gap:clamp(20px,2.2vw,32px); width:max-content; height:100%; padding-left:clamp(12px,8vw,110px); transition:transform .08s linear; will-change:transform; }
+.reference-horizontal-track { display:flex; align-items:flex-start; gap:clamp(20px,2.2vw,32px); width:max-content; height:100%; padding-left:clamp(12px,8vw,110px); transition:none; will-change:transform; }
 .reference-horizontal-track figure { position:relative; inset:auto; display:block; width:clamp(280px,29vw,420px); height:auto; flex:0 0 clamp(280px,29vw,420px); margin:0; padding:0; opacity:1; transform:none; transition:none; }
-.reference-horizontal-track figure.is-active .reference-scroll-card { border-color:rgba(255,75,34,.52); box-shadow:0 22px 48px rgba(17,18,20,.16),10px 10px 0 rgba(255,75,34,.23); }
-.reference-scroll-card { width:100%; aspect-ratio:4 / 5; border:1px solid rgba(17,18,20,.16); border-radius:22px 22px 62px 22px; background:#ebe8e1; box-shadow:0 16px 36px rgba(17,18,20,.1); }
+.reference-scroll-card { width:100%; aspect-ratio:4 / 5; border:1px solid rgba(17,18,20,.16); border-radius:22px 22px 62px 22px; background:#ebe8e1; box-shadow:0 16px 36px rgba(17,18,20,.1); transition:transform .7s cubic-bezier(.16,1,.3,1), box-shadow .7s ease, border-color .45s ease; will-change:transform; }
+.reference-horizontal-track figure.is-active .reference-scroll-card { border-color:rgba(17,18,20,.2); transform:translateY(-8px); box-shadow:0 28px 60px rgba(17,18,20,.18),0 8px 0 rgba(17,18,20,.05); }
 .reference-scroll-card img { object-fit:cover; }
 .reference-horizontal-track .reference-scroll-card-info { position:relative; left:auto; right:auto; bottom:auto; width:100%; display:block; padding:18px 2px 0; color:var(--ref-ink); border:0; border-radius:0; background:transparent; box-shadow:none; }
 .reference-scroll-card-info div { display:block; }
@@ -2044,7 +2044,7 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 .reference-scroll-card-info strong { display:block; overflow:visible; white-space:normal; font-size:clamp(17px,1.5vw,22px); line-height:1.1; }
 .reference-scroll-card-info small { display:block; max-width:360px; margin-top:9px; color:#6f706c; font-size:13px; line-height:1.45; }
 .reference-scroll-card-info b { display:block; margin-top:12px; }
-.reference-horizontal-progress { left:0; right:0; bottom:4px; background:rgba(17,18,20,.13); }
+.reference-horizontal-progress { display:none !important; }
 .reference-horizontal-instruction { right:0; bottom:2px; }
 @media (max-width:900px) {
   .reference-horizontal-canvas { width:100%; height:min(650px,calc(100svh - 120px)); }
@@ -2057,4 +2057,7 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   .reference-horizontal-track .reference-scroll-card-info { padding-top:14px; }
   .reference-scroll-card-info strong { font-size:17px; }
   .reference-scroll-card-info small { font-size:11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-scroll-card { transition:none !important; }
 }

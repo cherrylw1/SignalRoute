@@ -62,13 +62,50 @@ export function HorizontalSignalStory() {
   const ref = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const targetProgressRef = useRef(0);
+  const smoothProgressRef = useRef(0);
   const [progress, setProgress] = useState(0);
   const [railShift, setRailShift] = useState(0);
   useEffect(() => {
-    let frame = 0;
-    const update = () => { frame = 0; const node = ref.current; if (!node) return; const r = node.getBoundingClientRect(); const travel = Math.max(1, r.height - window.innerHeight); setProgress(Math.min(1, Math.max(0, -r.top / travel))); };
-    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); }; update(); window.addEventListener("scroll", onScroll, { passive: true }); window.addEventListener("resize", update); return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", update); if (frame) cancelAnimationFrame(frame); };
-  }, []);
+    let scrollFrame = 0;
+    let motionFrame = 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const animateRail = () => {
+      const target = targetProgressRef.current;
+      const current = smoothProgressRef.current;
+      const next = reduceMotion ? target : current + (target - current) * 0.12;
+      smoothProgressRef.current = next;
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(${-next * railShift}px,0,0)`;
+      }
+      if (!reduceMotion && Math.abs(target - next) > 0.0005) {
+        motionFrame = requestAnimationFrame(animateRail);
+      } else {
+        motionFrame = 0;
+      }
+    };
+    const update = () => {
+      scrollFrame = 0;
+      const node = ref.current;
+      if (!node) return;
+      const r = node.getBoundingClientRect();
+      const travel = Math.max(1, r.height - window.innerHeight);
+      const next = Math.min(1, Math.max(0, -r.top / travel));
+      targetProgressRef.current = next;
+      setProgress(next);
+      if (!motionFrame) motionFrame = requestAnimationFrame(animateRail);
+    };
+    const onScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", update);
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
+      if (motionFrame) cancelAnimationFrame(motionFrame);
+    };
+  }, [railShift]);
   useEffect(() => {
     const measure = () => {
       const canvas = canvasRef.current;
@@ -85,14 +122,16 @@ export function HorizontalSignalStory() {
     window.addEventListener("resize", measure);
     return () => { observer?.disconnect(); window.removeEventListener("resize", measure); };
   }, []);
-  const sequence = Math.min(signalStages.length - 1, progress * signalStages.length);
+  // The lead marker advances as each new card takes the rail's lead position,
+  // not as soon as the previous card has merely started leaving the viewport.
+  const sequence = Math.min(signalStages.length - 1, progress * (signalStages.length - 1));
   const active = Math.min(signalStages.length - 1, Math.floor(sequence));
   return (
     <section className="reference-horizontal" id="how-it-works" ref={ref} data-stage={active + 1} aria-labelledby="horizontal-title">
       <div className="reference-horizontal-pin">
         <div className="reference-horizontal-head"><p className="reference-kicker">THE KNOWN-VISITOR JOURNEY</p><strong>{String(active + 1).padStart(2, "0")} / 04</strong></div>
         <div className="reference-horizontal-layout">
-          <div className="reference-horizontal-canvas" ref={canvasRef}><div className="reference-horizontal-track" ref={trackRef} style={{ transform: `translate3d(${-progress * railShift}px,0,0)` }}>{signalStages.map((stage, i) => <figure key={stage.kicker} className={i === active ? "is-active" : ""}><div className="reference-scroll-card"><Image src={stage.image} alt={stage.alt} fill priority={i === 0} sizes="(max-width: 900px) 70vw, 34vw" /></div><figcaption className="reference-scroll-card-info"><div><span>{stage.kicker}</span><strong id={i === 0 ? "horizontal-title" : undefined}>{stage.title}</strong></div><small>{stage.body}</small><b>{String(i + 1).padStart(2, "0")} / 04</b></figcaption></figure>)}</div><div className="reference-horizontal-progress"><i style={{ transform: `scaleX(${progress})` }} /></div></div>
+          <div className="reference-horizontal-canvas" ref={canvasRef}><div className="reference-horizontal-track" ref={trackRef}>{signalStages.map((stage, i) => <figure key={stage.kicker} className={i === active ? "is-active" : ""}><div className="reference-scroll-card"><Image src={stage.image} alt={stage.alt} fill priority={i === 0} sizes="(max-width: 900px) 70vw, 34vw" /></div><figcaption className="reference-scroll-card-info"><div><span>{stage.kicker}</span><strong id={i === 0 ? "horizontal-title" : undefined}>{stage.title}</strong></div><small>{stage.body}</small><b>{String(i + 1).padStart(2, "0")} / 04</b></figcaption></figure>)}</div></div>
         </div>
         <p className="reference-horizontal-instruction">SCROLL <span>TO MOVE THE SIGNAL</span></p>
       </div>
