@@ -2062,20 +2062,25 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   .reference-scroll-card { transition:none !important; }
 }
 
-/* One calm frame at a time: each stage owns the full viewport width, so the
-   handoff reads as a deliberate sequence instead of a crowded conveyor belt. */
+/* One calm frame at a time: the complete card is centered in a compact stage,
+   while the next frame stays just beyond the crop until its handoff. */
 .reference-horizontal { height:560vh; }
 .reference-horizontal-head { margin-bottom:clamp(18px,3vh,28px); }
 .reference-horizontal-layout { height:calc(100% - 58px); }
-.reference-horizontal-canvas { height:min(680px,calc(100svh - 112px)); }
+.reference-horizontal-canvas { width:min(440px,86vw); height:min(760px,calc(100svh - 24px)); margin:0 auto; }
 .reference-horizontal-track { gap:0; width:400%; padding-left:0; }
-.reference-horizontal-track figure { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:18px; width:25%; height:100%; flex:0 0 25%; padding:0; }
-.reference-scroll-card { min-height:0; aspect-ratio:auto; height:100%; background:#111214; }
-.reference-scroll-card img { object-fit:cover; object-position:center; }
+.reference-horizontal-track { display:flex; position:relative; overflow:visible; }
+.reference-horizontal-track figure { position:relative; inset:auto; display:block; width:25%; height:auto; flex:0 0 25%; padding:0; }
+.reference-scroll-card { min-height:0; width:100%; aspect-ratio:1122 / 1402; height:auto; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.reference-scroll-card img { object-fit:contain; object-position:center; }
+.reference-horizontal-track .reference-scroll-card-info { padding:10px 0 0; }
+.reference-horizontal-track figure.is-active .reference-scroll-card { transform:none; border-color:transparent; box-shadow:none; }
 @media (max-width:620px) {
   .reference-horizontal { height:520vh; }
   .reference-horizontal-head { margin-bottom:18px; }
   .reference-horizontal-layout { height:calc(100% - 42px); }
-  .reference-horizontal-canvas { height:min(590px,calc(100svh - 104px)); }
+  .reference-horizontal-canvas { width:100%; height:min(590px,calc(100svh - 104px)); }
   .reference-horizontal-track figure { gap:14px; padding:0; }
+  .reference-scroll-card { width:100%; aspect-ratio:1122 / 1402; }
+  .reference-horizontal-track .reference-scroll-card-info { padding-top:8px; }
 }

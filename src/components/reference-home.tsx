@@ -11,6 +11,21 @@ const signalStages = [
   { kicker: "04 / ACT", title: "Scout gives the rep a reason.", body: "The return becomes evidence: person, page, timing and what changed in the deal.", image: "/media/scroll-act-vertical.png", alt: "Abstract Churnaut signals resolving into a next action card" },
 ];
 
+// Keep each portrait frame readable for most of its scroll interval. The
+// handoff only happens in the final slice of a stage, so the previous image
+// clears the viewport before the next one settles into place.
+function steppedRailSequence(progress: number) {
+  const scaled = Math.min(signalStages.length - 1, Math.max(0, progress * (signalStages.length - 1)));
+  const index = Math.min(signalStages.length - 2, Math.floor(scaled));
+  if (scaled >= signalStages.length - 1) return signalStages.length - 1;
+  const local = scaled - index;
+  const handoffStart = 0.88;
+  if (local <= handoffStart) return index;
+  const t = (local - handoffStart) / (1 - handoffStart);
+  const eased = t * t * (3 - 2 * t);
+  return index + eased;
+}
+
 const faqItems = [
   ["How does Churnaut identify a visitor?", "Churnaut starts with a known tracked link or session created by your outbound workflow. If there is no known signal, Churnaut does not invent an identity."],
   ["Is Churnaut IP-based?", "No. The product is designed around deterministic context from the link your prospect chose to click, rather than IP-to-company guessing."],
@@ -76,7 +91,8 @@ export function HorizontalSignalStory() {
       const next = reduceMotion ? target : current + (target - current) * 0.12;
       smoothProgressRef.current = next;
       if (trackRef.current) {
-        trackRef.current.style.transform = `translate3d(${-next * railShift}px,0,0)`;
+        const sequence = steppedRailSequence(next);
+        trackRef.current.style.transform = `translate3d(${-sequence * (railShift / (signalStages.length - 1))}px,0,0)`;
       }
       if (!reduceMotion && Math.abs(target - next) > 0.0005) {
         motionFrame = requestAnimationFrame(animateRail);
