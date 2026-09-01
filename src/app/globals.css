@@ -2063,19 +2063,19 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 }
 
 /* Open journey rail: every stage is a standalone portrait image with its own
-   caption. A full viewport of white space separates consecutive stages. */
-.reference-horizontal { height:560vh; background:#f7f7f4; }
+   caption. The complete row travels continuously across the paper surface. */
+.reference-horizontal { height:480vh; background:#f7f7f4; }
 .reference-horizontal-pin { padding:27px 0 34px; background:#f7f7f4; }
 .reference-horizontal-head { position:relative; z-index:2; margin:0; padding-inline:clamp(22px,5vw,74px); }
 .journey-viewport { position:relative; width:100%; height:calc(100svh - 70px); overflow:hidden; }
 .journey-track {
-  --journey-card-width:clamp(280px,27vw,380px);
+  --journey-card-width:clamp(320px,36vw,410px);
   display:flex;
   align-items:flex-start;
-  gap:calc(100vw - var(--journey-card-width));
+  gap:clamp(20px,2.5vw,38px);
   width:max-content;
   height:100%;
-  padding:clamp(42px,6vh,66px) calc((100vw - var(--journey-card-width))/2) 0;
+  padding:clamp(42px,6vh,54px) clamp(24px,6vw,96px) 0;
   will-change:transform;
 }
 .journey-slide { width:var(--journey-card-width); flex:0 0 var(--journey-card-width); margin:0; }
@@ -2087,12 +2087,14 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 .journey-caption small { display:block; max-width:360px; margin-top:7px; color:#6f706c; font:400 12px/1.42 var(--sans); }
 .reference-horizontal-instruction { right:clamp(22px,5vw,74px); bottom:18px; }
 @media (max-width:620px) {
-  .reference-horizontal { height:520vh; }
+  .reference-horizontal { height:460vh; }
   .reference-horizontal-pin { padding-top:20px; padding-bottom:28px; }
   .reference-horizontal-head { padding-inline:15px; }
   .journey-viewport { height:calc(100svh - 54px); }
   .journey-track {
     --journey-card-width:min(82vw,320px);
+    gap:18px;
+    padding-inline:15px;
     padding-top:42px;
   }
   .journey-caption { padding-top:8px; }

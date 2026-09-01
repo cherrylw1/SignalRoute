@@ -11,19 +11,13 @@ const signalStages = [
   { kicker: "04 / ACT", title: "Scout gives the rep a reason.", body: "The return becomes evidence: person, page, timing and what changed in the deal.", image: "/media/scroll-act-vertical.png", alt: "Abstract Churnaut signals resolving into a next action card" },
 ];
 
-// Keep each portrait frame readable for most of its scroll interval. The
-// handoff only happens in the final slice of a stage, so the previous image
-// clears the viewport before the next one settles into place.
-function steppedRailSequence(progress: number) {
-  const scaled = Math.min(signalStages.length - 1, Math.max(0, progress * (signalStages.length - 1)));
-  const index = Math.min(signalStages.length - 2, Math.floor(scaled));
-  if (scaled >= signalStages.length - 1) return signalStages.length - 1;
-  const local = scaled - index;
-  const handoffStart = 0.88;
-  if (local <= handoffStart) return index;
-  const t = (local - handoffStart) / (1 - handoffStart);
-  const eased = t * t * (3 - 2 * t);
-  return index + eased;
+// The rail gets a short settling beat before it starts and a longer final hold
+// after the last card is fully visible. Between those points it travels as one
+// continuous row, directly controlled by scroll.
+function railMotionProgress(progress: number) {
+  const start = 0.06;
+  const end = 0.82;
+  return Math.min(1, Math.max(0, (progress - start) / (end - start)));
 }
 
 const faqItems = [
@@ -91,8 +85,8 @@ export function HorizontalSignalStory() {
       const next = reduceMotion ? target : current + (target - current) * 0.12;
       smoothProgressRef.current = next;
       if (trackRef.current) {
-        const sequence = steppedRailSequence(next);
-        trackRef.current.style.transform = `translate3d(${-sequence * (railShift / (signalStages.length - 1))}px,0,0)`;
+        const motion = railMotionProgress(next);
+        trackRef.current.style.transform = `translate3d(${-motion * railShift}px,0,0)`;
       }
       if (!reduceMotion && Math.abs(target - next) > 0.0005) {
         motionFrame = requestAnimationFrame(animateRail);
@@ -138,10 +132,9 @@ export function HorizontalSignalStory() {
     window.addEventListener("resize", measure);
     return () => { observer?.disconnect(); window.removeEventListener("resize", measure); };
   }, []);
-  // The lead marker advances as each new card takes the rail's lead position,
-  // not as soon as the previous card has merely started leaving the viewport.
-  const sequence = Math.min(signalStages.length - 1, progress * (signalStages.length - 1));
-  const active = Math.min(signalStages.length - 1, Math.floor(sequence));
+  // The counter follows the row's continuous travel and settles on the final
+  // stage for the closing hold.
+  const active = Math.min(signalStages.length - 1, Math.floor(railMotionProgress(progress) * signalStages.length));
   return (
     <section className="reference-horizontal" id="how-it-works" ref={ref} data-stage={active + 1} aria-labelledby="horizontal-title">
       <div className="reference-horizontal-pin">
