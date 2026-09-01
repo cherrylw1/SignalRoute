@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useCallback } from "react";
-import { playSlideSound } from "@/lib/sound";
+import { playSlideSound, playSwitchSound } from "@/lib/sound";
 
 export function SplitLens() {
   const [sliderPos, setSliderPos] = useState(50); // percentage (0 to 100)
@@ -12,13 +12,19 @@ export function SplitLens() {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    const pct = Math.max(8, Math.min(92, (x / rect.width) * 100));
+    let pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+    // Magnetic snap near edges
+    if (pct < 4) pct = 0;
+    if (pct > 96) pct = 100;
+
     setSliderPos(pct);
     playSlideSound(pct / 100);
   }, []);
 
-  const handleMouseDown = () => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
+    handleMove(e.clientX);
   };
 
   const handleMouseUp = () => {
@@ -36,15 +42,61 @@ export function SplitLens() {
     }
   };
 
+  const setToBlind = () => {
+    playSwitchSound();
+    setSliderPos(100);
+  };
+
+  const setToChurnaut = () => {
+    playSwitchSound();
+    setSliderPos(0);
+  };
+
+  const setSplit50 = () => {
+    playSwitchSound();
+    setSliderPos(50);
+  };
+
   return (
     <section className="split-lens-section section-pad" id="comparison" aria-labelledby="split-lens-title">
       <div className="split-lens-head">
-        <p className="reference-kicker">THE TWO REALITIES</p>
-        <h2 id="split-lens-title" className="section-title">
-          Blind outbound<br /><em>versus deterministic signal.</em>
-        </h2>
+        <div className="split-head-row">
+          <div>
+            <p className="reference-kicker">THE TWO REALITIES</p>
+            <h2 id="split-lens-title" className="section-title">
+              Blind outbound<br /><em>versus deterministic signal.</em>
+            </h2>
+          </div>
+
+          <div className="split-pill-toggle">
+            <button
+              type="button"
+              className={`split-toggle-btn ${sliderPos > 70 ? "is-active" : ""}`}
+              onClick={setToBlind}
+              data-cursor="Blind"
+            >
+              ✕ Blind Outbound
+            </button>
+            <button
+              type="button"
+              className={`split-toggle-btn ${sliderPos > 30 && sliderPos <= 70 ? "is-active" : ""}`}
+              onClick={setSplit50}
+              data-cursor="Compare"
+            >
+              Split View
+            </button>
+            <button
+              type="button"
+              className={`split-toggle-btn ${sliderPos <= 30 ? "is-active" : ""}`}
+              onClick={setToChurnaut}
+              data-cursor="Signal"
+            >
+              ✦ With Churnaut
+            </button>
+          </div>
+        </div>
         <p className="section-copy">
-          Drag the lens to compare what happens when a prospect clicks your outreach link with and without Churnaut.
+          Drag the lens or click the toggle to compare what happens when a prospect clicks your outreach link with and without Churnaut.
         </p>
       </div>
 

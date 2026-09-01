@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { PricingCards } from "@/components/pricing-cards";
 import { SignalSimulator } from "@/components/signal-simulator";
+import { BentoGrid } from "@/components/bento-grid";
 import { SplitLens } from "@/components/split-lens";
 import { PipelineCalculator } from "@/components/pipeline-calculator";
 import { DynamicIsland } from "@/components/dynamic-island";
@@ -11,7 +12,6 @@ import {
   ReferenceFaq,
   ReferenceHero,
   ReferenceProof,
-  HorizontalSignalStory,
   ProgressiveStatement,
 } from "@/components/reference-home";
 
@@ -35,7 +35,7 @@ export default function Home() {
 
       <ProgressiveStatement />
       <SignalSimulator />
-      <HorizontalSignalStory />
+      <BentoGrid />
       <SplitLens />
       <ReferenceProof />
       <PipelineCalculator />
