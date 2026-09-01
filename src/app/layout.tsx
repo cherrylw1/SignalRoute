@@ -53,7 +53,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
-      <body><MotionController />{children}</body>
+      <body>
+        <div className="grain-overlay" aria-hidden="true" />
+        <MotionController />
+        {children}
+      </body>
     </html>
   );
 }

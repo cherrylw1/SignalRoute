@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { PricingCards } from "@/components/pricing-cards";
+import { SignalSimulator } from "@/components/signal-simulator";
 import { ReferenceCursor, ReferenceEntry, ReferenceFaq, ReferenceHero, ReferenceProof, HorizontalSignalStory, ProgressiveStatement } from "@/components/reference-home";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       </section>
 
       <ProgressiveStatement />
+      <SignalSimulator />
       <HorizontalSignalStory />
       <ReferenceProof />
 

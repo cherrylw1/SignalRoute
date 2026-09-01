@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { OdometerNumber } from "./odometer-counter";
+import { MagneticButton } from "./magnetic-button";
 
 const signalStages = [
   {
@@ -183,12 +184,23 @@ export function ReferenceHero() {
             Churnaut carries the context from your outbound link into the visit, then turns that moment into a clear sales action.
           </p>
           <div className="reference-hero-actions">
-            <a className="reference-pill reference-pill-dark" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer" data-cursor="Book">
+            <MagneticButton
+              href="https://cal.com/sharath.mb/demo"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="Book"
+              beam
+              className="reference-pill reference-pill-dark"
+            >
               Book a demo <span>↗</span>
-            </a>
-            <a className="reference-text-link" href="#statement" data-cursor="Explore">
+            </MagneticButton>
+            <MagneticButton
+              href="#statement"
+              data-cursor="Explore"
+              className="reference-text-link"
+            >
               See how it works <span>↓</span>
-            </a>
+            </MagneticButton>
           </div>
         </div>
 
@@ -569,9 +581,14 @@ export function ReferenceProof() {
           ))}
         </div>
 
-        <Link className="reference-pill reference-pill-light" href="/scout" data-cursor="Open">
+        <MagneticButton
+          href="/scout"
+          data-cursor="Open"
+          beam
+          className="reference-pill reference-pill-light"
+        >
           Meet Scout AI <span>↗</span>
-        </Link>
+        </MagneticButton>
       </div>
 
       {/* Dynamic Animated Signal Cards */}
@@ -603,7 +620,7 @@ export function ReferenceProof() {
             <div className="proof-card-header">
               <span>{scenario.card2.tag}</span>
               <span className="proof-score-pill">
-                Score <b>{scenario.score}</b>
+                Score <b><OdometerNumber value={scenario.score} /></b>
               </span>
             </div>
             <strong>{scenario.card2.title}</strong>
@@ -702,7 +719,7 @@ export function ReferenceCursor() {
 
     const over = (e: Event) => {
       const target = e.target as HTMLElement;
-      const hit = target.closest("a, button, [data-cursor], .journey-slide, .reference-proof-card");
+      const hit = target.closest("a, button, [data-cursor], .journey-slide, .reference-proof-card, .sim-card");
       if (!labelRef.current) return;
 
       const cursorState = hit?.getAttribute("data-cursor");
@@ -736,4 +753,3 @@ export function ReferenceCursor() {
     </div>
   );
 }
-
