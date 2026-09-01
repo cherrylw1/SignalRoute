@@ -12,18 +12,35 @@ const links = [
   { href: "/blog", label: "Field notes" },
 ];
 
+const storyLinks = [
+  { href: "#how-it-works", label: "How it works" },
+  { href: "/scout", label: "Scout AI" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [storyNav, setStoryNav] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const onScroll = () => setStoryNav(window.scrollY > window.innerHeight * 0.72);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
+
+  const activeLinks = pathname === "/" && storyNav ? storyLinks : links;
 
   return (
     <header className={`site-header ${overlay ? "site-header-overlay" : ""}`}>
       <div className="nav-shell">
         <Brand />
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {links.map((link) => (
+          {activeLinks.map((link) => (
             <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
               {link.label}
             </Link>
@@ -38,7 +55,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         </div>
       </div>
       <div id="mobile-navigation" className={`mobile-nav ${open ? "mobile-nav-open" : ""}`}>
-        {links.map((link, index) => <Link key={link.href} href={link.href}><span>0{index + 1}</span>{link.label}</Link>)}
+        {activeLinks.map((link, index) => <Link key={link.href} href={link.href}><span>0{index + 1}</span>{link.label}</Link>)}
         <div className="mobile-nav-actions">
           <a href="https://app.churnaut.com" target="_blank" rel="noreferrer">Sign in</a>
           <a className="button button-ink" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo</a>
