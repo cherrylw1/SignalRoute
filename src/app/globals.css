@@ -1939,3 +1939,25 @@ body:has(.reference-hero) .site-header-overlay a,body:has(.reference-hero) butto
 @keyframes reference-entry-progress { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 @keyframes reference-entry-copy-left { from { opacity:0; transform:translateX(-10px); } to { opacity:1; transform:none; } }
 @keyframes reference-entry-copy-right { from { opacity:0; transform:translateX(10px); } to { opacity:1; transform:none; } }
+
+/* Portrait journey frames: each visual gets its own caption rail so the
+   image can stay legible while the story copy travels with the card. */
+.reference-horizontal-canvas { height:min(720px,calc(100svh - 95px)); aspect-ratio:auto; }
+.reference-horizontal-track figure { display:grid; grid-template-rows:minmax(0,1fr) auto; justify-items:center; align-items:center; gap:14px; padding:clamp(18px,2.2vw,28px); }
+.reference-horizontal-track figure:after { display:none; }
+.reference-scroll-card { position:relative; width:min(100%,320px); aspect-ratio:4 / 5; overflow:hidden; border:1px solid rgba(247,247,243,.27); border-radius:19px 19px 54px 19px; background:#111214; box-shadow:0 20px 45px rgba(0,0,0,.34), 12px 12px 0 rgba(255,75,34,.23); }
+.reference-scroll-card img { object-fit:cover; }
+.reference-horizontal-track .reference-scroll-card-info { position:relative; z-index:2; width:min(100%,520px); display:grid; grid-template-columns:minmax(0,1fr) auto; gap:5px 16px; align-items:end; padding:13px 15px 12px; color:var(--ref-ink); font:400 13px/1.3 var(--sans); letter-spacing:normal; border:1px solid rgba(17,18,20,.14); border-radius:12px; background:rgba(247,247,243,.96); box-shadow:0 12px 25px rgba(0,0,0,.22); }
+.reference-scroll-card-info div { min-width:0; display:grid; gap:4px; }
+.reference-scroll-card-info span { color:var(--ref-orange); font:700 8px/1 var(--font-mono),monospace; letter-spacing:.13em; }
+.reference-scroll-card-info strong { overflow:hidden; color:var(--ref-ink); text-overflow:ellipsis; white-space:nowrap; font-size:15px; letter-spacing:-.04em; }
+.reference-scroll-card-info small { grid-column:1 / -1; max-width:430px; color:#6f706c; font-size:11px; line-height:1.35; }
+.reference-scroll-card-info b { align-self:start; color:#8b8c88; font:700 8px/1 var(--font-mono),monospace; letter-spacing:.1em; }
+@media (max-width:620px) {
+  .reference-horizontal-canvas { height:min(530px,calc(100svh - 110px)); aspect-ratio:auto; }
+  .reference-horizontal-track figure { padding:14px; gap:10px; }
+  .reference-scroll-card { width:min(100%,320px); border-radius:16px 16px 46px 16px; box-shadow:0 14px 28px rgba(0,0,0,.3), 8px 8px 0 rgba(255,75,34,.23); }
+  .reference-scroll-card-info { padding:11px 12px 10px; gap:4px 12px; }
+  .reference-scroll-card-info strong { font-size:13px; }
+  .reference-scroll-card-info small { font-size:10px; }
+}
