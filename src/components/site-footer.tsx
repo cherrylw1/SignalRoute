@@ -14,7 +14,7 @@ export function SiteFooter() {
           <p>Deterministic website signals and deal intelligence for small B2B SaaS sales teams.</p>
         </div>
         <div><h3>Explore</h3><Link href="/product">Product</Link><Link href="/scout">Scout AI</Link><Link href="/pricing">Pricing</Link><Link href="/blog">Field notes</Link></div>
-        <div><h3>Company</h3><Link href="/about">About</Link><Link href="/careers">Careers</Link><a href="mailto:support@churnaut.com">Contact</a><a href="https://app.churnaut.com" target="_blank" rel="noreferrer">Sign in</a></div>
+        <div><h3>Company</h3><Link href="/about">About</Link><Link href="/careers">Careers</Link><a href="mailto:support@churnaut.com">Contact</a><a href="https://app.churnaut.com" target="_blank" rel="noreferrer">Sign in</a><div className="footer-subscribe"><p>Stay close to the signal.</p><form action="mailto:support@churnaut.com" method="post" encType="text/plain"><label className="sr-only" htmlFor="footer-email">Email address</label><input id="footer-email" name="email" type="email" placeholder="Email address" required /><button type="submit">Subscribe <span>↗</span></button></form></div></div>
         <div><h3>Legal</h3><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
       <div className="footer-bottom"><span>© 2026 Churnaut Technologies</span><span>Built in Bengaluru for the moment that matters.</span></div>
