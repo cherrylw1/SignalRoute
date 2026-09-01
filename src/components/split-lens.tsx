@@ -180,9 +180,12 @@ export function SplitLens() {
         {/* Draggable Divider Handle */}
         <div className="split-divider-line" style={{ left: `${sliderPos}%` }}>
           <div className="split-handle-knob">
-            <span>‹ ›</span>
+            <span className="knob-arrows">‹ ›</span>
+            <span className="knob-sparkle" />
           </div>
           <span className="split-laser-glow" />
+          <span className="split-laser-particle p-top" />
+          <span className="split-laser-particle p-bottom" />
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OdometerNumber } from "./odometer-counter";
+import { playSuccessSound, playSwitchSound } from "@/lib/sound";
 
 interface CompanyPreset {
   id: string;
@@ -109,6 +110,7 @@ export function SignalSimulator() {
     : PRESETS[selectedId] || PRESETS.stripe;
 
   const triggerSimulation = (presetId?: string) => {
+    playSwitchSound();
     setIsSimulating(true);
     if (presetId) {
       setIsCustom(false);
@@ -116,6 +118,7 @@ export function SignalSimulator() {
     }
     setTimeout(() => {
       setIsSimulating(false);
+      playSuccessSound();
     }, 450);
   };
 
@@ -247,10 +250,18 @@ export function SignalSimulator() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               >
+                {/* Laser Scanline Beam on DOM mutation */}
+                <div className="sim-laser-scanline" />
+
                 <div className="sim-prospect-banner">
                   <span>✦ WELCOME {activePreset.name.toUpperCase()} TEAM</span>
                 </div>
-                <h3 className="sim-live-headline">{activePreset.headline}</h3>
+
+                <div className="sim-inspectable-headline" data-cursor="Inspect">
+                  <span className="sim-devtools-tag">#hero-title [480×64] · 11ms Swap</span>
+                  <h3 className="sim-live-headline">{activePreset.headline}</h3>
+                </div>
+
                 <p className="sim-live-subhead">{activePreset.subhead}</p>
                 <div className="sim-live-cta-row">
                   <button type="button" className="sim-live-cta-btn">

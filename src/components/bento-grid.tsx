@@ -21,6 +21,27 @@ export function BentoGrid() {
     setDomVariant(variant);
   };
 
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rx = ((y - centerY) / centerY) * -4;
+    const ry = ((x - centerX) / centerX) * 4;
+    card.style.setProperty("--rx", `${rx}deg`);
+    card.style.setProperty("--ry", `${ry}deg`);
+    card.style.setProperty("--mouse-x", `${(x / rect.width) * 100}%`);
+    card.style.setProperty("--mouse-y", `${(y / rect.height) * 100}%`);
+  };
+
+  const handleCardMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  };
+
   return (
     <section className="bento-section section-pad" id="how-it-works" aria-labelledby="bento-title">
       <div className="bento-head">
@@ -37,6 +58,8 @@ export function BentoGrid() {
         {/* Card 1: Outbound Link Engine (Large) */}
         <motion.div
           className="bento-card bento-card-wide has-border-beam"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
@@ -81,6 +104,8 @@ export function BentoGrid() {
         {/* Card 2: 11ms Deterministic Resolve (Compact) */}
         <motion.div
           className="bento-card bento-card-compact"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
@@ -128,6 +153,8 @@ export function BentoGrid() {
         {/* Card 3: Live DOM Rule Swapper (Compact / Medium) */}
         <motion.div
           className="bento-card bento-card-compact"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
@@ -194,6 +221,8 @@ export function BentoGrid() {
         {/* Card 4: Scout Deal Intelligence Radar (Wide / Medium) */}
         <motion.div
           className="bento-card bento-card-wide"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}

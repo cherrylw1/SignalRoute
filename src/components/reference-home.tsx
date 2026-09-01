@@ -109,6 +109,7 @@ export function ReferenceEntry() {
 
 export function ReferenceHero() {
   const [scrollY, setScrollY] = useState(0);
+  const [hoveredBadge, setHoveredBadge] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -162,8 +163,33 @@ export function ReferenceHero() {
             transition: "transform 0.15s ease-out",
           }}
         >
+          {/* Fiber-Optic SVG Splines */}
+          <svg className="hero-spline-canvas" aria-hidden="true">
+            <path
+              d="M 120 50 C 240 50, 200 160, 320 180"
+              fill="none"
+              stroke="rgba(223, 255, 91, 0.25)"
+              strokeWidth="1.5"
+              strokeDasharray="4 4"
+            />
+            <circle cx="320" cy="180" r="3" fill="#dfff5b" className="hero-spline-pulse-1" />
+
+            <path
+              d="M 820 120 C 700 120, 680 220, 560 240"
+              fill="none"
+              stroke="rgba(223, 99, 68, 0.25)"
+              strokeWidth="1.5"
+              strokeDasharray="4 4"
+            />
+            <circle cx="560" cy="240" r="3" fill="#df6344" className="hero-spline-pulse-2" />
+          </svg>
+
           {/* Floating Live Signal Badges */}
-          <div className="hero-floating-badge hero-badge-left">
+          <div
+            className={`hero-floating-badge hero-badge-left ${hoveredBadge === "maya" ? "is-hovered" : ""}`}
+            onMouseEnter={() => setHoveredBadge("maya")}
+            onMouseLeave={() => setHoveredBadge(null)}
+          >
             <span className="badge-pulse-dot" />
             <div>
               <strong>Maya @ Northstar</strong>
@@ -171,7 +197,11 @@ export function ReferenceHero() {
             </div>
           </div>
 
-          <div className="hero-floating-badge hero-badge-right">
+          <div
+            className={`hero-floating-badge hero-badge-right ${hoveredBadge === "swap" ? "is-hovered" : ""}`}
+            onMouseEnter={() => setHoveredBadge("swap")}
+            onMouseLeave={() => setHoveredBadge(null)}
+          >
             <span className="badge-bolt">⚡</span>
             <div>
               <strong>Personalized in 12ms</strong>
@@ -179,7 +209,11 @@ export function ReferenceHero() {
             </div>
           </div>
 
-          <div className="hero-floating-badge hero-badge-bottom">
+          <div
+            className={`hero-floating-badge hero-badge-bottom ${hoveredBadge === "scout" ? "is-hovered" : ""}`}
+            onMouseEnter={() => setHoveredBadge("scout")}
+            onMouseLeave={() => setHoveredBadge(null)}
+          >
             <span className="badge-spark">✦</span>
             <div>
               <strong>Scout Deal Score: 82</strong>
@@ -188,6 +222,9 @@ export function ReferenceHero() {
           </div>
 
           <div className="reference-hero-product" aria-label="Churnaut dashboard showing the known buyer journey">
+            {hoveredBadge && (
+              <div className={`hero-dashboard-target-glow target-${hoveredBadge}`} />
+            )}
             <Image
               src="/media/hero-dashboard-static.png"
               alt="Churnaut signal route dashboard showing a known account, return visit, and next action"
@@ -280,6 +317,9 @@ export function ReferenceProof() {
 
   return (
     <section className="reference-proof" id="proof" aria-labelledby="proof-title">
+      {/* Ambient Radar Sweep */}
+      <div className="proof-radar-sweep-cone" aria-hidden="true" />
+
       <div className="reference-proof-bg" aria-hidden="true">
         SIGNALS<br />IN MOTION.
       </div>

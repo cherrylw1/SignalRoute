@@ -3632,7 +3632,169 @@ html.lenis, html.lenis body { height:auto; }
 @media (max-width:900px) {
   .bento-grid-container { grid-template-columns:1fr; }
   .bento-scout-row { flex-direction:column; align-items:stretch; }
+  .hero-spline-canvas { display:none; }
+  .proof-radar-sweep-cone { display:none; }
 }
+
+/* Hero Fiber-Optic Splines & Badge Targeting */
+.hero-spline-canvas {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:5;
+  overflow:visible;
+}
+.hero-spline-pulse-1 {
+  animation:spline-glow 2.4s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 6px #dfff5b);
+}
+.hero-spline-pulse-2 {
+  animation:spline-glow 2.8s ease-in-out infinite alternate .5s;
+  filter:drop-shadow(0 0 6px #df6344);
+}
+@keyframes spline-glow {
+  0% { r:2.5px; opacity:0.5; }
+  100% { r:5px; opacity:1; }
+}
+.hero-floating-badge.is-hovered {
+  transform:scale(1.08) !important;
+  border-color:#dfff5b !important;
+  box-shadow:0 12px 30px rgba(0,0,0,0.35), 0 0 16px rgba(223,255,91,0.3) !important;
+}
+.hero-dashboard-target-glow {
+  position:absolute;
+  border-radius:12px;
+  border:1.5px solid #dfff5b;
+  box-shadow:0 0 24px rgba(223,255,91,0.4), inset 0 0 16px rgba(223,255,91,0.15);
+  z-index:10;
+  pointer-events:none;
+  animation:target-pulse 1.5s ease-in-out infinite alternate;
+}
+.target-maya { top:18%; left:8%; width:34%; height:28%; }
+.target-swap { top:22%; right:10%; width:44%; height:32%; }
+.target-scout { bottom:12%; left:24%; width:52%; height:36%; }
+@keyframes target-pulse {
+  0% { opacity:0.6; transform:scale(0.99); }
+  100% { opacity:1; transform:scale(1.01); }
+}
+
+/* Simulator Laser Scanline & DevTools Inspect Tag */
+.sim-browser-content { position:relative; overflow:hidden; }
+.sim-laser-scanline {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #df6344, #dfff5b, #df6344, transparent);
+  box-shadow:0 0 12px #dfff5b, 0 0 20px #df6344;
+  z-index:20;
+  pointer-events:none;
+  animation:laser-scan .8s cubic-bezier(0.2,0,0.2,1) forwards;
+}
+@keyframes laser-scan {
+  0% { top:0%; opacity:0; }
+  20% { opacity:1; }
+  80% { opacity:1; }
+  100% { top:100%; opacity:0; }
+}
+.sim-inspectable-headline {
+  position:relative;
+  cursor:crosshair;
+  padding:4px;
+  border-radius:6px;
+  transition:background .15s ease;
+}
+.sim-inspectable-headline:hover {
+  background:rgba(223,99,68,0.06);
+  outline:1px dashed rgba(223,99,68,0.4);
+}
+.sim-devtools-tag {
+  display:none;
+  position:absolute;
+  top:-16px;
+  left:4px;
+  font:700 8px var(--font-mono),monospace;
+  color:#df6344;
+  background:#fffdf8;
+  padding:1px 4px;
+  border-radius:3px;
+  border:1px solid rgba(223,99,68,0.3);
+}
+.sim-inspectable-headline:hover .sim-devtools-tag { display:block; }
+
+/* Bento 3D Perspective Tilt & Specular Glass Spotlight */
+.bento-card {
+  transform:perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.bento-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(223,255,91,0.08), transparent 70%);
+  pointer-events:none;
+  z-index:1;
+}
+
+/* Proof Section Ambient Radar Sweep */
+.reference-proof { position:relative; overflow:hidden; }
+.proof-radar-sweep-cone {
+  position:absolute;
+  top:-20%;
+  right:-10%;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(223,255,91,0.06) 60deg, transparent 90deg);
+  pointer-events:none;
+  z-index:1;
+  animation:radar-sweep 10s linear infinite;
+}
+@keyframes radar-sweep {
+  0% { transform:rotate(0deg); }
+  100% { transform:rotate(360deg); }
+}
+
+/* Split Lens Laser Sparks */
+.split-handle-knob { position:relative; }
+.knob-sparkle {
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:1px solid rgba(223,255,91,0.5);
+  animation:sparkle-pulse 1.8s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sparkle-pulse {
+  0% { transform:scale(0.9); opacity:0.3; }
+  50% { transform:scale(1.15); opacity:0.8; }
+  100% { transform:scale(0.9); opacity:0.3; }
+}
+.split-laser-particle {
+  position:absolute;
+  left:-2px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#dfff5b;
+  box-shadow:0 0 8px #dfff5b;
+}
+.p-top { top:15%; animation:particle-float-top 3s ease-in-out infinite alternate; }
+.p-bottom { bottom:15%; animation:particle-float-bot 3.5s ease-in-out infinite alternate; }
+@keyframes particle-float-top {
+  0% { top:10%; opacity:0.4; }
+  100% { top:40%; opacity:1; }
+}
+@keyframes particle-float-bot {
+  0% { bottom:10%; opacity:0.4; }
+  100% { bottom:40%; opacity:1; }
+}
+
 
 
 
