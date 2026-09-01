@@ -35,11 +35,8 @@ export function ReferenceHero() {
           <p className="reference-hero-lede">Churnaut carries the context from your outbound link into the visit, then turns that moment into a clear sales action.</p>
           <div className="reference-hero-actions"><a className="reference-pill reference-pill-dark" href="https://cal.com/sharath.mb/demo" target="_blank" rel="noreferrer">Book a demo <span>↗</span></a><a className="reference-text-link" href="#statement">See how it works <span>↓</span></a></div>
         </div>
-        <div className="reference-hero-product" aria-label="Churnaut product film showing the known buyer journey">
-          <div className="reference-product-chrome"><span><i /> CHURNAUT / SIGNAL ROUTE</span><strong>LIVE · 400 MS</strong></div>
-          <video src="/media/churnaut-launch-2026.mp4" poster="/media/churnaut-launch-poster.png" autoPlay muted loop playsInline preload="metadata" />
-          <div className="reference-product-overlay"><span>KNOWN VISIT</span><strong>Northstar Labs</strong><small>returning account · high intent</small></div>
-          <div className="reference-product-scan" aria-hidden="true" />
+        <div className="reference-hero-product" aria-label="Churnaut dashboard showing the known buyer journey">
+          <Image src="/media/hero-dashboard-static.png" alt="Churnaut signal route dashboard showing a known account, return visit, and next action" fill priority sizes="(max-width: 900px) 92vw, 1080px" />
         </div>
       </div>
       <div className="reference-hero-bottom"><span>CONTEXT THAT SURVIVES THE VISIT</span><span>SCROLL TO CONTINUE ↓</span></div>

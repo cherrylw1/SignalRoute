@@ -2006,3 +2006,23 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   body:has(.reference-hero) .site-footer .footer-brand { grid-column:1 / -1; }
   body:has(.reference-hero) .footer-subscribe form { max-width:none; }
 }
+
+/* Hero dashboard composition: one centered statement, one centered product
+   object. The static frame replaces the film in the hero while keeping the
+   existing launch video available for a later proof section. */
+.reference-hero-inner { display:flex; flex-direction:column; align-items:center; gap:36px; }
+.reference-hero-copy { width:min(1220px,100%); max-width:none; text-align:center; }
+.reference-hero h1 { font-size:clamp(4rem,6.2vw,7.5rem); }
+.reference-hero-lede { margin-left:auto; margin-right:auto; }
+.reference-hero-actions { justify-content:center; }
+.reference-hero-product { width:min(1080px,92vw); aspect-ratio:3 / 2; margin:0 auto; transform:translateY(38px) scale(.97); rotate:0deg; border-radius:30px 30px 92px 30px; }
+.reference-hero-product > img { object-fit:cover; }
+@media (max-width:900px) {
+  .reference-hero-inner { gap:30px; }
+  .reference-hero-product { width:min(780px,100%); }
+}
+@media (max-width:620px) {
+  .reference-hero-copy { text-align:center; }
+  .reference-hero h1 { font-size:clamp(3.4rem,15vw,5.4rem); }
+  .reference-hero-product { width:100%; aspect-ratio:3 / 2; border-radius:20px 20px 58px 20px; box-shadow:10px 12px 0 rgba(247,247,243,.18),0 26px 60px rgba(17,18,20,.24); }
+}
