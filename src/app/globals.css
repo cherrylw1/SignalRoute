@@ -5596,134 +5596,71 @@ html.lenis, html.lenis body { height:auto; }
 }
 
 /* =========================================================
-   2026 PHOTONIC HORIZON SPLIT (Mechanical Dual-Blade Shutter Reveal)
+   2026 THE 3D REVOLVING SIGNAL CHAMBER (Cylindrical Quantum Router Trick)
    ========================================================= */
 
-.photonic-split-container {
+.revolving-chamber-stage {
+  perspective: 1500px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+
+.revolving-chamber-facet {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  isolation: isolate;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease;
 }
 
-.photonic-content-chassis {
-  position: relative;
-  width: 100%;
-  z-index: 1;
-}
-
-/* Mechanical Shutter Gate (Full-screen overlay that parts vertically) */
-.shutter-gate {
+/* Optical Horizon Seam (Laser line across top rim of each chamber facet) */
+.chamber-horizon-seam {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 20;
-  overflow: hidden;
-}
-
-/* Top Shutter Blade: covers top half [0% to 50%] */
-.shutter-blade {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 50.5%;
-  will-change: transform;
-  pointer-events: none;
-}
-
-.shutter-blade-top {
   top: 0;
-  transform-origin: top center;
-}
-
-/* Bottom Shutter Blade: covers bottom half [50% to 100%] */
-.shutter-blade-bottom {
-  bottom: 0;
-  transform-origin: bottom center;
-}
-
-/* Shutter blade color themes matching the palette */
-.theme-paper .shutter-blade {
-  background: #f7f7f3;
-}
-
-.theme-dark .shutter-blade {
-  background: #111214;
-}
-
-.theme-forest .shutter-blade {
-  background: #0f2723;
-}
-
-/* Glowing edge along the parting seam */
-.shutter-edge-glow {
-  position: absolute;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 75, 34, 0.9), transparent);
-  box-shadow: 0 0 16px rgba(255, 75, 34, 0.65), 0 0 32px rgba(255, 75, 34, 0.35);
-}
-
-.shutter-edge-glow-bottom {
-  bottom: 0;
-}
-
-.shutter-edge-glow-top {
-  top: 0;
-}
-
-.theme-forest .shutter-edge-glow {
-  background: linear-gradient(90deg, transparent, #dfff5b, transparent);
-  box-shadow: 0 0 18px rgba(223, 255, 91, 0.8), 0 0 36px rgba(223, 255, 91, 0.4);
-}
-
-.theme-dark .shutter-edge-glow {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
-}
-
-/* The Photonic Horizon Laser Beam: centered laser slit */
-.horizon-laser-beam {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 3px;
-  margin-top: -1.5px;
-  background: linear-gradient(90deg, transparent 5%, rgba(255, 75, 34, 1) 30%, #fff 50%, rgba(255, 75, 34, 1) 70%, transparent 95%);
-  box-shadow: 0 0 20px rgba(255, 75, 34, 0.95), 0 0 45px rgba(255, 75, 34, 0.6);
+  background: linear-gradient(90deg, transparent, rgba(255, 75, 34, 0.7), transparent);
+  box-shadow: 0 0 14px rgba(255, 75, 34, 0.4);
   pointer-events: none;
-  transform-origin: center center;
-  z-index: 25;
+  z-index: 30;
 }
 
-.theme-forest .horizon-laser-beam {
-  background: linear-gradient(90deg, transparent 5%, #dfff5b 30%, #fff 50%, #dfff5b 70%, transparent 95%);
-  box-shadow: 0 0 24px rgba(223, 255, 91, 1), 0 0 50px rgba(223, 255, 91, 0.6);
+.theme-forest .chamber-horizon-seam {
+  background: linear-gradient(90deg, transparent, #dfff5b, transparent);
+  box-shadow: 0 0 16px rgba(223, 255, 91, 0.6);
 }
 
-.theme-dark .horizon-laser-beam {
-  background: linear-gradient(90deg, transparent 5%, #ffffff 30%, #fff 50%, #ffffff 70%, transparent 95%);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+.theme-dark .chamber-horizon-seam {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
 
-/* Child section clean resets */
-.photonic-split-container .section-pad,
-.photonic-split-container .signal-simulator-section,
-.photonic-split-container .camera-tunnel-section,
-.photonic-split-container .bento-grid-section,
-.photonic-split-container .cable-patch-bay-section,
-.photonic-split-container .split-lens-section,
-.photonic-split-container .reference-proof,
-.photonic-split-container .telemetry-terminal-section,
-.photonic-split-container .pipeline-calculator-section,
-.photonic-split-container .reference-privacy,
-.photonic-split-container .reference-pricing,
-.photonic-split-container .reference-faq {
+.chamber-content-wrap {
+  width: 100%;
+  position: relative;
+}
+
+/* Clean reset for wrapped child sections */
+.revolving-chamber-facet .section-pad,
+.revolving-chamber-facet .signal-simulator-section,
+.revolving-chamber-facet .camera-tunnel-section,
+.revolving-chamber-facet .bento-grid-section,
+.revolving-chamber-facet .cable-patch-bay-section,
+.revolving-chamber-facet .split-lens-section,
+.revolving-chamber-facet .reference-proof,
+.revolving-chamber-facet .telemetry-terminal-section,
+.revolving-chamber-facet .pipeline-calculator-section,
+.revolving-chamber-facet .reference-privacy,
+.revolving-chamber-facet .reference-pricing,
+.revolving-chamber-facet .reference-faq {
   border-top: none;
 }
-
 
 
 
