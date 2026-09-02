@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OdometerNumber } from "./odometer-counter";
 import { MagneticButton } from "./magnetic-button";
+import { InteractiveHeroDashboard } from "./interactive-hero-dashboard";
 
 const proofScenarios = [
   {
@@ -225,13 +225,7 @@ export function ReferenceHero() {
             {hoveredBadge && (
               <div className={`hero-dashboard-target-glow target-${hoveredBadge}`} />
             )}
-            <Image
-              src="/media/hero-dashboard-static.png"
-              alt="Churnaut signal route dashboard showing a known account, return visit, and next action"
-              fill
-              priority
-              sizes="(max-width: 900px) 92vw, 1080px"
-            />
+            <InteractiveHeroDashboard hoveredBadge={hoveredBadge} />
           </div>
         </div>
       </div>
