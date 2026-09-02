@@ -163,26 +163,7 @@ export function ReferenceHero() {
             transition: "transform 0.15s ease-out",
           }}
         >
-          {/* Fiber-Optic SVG Splines */}
-          <svg className="hero-spline-canvas" aria-hidden="true">
-            <path
-              d="M 120 50 C 240 50, 200 160, 320 180"
-              fill="none"
-              stroke="rgba(223, 255, 91, 0.25)"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-            />
-            <circle cx="320" cy="180" r="3" fill="#dfff5b" className="hero-spline-pulse-1" />
 
-            <path
-              d="M 820 120 C 700 120, 680 220, 560 240"
-              fill="none"
-              stroke="rgba(223, 99, 68, 0.25)"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-            />
-            <circle cx="560" cy="240" r="3" fill="#df6344" className="hero-spline-pulse-2" />
-          </svg>
 
           {/* Floating Live Signal Badges */}
           <div

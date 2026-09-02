@@ -2007,24 +2007,82 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   body:has(.reference-hero) .footer-subscribe form { max-width:none; }
 }
 
-/* Hero dashboard composition: one centered statement, one centered product
-   object. The static frame replaces the film in the hero while keeping the
-   existing launch video available for a later proof section. */
-.reference-hero-inner { display:flex; flex-direction:column; align-items:center; gap:36px; }
-.reference-hero-copy { width:min(1220px,100%); max-width:none; text-align:center; }
-.reference-hero h1 { font-size:clamp(4rem,6.2vw,7.5rem); }
-.reference-hero-lede { margin-left:auto; margin-right:auto; }
-.reference-hero-actions { justify-content:center; }
-.reference-hero-product { width:min(1080px,92vw); aspect-ratio:3 / 2; margin:0 auto; transform:translateY(38px) scale(.97); rotate:0deg; border-radius:30px 30px 92px 30px; }
+/* Hero dashboard composition: centered statement, centered product
+   object, scaled to fit comfortably within the viewport above the fold. */
+.reference-hero {
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  padding:100px clamp(20px,4vw,40px) 36px;
+  color:var(--ref-ink);
+  background:var(--ref-orange);
+  isolation:isolate;
+}
+.reference-hero-inner {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  width:min(1200px,100%);
+  margin:0 auto;
+}
+.reference-hero-copy {
+  width:min(1100px,100%);
+  max-width:none;
+  text-align:center;
+}
+.reference-hero .reference-kicker {
+  justify-content:center;
+  margin:0 auto 12px;
+}
+.reference-hero h1 {
+  font:750 clamp(2.5rem,4.4vw,4.5rem)/0.96 var(--sans);
+  letter-spacing:-.06em;
+  margin:0;
+  text-wrap:balance;
+}
+.reference-hero-lede {
+  max-width:580px;
+  margin:12px auto 0;
+  font-size:15px;
+  line-height:1.55;
+  color:rgba(17,18,20,0.72);
+}
+.reference-hero-actions {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-top:16px;
+}
+.reference-hero-product-container {
+  width:min(960px,94vw);
+  margin:0 auto;
+  position:relative;
+}
+.reference-hero-product {
+  width:100%;
+  aspect-ratio:16 / 9.8;
+  margin:0 auto;
+  transform:none;
+  rotate:0deg;
+  border-radius:24px;
+  box-shadow:0 24px 64px rgba(17,18,20,0.2), 0 0 0 1px rgba(247,247,243,0.35);
+}
 .reference-hero-product > img { object-fit:cover; }
 @media (max-width:900px) {
-  .reference-hero-inner { gap:30px; }
-  .reference-hero-product { width:min(780px,100%); }
+  .reference-hero { padding:90px 16px 28px; min-height:auto; }
+  .reference-hero-inner { gap:18px; }
+  .reference-hero-product { width:100%; aspect-ratio:16 / 10; border-radius:18px; }
 }
 @media (max-width:620px) {
   .reference-hero-copy { text-align:center; }
-  .reference-hero h1 { font-size:clamp(3.4rem,15vw,5.4rem); }
-  .reference-hero-product { width:100%; aspect-ratio:3 / 2; border-radius:20px 20px 58px 20px; box-shadow:10px 12px 0 rgba(247,247,243,.18),0 26px 60px rgba(17,18,20,.24); }
+  .reference-hero h1 { font-size:clamp(2.3rem,11vw,3.6rem); }
+  .reference-hero-product { width:100%; aspect-ratio:1 / 1.02; border-radius:18px; box-shadow:0 14px 36px rgba(17,18,20,0.2); }
 }
 
 /* Horizontal story rail: independent editorial cards on the paper surface.
@@ -2229,19 +2287,22 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
 .badge-spark { color:#df6344; font-size:12px; }
 
 .hero-badge-left {
-  top:8%;
-  left:-18px;
+  top:20%;
+  left:-48px;
   animation:hero-float-1 5.2s ease-in-out infinite alternate;
 }
 .hero-badge-right {
-  top:34%;
-  right:-24px;
+  top:24%;
+  right:-48px;
   animation:hero-float-2 6s ease-in-out infinite alternate;
 }
 .hero-badge-bottom {
-  bottom:6%;
-  left:6%;
+  bottom:-18px;
+  right:36px;
   animation:hero-float-3 5.6s ease-in-out infinite alternate;
+}
+@media (max-width: 1160px) {
+  .hero-floating-badge { display:none; }
 }
 @keyframes hero-float-1 { 0% { transform:translateY(0) rotate(-1deg); } 100% { transform:translateY(-8px) rotate(1deg); } }
 @keyframes hero-float-2 { 0% { transform:translateY(0) rotate(1.5deg); } 100% { transform:translateY(-10px) rotate(-1deg); } }
