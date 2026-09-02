@@ -1968,22 +1968,22 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
 .plan-billing {
   display:inline-flex;
   align-items:center;
-  background:rgba(0,0,0,0.35);
-  border:1px solid rgba(255,255,255,0.12);
+  background:#081613 !important;
+  border:1px solid rgba(255,255,255,0.16) !important;
   border-radius:999px;
   padding:4px;
   margin-bottom:36px;
-  box-shadow:inset 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .plan-billing-option {
   position:relative;
   border:none;
   background:transparent;
-  padding:8px 20px;
+  padding:9px 22px;
   border-radius:999px;
-  font:700 12.5px/1 var(--sans);
-  color:#9cb5a9;
+  font:700 13px/1 var(--sans);
+  color:#a0c2b2 !important;
   cursor:pointer;
   transition:color .2s ease;
   display:inline-flex;
@@ -1992,215 +1992,217 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
 }
 
 .plan-billing-option.is-active {
-  color:#ffffff;
+  color:#0c201d !important;
+  font-weight:800 !important;
 }
 
 .billing-pill-active {
   position:absolute;
   inset:0;
   border-radius:999px;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.2);
-  box-shadow:0 2px 8px rgba(0,0,0,0.35);
+  background:#dfff5b !important;
+  border:1px solid #dfff5b !important;
+  box-shadow:0 0 14px rgba(223,255,91,0.35) !important;
 }
 
 .save-badge {
   display:inline-block;
   padding:2px 8px;
   border-radius:999px;
-  background:rgba(223,255,91,0.2);
-  color:#dfff5b;
+  background:rgba(12,32,29,0.18);
+  color:#0c201d;
   font:800 10px/1 var(--font-mono),monospace;
   letter-spacing:.04em;
-  border:1px solid rgba(223,255,91,0.35);
+  border:1px solid rgba(12,32,29,0.25);
 }
 
 /* Plan Grid */
 .reference-pricing .plan-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:22px;
   align-items:stretch;
 }
 
-/* Base Card (Symmetrical, Edge-Lit Dark Glass) */
-.reference-pricing .plan-card {
+/* Base Card (Solid Opaque Dark Luxury Chassis) */
+.reference-pricing .plan-card,
+.luxury-pricing-card {
   position:relative;
   display:flex;
   flex-direction:column;
-  padding:32px 28px;
+  padding:36px 30px;
   border-radius:20px !important;
-  background:rgba(255,255,255,0.035);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,0.1);
-  box-shadow:0 16px 36px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+  background:#102521 !important;
+  border:1px solid rgba(255,255,255,0.14) !important;
+  box-shadow:0 18px 45px rgba(0,0,0,0.45) !important;
   transition:transform .25s cubic-bezier(0.16,1,0.3,1), border-color .25s ease, box-shadow .25s ease;
   overflow:hidden;
   min-height:auto;
-  color:#f7f2e8;
+  color:#ffffff !important;
 }
 
-.reference-pricing .plan-card:hover {
+.reference-pricing .plan-card:hover,
+.luxury-pricing-card:hover {
   transform:translateY(-6px);
-  border-color:rgba(255,255,255,0.22);
-  box-shadow:0 24px 50px rgba(0,0,0,0.45);
+  background:#102521 !important;
+  border-color:rgba(255,255,255,0.3) !important;
+  box-shadow:0 26px 55px rgba(0,0,0,0.6) !important;
 }
 
-/* Featured Card (Electric Lime Halo) */
-.reference-pricing .plan-card-featured {
-  background:rgba(223,255,91,0.04);
-  border:1px solid rgba(223,255,91,0.45);
-  box-shadow:0 24px 60px rgba(0,0,0,0.45), 0 0 40px rgba(223,255,91,0.12), inset 0 1px 0 rgba(223,255,91,0.4);
-  color:#f7f2e8;
+/* Featured Card (Growth Tier - Solid Elevated Forest with Lime Border) */
+.reference-pricing .plan-card-featured,
+.luxury-pricing-card.plan-card-featured {
+  background:#14332d !important;
+  border:2px solid #dfff5b !important;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6), 0 0 35px rgba(223,255,91,0.2) !important;
+  color:#ffffff !important;
 }
 
-.reference-pricing .plan-card-featured:hover {
-  border-color:#dfff5b;
-  box-shadow:0 28px 70px rgba(0,0,0,0.55), 0 0 50px rgba(223,255,91,0.2), inset 0 1px 0 rgba(223,255,91,0.6);
+.reference-pricing .plan-card-featured:hover,
+.luxury-pricing-card.plan-card-featured:hover {
+  border-color:#ffffff !important;
+  box-shadow:0 28px 70px rgba(0,0,0,0.7), 0 0 50px rgba(223,255,91,0.3) !important;
 }
 
 .card-featured-glow {
   position:absolute;
   top:0;
-  left:10%;
-  right:10%;
-  height:2px;
+  left:0;
+  right:0;
+  height:3px;
   background:linear-gradient(90deg, transparent, #dfff5b, transparent);
-  box-shadow:0 0 16px #dfff5b;
+  box-shadow:0 0 18px #dfff5b;
   pointer-events:none;
 }
 
 .plan-tier-badge {
   position:absolute;
-  top:20px;
-  right:20px;
-  padding:4px 10px;
+  top:22px;
+  right:22px;
+  padding:5px 12px;
   border-radius:999px;
-  font:800 9px/1 var(--font-mono),monospace;
+  font:800 9.5px/1 var(--font-mono),monospace;
   letter-spacing:.1em;
   text-transform:uppercase;
-  background:rgba(255,255,255,0.08);
-  color:#c4ded2;
-  border:1px solid rgba(255,255,255,0.15);
+  background:#091714 !important;
+  color:#a2c4b5 !important;
+  border:1px solid rgba(255,255,255,0.16) !important;
 }
 
 .badge-featured {
-  background:#dfff5b;
-  color:#143934;
-  border-color:#dfff5b;
-  box-shadow:0 0 12px rgba(223,255,91,0.4);
+  background:#dfff5b !important;
+  color:#0c201d !important;
+  border-color:#dfff5b !important;
+  box-shadow:0 0 14px rgba(223,255,91,0.45) !important;
 }
 
 /* Card Topline */
 .reference-pricing .plan-topline {
-  margin-bottom:18px;
+  margin-bottom:20px;
   border-bottom:none;
   padding-bottom:0;
 }
 
 .reference-pricing .plan-label {
   display:block;
-  font:850 20px/1 var(--sans);
-  color:#f7f2e8;
-  letter-spacing:-0.03em;
-  margin-bottom:10px;
+  font:850 22px/1 var(--sans) !important;
+  color:#ffffff !important;
+  letter-spacing:-0.03em !important;
+  margin-bottom:12px;
 }
 
 .plan-capacity-row {
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:8px;
   flex-wrap:wrap;
 }
 
 .capacity-pill {
-  font:700 9.5px/1 var(--font-mono),monospace;
-  letter-spacing:.06em;
-  padding:3px 8px;
+  font:700 10px/1 var(--font-mono),monospace !important;
+  letter-spacing:.05em;
+  padding:4px 9px;
   border-radius:6px;
-  background:rgba(0,0,0,0.35);
-  color:#adc0b7;
-  border:1px solid rgba(255,255,255,0.08);
+  background:#091714 !important;
+  color:#dfff5b !important;
+  border:1px solid rgba(223,255,91,0.3) !important;
 }
 
 .plan-card-featured .capacity-pill {
-  color:#dfff5b;
-  border-color:rgba(223,255,91,0.2);
+  color:#dfff5b !important;
+  border-color:rgba(223,255,91,0.45) !important;
+  background:#0c201d !important;
 }
 
 /* Price Block */
 .plan-price-block {
-  margin-bottom:16px;
-  padding-bottom:18px;
-  border-bottom:1px solid rgba(255,255,255,0.08);
+  margin-bottom:18px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.12) !important;
 }
 
 .reference-pricing .plan-price-block h3 {
   margin:0;
-  font:850 clamp(36px,3.4vw,46px)/1 var(--sans);
-  color:#f7f2e8;
+  font:850 clamp(38px,3.5vw,48px)/1 var(--sans) !important;
+  color:#ffffff !important;
   letter-spacing:-0.05em;
   display:flex;
   align-items:baseline;
-  gap:4px;
+  gap:5px;
 }
 
 .reference-pricing .plan-card-featured .plan-price-block h3 {
-  color:#dfff5b;
-  text-shadow:0 0 24px rgba(223,255,91,0.3);
+  color:#dfff5b !important;
+  text-shadow:0 0 20px rgba(223,255,91,0.4) !important;
 }
 
 .price-cadence {
-  font:500 13px/1 var(--sans);
-  color:#9cb5a9;
+  font:600 14px/1 var(--sans) !important;
+  color:#b8d4c7 !important;
   letter-spacing:0;
 }
 
 .price-subnote {
-  margin:6px 0 0;
-  font-size:11px;
-  color:#768f84;
+  margin:8px 0 0;
+  font-size:12px !important;
+  color:#8fb1a2 !important;
 }
 
 .reference-pricing .plan-summary {
-  font-size:13.5px;
-  line-height:1.55;
-  color:#c4ded2;
+  font-size:14px !important;
+  line-height:1.6 !important;
+  color:#d0e5db !important;
   margin:0 0 24px;
-  min-height:42px;
+  min-height:44px;
 }
 
 /* Features List */
 .plan-features-list {
   list-style:none;
   padding:0;
-  margin:0 0 32px;
+  margin:0 0 34px;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:13px;
   flex:1;
 }
 
 .feature-item {
   display:flex;
   align-items:flex-start;
-  gap:10px;
-  font-size:13px;
-  line-height:1.45;
-  color:#c4ded2;
+  gap:11px;
+  font-size:13.5px !important;
+  line-height:1.5 !important;
+  color:#eef7f3 !important;
 }
 
 .feature-check {
-  width:16px;
-  height:16px;
-  color:#768f84;
+  width:17px;
+  height:17px;
+  color:#dfff5b !important;
+  filter:drop-shadow(0 0 3px rgba(223,255,91,0.5));
   flex-shrink:0;
   margin-top:2px;
-}
-
-.plan-card-featured .feature-check {
-  color:#dfff5b;
-  filter:drop-shadow(0 0 4px rgba(223,255,91,0.4));
 }
 
 /* CTA Wrap */
@@ -2208,15 +2210,15 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
   margin-top:auto;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:12px;
 }
 
 .plan-action-btn {
   width:100%;
   justify-content:center;
-  padding:13px 20px;
+  padding:14px 22px;
   border-radius:12px;
-  font:800 13px/1 var(--sans);
+  font:800 13.5px/1 var(--sans) !important;
   cursor:pointer;
   transition:all .2s ease;
   display:flex;
@@ -2225,36 +2227,40 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
 }
 
 .btn-standard {
-  background:rgba(255,255,255,0.08);
-  color:#f7f2e8;
-  border:1px solid rgba(255,255,255,0.16);
+  background:#1c3d35 !important;
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,0.25) !important;
+  font-weight:750 !important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3) !important;
 }
 
 .btn-standard:hover {
-  background:rgba(255,255,255,0.18);
-  border-color:rgba(255,255,255,0.35);
-  color:#ffffff;
+  background:#dfff5b !important;
+  color:#0c201d !important;
+  border-color:#dfff5b !important;
+  box-shadow:0 0 20px rgba(223,255,91,0.4) !important;
 }
 
 .btn-featured {
-  background:#dfff5b;
-  color:#143934;
-  border:1px solid #dfff5b;
-  box-shadow:0 0 20px rgba(223,255,91,0.35);
+  background:#dfff5b !important;
+  color:#0c201d !important;
+  font-weight:850 !important;
+  border:1px solid #dfff5b !important;
+  box-shadow:0 0 24px rgba(223,255,91,0.4) !important;
 }
 
 .btn-featured:hover {
-  background:#ffffff;
-  color:#143934;
-  border-color:#ffffff;
-  box-shadow:0 0 24px rgba(255,255,255,0.4);
+  background:#ffffff !important;
+  color:#0c201d !important;
+  border-color:#ffffff !important;
+  box-shadow:0 0 28px rgba(255,255,255,0.5) !important;
 }
 
 .cta-guarantee {
   text-align:center;
-  font:700 9.5px/1 var(--font-mono),monospace;
+  font:700 10px/1 var(--font-mono),monospace !important;
   letter-spacing:.05em;
-  color:#768f84;
+  color:#8fb1a2 !important;
 }
 
 .reference-pricing-note {

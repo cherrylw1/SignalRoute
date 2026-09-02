@@ -136,7 +136,7 @@ export function PricingCards() {
       <div className="plan-grid" aria-live="polite">
         {plans.map((plan, index) => (
           <motion.article
-            className={`plan-card ${plan.featured ? "plan-card-featured" : ""}`}
+            className={`plan-card luxury-pricing-card ${plan.featured ? "plan-card-featured" : ""}`}
             key={plan.name}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
