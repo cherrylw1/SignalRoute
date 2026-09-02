@@ -96,16 +96,7 @@ const faqItems = [
   ["What happens when a visitor is unknown?", "The visitor remains anonymous and sees the default experience. Churnaut only applies personalization when a known signal is present."],
 ];
 
-export function ReferenceEntry() {
-  return (
-    <div className="reference-entry" aria-hidden="true">
-      <div className="reference-entry-orb">C<span>+</span></div>
-      <p>signal received</p>
-      <strong>context attached</strong>
-      <div className="reference-entry-bar"><i /></div>
-    </div>
-  );
-}
+
 
 export function ReferenceHero() {
   const [scrollY, setScrollY] = useState(0);

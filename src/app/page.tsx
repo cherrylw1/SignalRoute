@@ -11,7 +11,6 @@ import { CameraTunnel } from "@/components/camera-tunnel";
 import { TelemetryTerminal } from "@/components/telemetry-terminal";
 import {
   ReferenceCursor,
-  ReferenceEntry,
   ReferenceFaq,
   ReferenceHero,
   ReferenceProof,
@@ -23,7 +22,6 @@ export default function Home() {
     <PageShell overlay>
       <ReferenceCursor />
       <DynamicIsland />
-      <ReferenceEntry />
       <ReferenceHero />
 
       <section className="reference-trust" aria-label="Churnaut product pillars">

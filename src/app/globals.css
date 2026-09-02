@@ -1852,13 +1852,7 @@ body:has(.reference-hero) .site-footer .footer-grid { border-color:rgba(17,18,20
 body:has(.reference-hero) .site-footer .footer-brand p,body:has(.reference-hero) .site-footer .footer-grid a { color:#696a66; }
 body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,20,.14); color:#8b8c88; }
 
-.reference-entry { position:fixed; inset:0; z-index:100; display:grid; place-items:center; background:#ededeb; color:var(--ref-ink); pointer-events:none; animation:reference-entry-out 1s 1.35s cubic-bezier(.76,0,.24,1) forwards; }
-.reference-entry:before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 50%,rgba(255,75,34,.13),transparent 24%); }
-.reference-entry-orb { position:relative; display:grid; place-items:center; width:72px; height:72px; border:1px solid rgba(17,18,20,.3); border-radius:50%; font:650 29px/1 var(--sans); letter-spacing:-.08em; animation:reference-entry-orb 1.05s cubic-bezier(.16,1,.3,1) both; }
-.reference-entry-orb span { color:var(--ref-orange); font-size:15px; align-self:end; margin:0 0 13px -2px; }
-.reference-entry p,.reference-entry strong { position:absolute; margin:0; font:700 9px var(--font-mono),monospace; letter-spacing:.16em; text-transform:uppercase; }
-.reference-entry p { transform:translate(-78px,74px); color:#8b8c88; animation:reference-entry-copy .6s .3s both; }
-.reference-entry strong { transform:translate(62px,-73px); color:var(--ref-orange); animation:reference-entry-copy .6s .48s both; }
+.reference-entry { display:none !important; }
 
 .reference-hero { min-height:100svh; position:relative; display:grid; align-items:center; overflow:hidden; padding:140px clamp(24px,7vw,112px) 62px; color:var(--ref-ink); background:var(--ref-orange); isolation:isolate; }
 .reference-hero-sky { position:absolute; inset:0; z-index:-1; overflow:hidden; }
@@ -1879,7 +1873,7 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
 .reference-pill-light { color:var(--ref-ink); border-color:rgba(247,247,243,.3); background:var(--ref-paper); }.reference-pill-light:hover { color:var(--ref-ink); background:#fff; }
 .reference-text-link { display:inline-flex; align-items:center; gap:10px; color:var(--ref-ink); font-size:13px; font-weight:650; }.reference-text-link span { font-size:17px; transition:transform .2s ease; }.reference-text-link:hover span { transform:translateY(4px); }
 .reference-product-chrome { position:absolute; z-index:3; inset:18px 20px auto; display:flex; justify-content:space-between; color:rgba(247,247,243,.8); font:700 8px var(--font-mono),monospace; letter-spacing:.12em; pointer-events:none; }.reference-product-chrome span { display:flex; align-items:center; gap:8px; }.reference-product-chrome i { width:7px; height:7px; border-radius:50%; background:var(--ref-orange); box-shadow:0 0 0 4px rgba(255,75,34,.25); }.reference-product-chrome strong { color:var(--ref-orange); }
-.reference-hero-product { min-width:0; position:relative; aspect-ratio:16/10.5; overflow:hidden; border:1px solid rgba(247,247,243,.35); border-radius:29px 29px 92px 29px; background:var(--ref-ink); box-shadow:25px 27px 0 rgba(247,247,243,.18),0 45px 110px rgba(17,18,20,.25); opacity:0; transform:translateY(38px) rotate(1deg) scale(.97); animation:reference-product-in 1s 1.1s cubic-bezier(.16,1,.3,1) forwards; }
+.reference-hero-product { min-width:0; position:relative; aspect-ratio:16/10.5; overflow:hidden; border:1px solid rgba(247,247,243,.35); border-radius:29px 29px 92px 29px; background:var(--ref-ink); box-shadow:25px 27px 0 rgba(247,247,243,.18),0 45px 110px rgba(17,18,20,.25); opacity:1; transform:none; }
 .reference-hero-product video { display:block; width:100%; height:100%; object-fit:cover; opacity:.93; }.reference-product-overlay { position:absolute; z-index:3; left:22px; bottom:22px; display:grid; gap:4px; min-width:185px; padding:12px 14px; color:var(--ref-ink); border:1px solid rgba(17,18,20,.18); border-radius:8px; background:rgba(247,247,243,.93); box-shadow:0 15px 35px rgba(0,0,0,.2); }.reference-product-overlay span { color:var(--ref-orange); font:700 8px var(--font-mono),monospace; letter-spacing:.12em; }.reference-product-overlay strong { font-size:16px; letter-spacing:-.03em; }.reference-product-overlay small { color:#6c6d69; font-size:10px; }.reference-product-scan { position:absolute; z-index:4; left:0; right:0; top:-4%; height:1px; background:var(--ref-orange); box-shadow:0 0 17px rgba(255,75,34,.85); animation:reference-scan 4.5s 2.2s ease-in-out infinite; }
 .reference-hero-bottom { width:min(1220px,100%); position:absolute; left:50%; bottom:23px; display:flex; justify-content:space-between; color:rgba(17,18,20,.56); font:700 8px var(--font-mono),monospace; letter-spacing:.13em; transform:translateX(-50%); }.reference-hero-bottom span:last-child { color:var(--ref-ink); }
 
@@ -2326,12 +2320,6 @@ body:has(.reference-hero) .site-header-overlay a,body:has(.reference-hero) butto
   .reference-entry,.reference-entry-orb,.reference-entry p,.reference-entry strong,.reference-hero-product,.reference-product-scan,.reference-transition-mark { animation:none; }.reference-entry { display:none; }.reference-copy-stack article,.reference-faq-answer { transition:none; }
 }
 
-/* Final polish: keep the real film legible and let the story frames arrive as a physical stack. */
-.reference-entry { animation-delay:1.85s; }
-.reference-entry p { left:50%; top:50%; margin:-13px 0 0 -124px; transform:none; animation:reference-entry-copy-left .6s .3s both; }
-.reference-entry strong { left:50%; top:50%; margin:-83px 0 0 48px; transform:none; animation:reference-entry-copy-right .6s .48s both; }
-.reference-entry-bar { position:absolute; left:50%; bottom:34px; width:min(220px,calc(100vw - 48px)); height:2px; overflow:hidden; background:rgba(17,18,20,.12); transform:translateX(-50%); }
-.reference-entry-bar i { display:block; width:100%; height:100%; background:var(--ref-orange); transform-origin:left center; animation:reference-entry-progress 1.85s cubic-bezier(.16,1,.3,1) both; }
 .reference-hero-product video { object-fit:contain; background:#171311; }
 /* The product frame is a precise horizontal object; never introduce a tilt. */
 .reference-hero-product { aspect-ratio:16 / 9; transform:translateY(38px) scale(.97); rotate:0deg; }
@@ -2342,9 +2330,7 @@ body:has(.reference-hero) .site-header-overlay a,body:has(.reference-hero) butto
 @media (max-width:620px) {
   body:has(.reference-hero) .site-header-overlay .nav-shell { width:calc(100% - 22px); }
 }
-@keyframes reference-entry-progress { from { transform:scaleX(0); } to { transform:scaleX(1); } }
-@keyframes reference-entry-copy-left { from { opacity:0; transform:translateX(-10px); } to { opacity:1; transform:none; } }
-@keyframes reference-entry-copy-right { from { opacity:0; transform:translateX(10px); } to { opacity:1; transform:none; } }
+
 
 /* Portrait journey frames: each visual gets its own caption rail so the
    image can stay legible while the story copy travels with the card. */
