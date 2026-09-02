@@ -9,7 +9,7 @@ import { DynamicIsland } from "@/components/dynamic-island";
 import { CablePatchBay } from "@/components/cable-patch-bay";
 import { CameraTunnel } from "@/components/camera-tunnel";
 import { TelemetryTerminal } from "@/components/telemetry-terminal";
-import { RevolvingChamberSection } from "@/components/revolving-chamber-section";
+import { PhotonicSplitSection } from "@/components/photonic-split-section";
 import {
   ReferenceCursor,
   ReferenceFaq,
@@ -24,10 +24,10 @@ export default function Home() {
       <ReferenceCursor />
       <DynamicIsland />
 
-      {/* Chamber Stage 1: Hero */}
+      {/* Stage 1: Hero */}
       <ReferenceHero />
 
-      {/* Chamber Stage 2: Trust Pillars & Identity Statement */}
+      {/* Stage 2: Trust Pillars & Identity Statement */}
       <section className="reference-trust" aria-label="Churnaut product pillars">
         <p className="reference-kicker">A SIGNAL SYSTEM FOR REVENUE TEAMS</p>
         <div className="reference-trust-row">
@@ -40,48 +40,48 @@ export default function Home() {
 
       <ProgressiveStatement />
 
-      {/* Chamber Stage 3: Signal Simulator */}
-      <RevolvingChamberSection id="simulator" zIndex={10} theme="paper">
+      {/* Stage 3: Signal Simulator */}
+      <PhotonicSplitSection id="simulator" zIndex={10} theme="paper">
         <SignalSimulator />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 4: 11ms Camera Tunnel */}
-      <RevolvingChamberSection id="tunnel" zIndex={20} theme="dark">
+      {/* Stage 4: 11ms Camera Tunnel */}
+      <PhotonicSplitSection id="tunnel" zIndex={20} theme="dark">
         <CameraTunnel />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 5: Deal Intelligence Bento Grid */}
-      <RevolvingChamberSection id="bento" zIndex={30} theme="paper">
+      {/* Stage 5: Deal Intelligence Bento Grid */}
+      <PhotonicSplitSection id="bento" zIndex={30} theme="paper">
         <BentoGrid />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 6: Cable Patch Bay */}
-      <RevolvingChamberSection id="patchbay" zIndex={40} theme="dark">
+      {/* Stage 6: Cable Patch Bay */}
+      <PhotonicSplitSection id="patchbay" zIndex={40} theme="dark">
         <CablePatchBay />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 7: Split Lens */}
-      <RevolvingChamberSection id="lens" zIndex={50} theme="paper">
+      {/* Stage 7: Split Lens */}
+      <PhotonicSplitSection id="lens" zIndex={50} theme="paper">
         <SplitLens />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 8: Reference Proof */}
-      <RevolvingChamberSection id="proof" zIndex={60} theme="paper">
+      {/* Stage 8: Reference Proof */}
+      <PhotonicSplitSection id="proof" zIndex={60} theme="paper">
         <ReferenceProof />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 9: Telemetry Terminal */}
-      <RevolvingChamberSection id="telemetry" zIndex={70} theme="dark">
+      {/* Stage 9: Telemetry Terminal */}
+      <PhotonicSplitSection id="telemetry" zIndex={70} theme="dark">
         <TelemetryTerminal />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 10: Pipeline Calculator */}
-      <RevolvingChamberSection id="calculator" zIndex={80} theme="paper">
+      {/* Stage 10: Pipeline Calculator */}
+      <PhotonicSplitSection id="calculator" zIndex={80} theme="paper">
         <PipelineCalculator />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 11: Privacy Boundary */}
-      <RevolvingChamberSection id="privacy" zIndex={90} theme="paper" ariaLabelledby="reference-privacy-title">
+      {/* Stage 11: Privacy Boundary */}
+      <PhotonicSplitSection id="privacy" zIndex={90} theme="paper" ariaLabelledby="reference-privacy-title">
         <div className="reference-privacy" aria-labelledby="reference-privacy-title">
           <div>
             <p className="reference-kicker"><i /> THE IDENTITY BOUNDARY</p>
@@ -96,10 +96,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 12: Precision Edge-Lit Pricing */}
-      <RevolvingChamberSection id="pricing" zIndex={100} theme="forest" ariaLabelledby="reference-pricing-title">
+      {/* Stage 12: Precision Edge-Lit Pricing */}
+      <PhotonicSplitSection id="pricing" zIndex={100} theme="forest" ariaLabelledby="reference-pricing-title">
         <div className="reference-pricing" aria-labelledby="reference-pricing-title">
           <div className="reference-pricing-head">
             <div>
@@ -115,12 +115,12 @@ export default function Home() {
             Monthly and annual billing are available. Annual billing saves two months; usage limits reset monthly.
           </p>
         </div>
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
 
-      {/* Chamber Stage 13: Technical FAQ Accordion */}
-      <RevolvingChamberSection id="faq" zIndex={110} theme="dark">
+      {/* Stage 13: Technical FAQ Accordion */}
+      <PhotonicSplitSection id="faq" zIndex={110} theme="dark">
         <ReferenceFaq />
-      </RevolvingChamberSection>
+      </PhotonicSplitSection>
     </PageShell>
   );
 }
