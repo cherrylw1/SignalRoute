@@ -2016,12 +2016,29 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
   border:1px solid rgba(12,32,29,0.25);
 }
 
-/* Plan Grid */
-.reference-pricing .plan-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  align-items:stretch;
+/* Plan Grid - Completely transparent container, removing any cream background */
+.reference-pricing .plan-grid,
+.pricing-luxury-container .plan-grid {
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr) !important;
+  gap:24px !important;
+  align-items:stretch !important;
+  background:transparent !important;
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  padding:0 !important;
+}
+
+.pricing-luxury-container {
+  position:relative;
+  z-index:2;
+  width:100%;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:0 !important;
 }
 
 /* Base Card (Solid Opaque Dark Luxury Chassis) */
@@ -2370,15 +2387,7 @@ body:has(.reference-hero) .site-footer .footer-cta-note span:last-child { color:
 body:has(.reference-hero) .site-footer .footer-grid { width:min(1280px,100%); margin:0 auto; padding:clamp(56px,7vw,96px) 0 64px; grid-template-columns:1.35fr .8fr .9fr 1.2fr; gap:clamp(30px,5vw,92px); border-top:0; }
 body:has(.reference-hero) .site-footer .footer-brand p { max-width:350px; margin-top:22px; }
 body:has(.reference-hero) .site-footer .footer-grid h3 { margin-bottom:20px; }
-body:has(.reference-hero) .footer-subscribe { margin-top:28px; }
-body:has(.reference-hero) .footer-subscribe p { margin:0 0 10px; color:#8b8c88; font:700 8px/1 var(--font-mono),monospace; letter-spacing:.13em; text-transform:uppercase; }
-body:has(.reference-hero) .footer-subscribe .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-body:has(.reference-hero) .footer-subscribe form { display:flex; align-items:center; max-width:330px; padding:4px 4px 4px 13px; border:1px solid rgba(17,18,20,.16); border-radius:999px; background:#fff; }
-body:has(.reference-hero) .footer-subscribe input { min-width:0; flex:1; padding:8px 8px 8px 0; color:var(--ref-ink); border:0; outline:0; background:transparent; font:500 12px var(--sans); }
-body:has(.reference-hero) .footer-subscribe input::placeholder { color:#9b9c98; }
-body:has(.reference-hero) .footer-subscribe button { display:inline-flex; align-items:center; gap:8px; min-height:34px; padding:0 13px; color:var(--ref-paper); border:0; border-radius:999px; background:var(--ref-ink); font:650 11px var(--sans); cursor:pointer; transition:background .2s ease,transform .2s ease; }
-body:has(.reference-hero) .footer-subscribe button:hover { background:var(--ref-orange); transform:translateY(-1px); }
-body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-height:0; }
+.footer-subscribe { display:none !important; }
 @media (max-width:900px) {
   body:has(.reference-hero) .site-footer { padding:16px 16px 0; }
   body:has(.reference-hero) .site-footer .footer-cta { width:100%; min-height:auto; padding:72px 28px 76px; grid-template-columns:1fr; gap:54px; border-radius:30px; }
@@ -2392,7 +2401,6 @@ body:has(.reference-hero) .footer-subscribe button span { font-size:15px; line-h
   body:has(.reference-hero) .site-footer .footer-cta > .footer-cta-note { font-size:clamp(2rem,10vw,3rem); }
   body:has(.reference-hero) .site-footer .footer-grid { grid-template-columns:1fr 1fr; padding-left:5px; padding-right:5px; }
   body:has(.reference-hero) .site-footer .footer-brand { grid-column:1 / -1; }
-  body:has(.reference-hero) .footer-subscribe form { max-width:none; }
 }
 
 /* Hero dashboard composition: centered statement, centered product
