@@ -1895,7 +1895,389 @@ body:has(.reference-hero) .site-footer .footer-bottom { border-color:rgba(17,18,
 
 .reference-privacy { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.7fr); gap:clamp(50px,9vw,150px); align-items:end; padding:125px clamp(24px,8vw,125px); color:var(--ref-paper); background:#1a1b1c; }.reference-privacy .reference-kicker { color:var(--ref-orange); }.reference-privacy h2 { margin:0; font:740 clamp(4rem,8vw,10rem)/.83 var(--sans); letter-spacing:-.1em; }.reference-privacy>div:last-child>p { max-width:450px; margin:0 0 26px; color:#a0a19d; font-size:15px; line-height:1.65; }.reference-privacy .reference-text-link { color:var(--ref-paper); }
 
-.reference-pricing { padding:140px clamp(24px,8vw,125px); color:var(--ref-paper); background:#1a1b1c; }.reference-pricing-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.58fr); gap:60px; align-items:end; margin-bottom:52px; }.reference-pricing .reference-kicker { color:var(--ref-orange); }.reference-pricing h2 { max-width:850px; margin:0; font:740 clamp(3.8rem,7vw,9rem)/.84 var(--sans); letter-spacing:-.1em; }.reference-pricing-head>p { max-width:390px; margin:0; color:#9c9d99; font-size:15px; line-height:1.65; }.reference-pricing .plan-grid { grid-template-columns:repeat(3,1fr); gap:12px; }.reference-pricing .plan-card { min-height:465px; padding:26px; color:var(--ref-ink); border:0; border-radius:22px 22px 65px 22px; background:#e6e6e2; box-shadow:none; }.reference-pricing .plan-card-featured { color:var(--ref-paper); background:var(--ref-orange); }.reference-pricing .plan-card h3 { color:inherit; font:740 42px var(--sans); letter-spacing:-.07em; }.reference-pricing .plan-card>p { color:#696a66; }.reference-pricing .plan-card-featured>p { color:rgba(17,18,20,.7); }.reference-pricing .plan-card ul,.reference-pricing .plan-card-featured ul { border-color:rgba(17,18,20,.18); }.reference-pricing .plan-card li { color:#5f605d; }.reference-pricing .plan-card-featured li { color:rgba(17,18,20,.76); }.reference-pricing .plan-card li:before { color:var(--ref-orange); }.reference-pricing .plan-card-featured li:before { color:var(--ref-ink); }.reference-pricing .plan-card .button { color:var(--ref-paper); border-color:var(--ref-ink); background:var(--ref-ink); }.reference-pricing .plan-card-featured .button { color:var(--ref-ink); border-color:var(--ref-paper); background:var(--ref-paper); }.reference-pricing .popular-badge { color:var(--ref-paper); background:var(--ref-ink); }.reference-pricing-note { margin:25px 0 0; color:#777874; font:700 9px var(--font-mono),monospace; letter-spacing:.07em; }
+/* =========================================================
+   2026 PRECISION EDGE-LIT PRICING (Option A)
+   ========================================================= */
+
+.reference-pricing {
+  padding:130px clamp(24px,6vw,110px);
+  color:#f7f2e8;
+  background:#0f2723;
+  position:relative;
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.reference-pricing::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(223,255,91,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223,255,91,0.025) 1px, transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+
+.reference-pricing::after {
+  content:"";
+  position:absolute;
+  top:-10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:900px;
+  height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, rgba(223,255,91,0.07) 0%, transparent 70%);
+  filter:blur(50px);
+  pointer-events:none;
+}
+
+.reference-pricing-head {
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,0.6fr);
+  gap:40px;
+  align-items:end;
+  margin-bottom:36px;
+}
+
+.reference-pricing-head h2 {
+  max-width:850px;
+  margin:8px 0 0;
+  font:850 clamp(2.4rem,4.4vw,4.2rem)/1.08 var(--sans) !important;
+  letter-spacing:-0.045em !important;
+  color:#f7f2e8 !important;
+}
+
+.reference-pricing-head > p {
+  max-width:440px;
+  margin:0;
+  color:#c4ded2;
+  font-size:16px;
+  line-height:1.65;
+}
+
+.pricing-luxury-container {
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+/* Billing Toggle */
+.plan-billing {
+  display:inline-flex;
+  align-items:center;
+  background:rgba(0,0,0,0.35);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:999px;
+  padding:4px;
+  margin-bottom:36px;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.plan-billing-option {
+  position:relative;
+  border:none;
+  background:transparent;
+  padding:8px 20px;
+  border-radius:999px;
+  font:700 12.5px/1 var(--sans);
+  color:#9cb5a9;
+  cursor:pointer;
+  transition:color .2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.plan-billing-option.is-active {
+  color:#ffffff;
+}
+
+.billing-pill-active {
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 2px 8px rgba(0,0,0,0.35);
+}
+
+.save-badge {
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:999px;
+  background:rgba(223,255,91,0.2);
+  color:#dfff5b;
+  font:800 10px/1 var(--font-mono),monospace;
+  letter-spacing:.04em;
+  border:1px solid rgba(223,255,91,0.35);
+}
+
+/* Plan Grid */
+.reference-pricing .plan-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  align-items:stretch;
+}
+
+/* Base Card (Symmetrical, Edge-Lit Dark Glass) */
+.reference-pricing .plan-card {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  padding:32px 28px;
+  border-radius:20px !important;
+  background:rgba(255,255,255,0.035);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 16px 36px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+  transition:transform .25s cubic-bezier(0.16,1,0.3,1), border-color .25s ease, box-shadow .25s ease;
+  overflow:hidden;
+  min-height:auto;
+  color:#f7f2e8;
+}
+
+.reference-pricing .plan-card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.22);
+  box-shadow:0 24px 50px rgba(0,0,0,0.45);
+}
+
+/* Featured Card (Electric Lime Halo) */
+.reference-pricing .plan-card-featured {
+  background:rgba(223,255,91,0.04);
+  border:1px solid rgba(223,255,91,0.45);
+  box-shadow:0 24px 60px rgba(0,0,0,0.45), 0 0 40px rgba(223,255,91,0.12), inset 0 1px 0 rgba(223,255,91,0.4);
+  color:#f7f2e8;
+}
+
+.reference-pricing .plan-card-featured:hover {
+  border-color:#dfff5b;
+  box-shadow:0 28px 70px rgba(0,0,0,0.55), 0 0 50px rgba(223,255,91,0.2), inset 0 1px 0 rgba(223,255,91,0.6);
+}
+
+.card-featured-glow {
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #dfff5b, transparent);
+  box-shadow:0 0 16px #dfff5b;
+  pointer-events:none;
+}
+
+.plan-tier-badge {
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:4px 10px;
+  border-radius:999px;
+  font:800 9px/1 var(--font-mono),monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  background:rgba(255,255,255,0.08);
+  color:#c4ded2;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.badge-featured {
+  background:#dfff5b;
+  color:#143934;
+  border-color:#dfff5b;
+  box-shadow:0 0 12px rgba(223,255,91,0.4);
+}
+
+/* Card Topline */
+.reference-pricing .plan-topline {
+  margin-bottom:18px;
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.reference-pricing .plan-label {
+  display:block;
+  font:850 20px/1 var(--sans);
+  color:#f7f2e8;
+  letter-spacing:-0.03em;
+  margin-bottom:10px;
+}
+
+.plan-capacity-row {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.capacity-pill {
+  font:700 9.5px/1 var(--font-mono),monospace;
+  letter-spacing:.06em;
+  padding:3px 8px;
+  border-radius:6px;
+  background:rgba(0,0,0,0.35);
+  color:#adc0b7;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.plan-card-featured .capacity-pill {
+  color:#dfff5b;
+  border-color:rgba(223,255,91,0.2);
+}
+
+/* Price Block */
+.plan-price-block {
+  margin-bottom:16px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.reference-pricing .plan-price-block h3 {
+  margin:0;
+  font:850 clamp(36px,3.4vw,46px)/1 var(--sans);
+  color:#f7f2e8;
+  letter-spacing:-0.05em;
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+}
+
+.reference-pricing .plan-card-featured .plan-price-block h3 {
+  color:#dfff5b;
+  text-shadow:0 0 24px rgba(223,255,91,0.3);
+}
+
+.price-cadence {
+  font:500 13px/1 var(--sans);
+  color:#9cb5a9;
+  letter-spacing:0;
+}
+
+.price-subnote {
+  margin:6px 0 0;
+  font-size:11px;
+  color:#768f84;
+}
+
+.reference-pricing .plan-summary {
+  font-size:13.5px;
+  line-height:1.55;
+  color:#c4ded2;
+  margin:0 0 24px;
+  min-height:42px;
+}
+
+/* Features List */
+.plan-features-list {
+  list-style:none;
+  padding:0;
+  margin:0 0 32px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+
+.feature-item {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  line-height:1.45;
+  color:#c4ded2;
+}
+
+.feature-check {
+  width:16px;
+  height:16px;
+  color:#768f84;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.plan-card-featured .feature-check {
+  color:#dfff5b;
+  filter:drop-shadow(0 0 4px rgba(223,255,91,0.4));
+}
+
+/* CTA Wrap */
+.plan-cta-wrap {
+  margin-top:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.plan-action-btn {
+  width:100%;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:12px;
+  font:800 13px/1 var(--sans);
+  cursor:pointer;
+  transition:all .2s ease;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.btn-standard {
+  background:rgba(255,255,255,0.08);
+  color:#f7f2e8;
+  border:1px solid rgba(255,255,255,0.16);
+}
+
+.btn-standard:hover {
+  background:rgba(255,255,255,0.18);
+  border-color:rgba(255,255,255,0.35);
+  color:#ffffff;
+}
+
+.btn-featured {
+  background:#dfff5b;
+  color:#143934;
+  border:1px solid #dfff5b;
+  box-shadow:0 0 20px rgba(223,255,91,0.35);
+}
+
+.btn-featured:hover {
+  background:#ffffff;
+  color:#143934;
+  border-color:#ffffff;
+  box-shadow:0 0 24px rgba(255,255,255,0.4);
+}
+
+.cta-guarantee {
+  text-align:center;
+  font:700 9.5px/1 var(--font-mono),monospace;
+  letter-spacing:.05em;
+  color:#768f84;
+}
+
+.reference-pricing-note {
+  position:relative;
+  z-index:2;
+  margin:36px 0 0;
+  text-align:center;
+  color:#768f84;
+  font:700 10.5px/1.6 var(--font-mono),monospace;
+  letter-spacing:.06em;
+}
+
+@media (max-width:980px) {
+  .reference-pricing .plan-grid {
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .reference-pricing-head {
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+}
+
 
 .reference-faq { display:grid; grid-template-columns:minmax(0,.8fr) minmax(420px,1.2fr); gap:clamp(50px,9vw,150px); padding:135px clamp(24px,8vw,125px); color:var(--ref-paper); background:#1a1b1c; }.reference-faq-head h2 { margin:0; font:740 clamp(3.8rem,7vw,8.5rem)/.84 var(--sans); letter-spacing:-.1em; }.reference-faq-head>p:last-child { color:#9c9d99; font-size:15px; }.reference-faq-head .reference-kicker { color:var(--ref-orange); }.reference-faq-list { border-top:1px solid rgba(247,247,243,.2); }.reference-faq-item { border-bottom:1px solid rgba(247,247,243,.2); }.reference-faq-item button { width:100%; display:flex; justify-content:space-between; gap:25px; padding:23px 0; color:var(--ref-paper); border:0; background:transparent; text-align:left; font-size:15px; font-weight:650; cursor:pointer; }.reference-faq-item button i { color:var(--ref-orange); font:400 23px/1 var(--sans); font-style:normal; }.reference-faq-answer { display:grid; grid-template-rows:0fr; transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1); }.reference-faq-answer p { overflow:hidden; max-width:580px; margin:0; color:#9c9d99; font-size:14px; line-height:1.6; }.reference-faq-item.is-open .reference-faq-answer { grid-template-rows:1fr; }.reference-faq-item.is-open .reference-faq-answer p { padding:0 35px 23px 0; }
 .reference-final-cta { display:grid; justify-items:center; padding:170px 24px; color:var(--ref-ink); background:var(--ref-paper); text-align:center; }.reference-final-cta .reference-kicker { color:var(--ref-orange); }.reference-final-cta h2 { max-width:1000px; margin:0; font:740 clamp(4rem,8vw,10rem)/.82 var(--sans); letter-spacing:-.1em; }.reference-final-cta>p:not(.reference-kicker) { max-width:450px; margin:27px 0 32px; color:#777874; font-size:15px; line-height:1.6; }
