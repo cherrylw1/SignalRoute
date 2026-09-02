@@ -29,7 +29,7 @@ export function PipelineCalculator() {
       <div className="calc-head">
         <div className="calc-title-row">
           <div>
-            <p className="reference-kicker">PIPELINE SIGNAL AUDIT</p>
+            <p className="reference-kicker"><i /> PIPELINE SIGNAL AUDIT</p>
             <h2 id="calc-title" className="section-title">
               How much revenue is<br /><em>leaking from blind returns?</em>
             </h2>

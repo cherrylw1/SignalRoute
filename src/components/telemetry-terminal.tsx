@@ -116,7 +116,7 @@ export function TelemetryTerminal() {
       <div className="telemetry-head">
         <div className="telemetry-title-row">
           <div>
-            <p className="reference-kicker">REAL-TIME DATA BUS</p>
+            <p className="reference-kicker"><i /> REAL-TIME DATA BUS</p>
             <h2 id="telemetry-title" className="section-title">
               Live Signal Telemetry.<br /><em>High-frequency packet radar.</em>
             </h2>

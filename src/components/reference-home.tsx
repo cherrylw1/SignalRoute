@@ -325,7 +325,7 @@ export function ReferenceProof() {
       </div>
       <div className="reference-proof-head">
         <div className="proof-head-top">
-          <p className="reference-kicker">SCOUT AI / DEAL INTELLIGENCE</p>
+          <p className="reference-kicker"><i /> SCOUT AI / DEAL INTELLIGENCE</p>
           <div className="live-pulse-badge">
             <span className="live-dot" /> LIVE EVIDENCE STREAM
           </div>
@@ -425,7 +425,7 @@ export function ReferenceFaq() {
   return (
     <section className="reference-faq" id="faq" aria-labelledby="faq-title">
       <div className="reference-faq-head">
-        <p className="reference-kicker">NO GUESSWORK</p>
+        <p className="reference-kicker"><i /> NO GUESSWORK</p>
         <h2 id="faq-title">Questions, answered.</h2>
         <p>Clear boundaries are part of the product.</p>
       </div>

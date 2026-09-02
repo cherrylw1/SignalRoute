@@ -64,7 +64,7 @@ export function CameraTunnel() {
       <div className="tunnel-head">
         <div className="tunnel-title-row">
           <div>
-            <p className="reference-kicker">SPATIAL SIGNAL JOURNEY</p>
+            <p className="reference-kicker"><i /> SPATIAL SIGNAL JOURNEY</p>
             <h2 id="tunnel-title" className="section-title">
               Fly through the signal route<br /><em>from outbound click to deal brief.</em>
             </h2>

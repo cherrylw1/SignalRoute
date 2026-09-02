@@ -58,13 +58,13 @@ export function SplitLens() {
   };
 
   return (
-    <section className="split-lens-section section-pad" id="comparison" aria-labelledby="split-lens-title">
-      <div className="split-lens-head">
+    <section className="split-lens-section section-pad" id="split-lens" aria-labelledby="split-title">
+      <div className="split-lens-header">
         <div className="split-head-row">
           <div>
-            <p className="reference-kicker">THE TWO REALITIES</p>
-            <h2 id="split-lens-title" className="section-title">
-              Blind outbound<br /><em>versus deterministic signal.</em>
+            <p className="reference-kicker"><i /> BEFORE & AFTER CHURNAUT</p>
+            <h2 id="split-title" className="section-title">
+              Blind Outbound vs.<br /><em>Deterministic Personalization.</em>
             </h2>
           </div>
 

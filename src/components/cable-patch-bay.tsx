@@ -133,7 +133,7 @@ export function CablePatchBay() {
       <div className="patchbay-head">
         <div className="patchbay-title-row">
           <div>
-            <p className="reference-kicker">MODULAR SIGNAL CHASSIS</p>
+            <p className="reference-kicker"><i /> MODULAR SIGNAL CHASSIS</p>
             <h2 id="patchbay-title" className="section-title">
               Interactive Cable Patch-Bay.<br /><em>Route signals in real time.</em>
             </h2>

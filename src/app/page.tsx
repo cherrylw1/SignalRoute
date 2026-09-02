@@ -48,7 +48,7 @@ export default function Home() {
 
       <section className="reference-privacy" id="privacy" aria-labelledby="reference-privacy-title">
         <div>
-          <p className="reference-kicker">THE IDENTITY BOUNDARY</p>
+          <p className="reference-kicker"><i /> THE IDENTITY BOUNDARY</p>
           <h2 id="reference-privacy-title">Signal, not surveillance.</h2>
         </div>
         <div>
@@ -64,7 +64,7 @@ export default function Home() {
       <section className="reference-pricing" id="pricing" aria-labelledby="reference-pricing-title">
         <div className="reference-pricing-head">
           <div>
-            <p className="reference-kicker">SIMPLE, FOUNDER-LED PRICING</p>
+            <p className="reference-kicker"><i /> SIMPLE, FOUNDER-LED PRICING</p>
             <h2 id="reference-pricing-title">Choose how far the signal should travel.</h2>
           </div>
           <p>

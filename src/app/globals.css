@@ -4409,7 +4409,161 @@ html.lenis, html.lenis body { height:auto; }
   100% { bottom:40%; opacity:1; }
 }
 
+/* =========================================================
+   2026 UNIFIED SECTION TYPOGRAPHY & HEADER ARCHITECTURE
+   ========================================================= */
 
+/* Base Kickers */
+.reference-kicker {
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:0 0 16px !important;
+  font:800 12px/1 var(--font-mono),monospace !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase !important;
+}
+.reference-kicker i {
+  width:8px !important;
+  height:8px !important;
+  border-radius:50% !important;
+  display:inline-block !important;
+  flex-shrink:0 !important;
+}
 
+/* Base Section Titles */
+.section-title {
+  font:850 clamp(2.4rem,4.4vw,4.2rem)/1.08 var(--sans) !important;
+  letter-spacing:-.045em !important;
+  margin:8px 0 16px !important;
+  text-wrap:balance !important;
+}
 
+/* Base Section Copy */
+.section-copy {
+  font-size:clamp(15px,1.2vw,17.5px) !important;
+  line-height:1.65 !important;
+  max-width:680px !important;
+  margin-top:14px !important;
+}
+
+/* Dark Theme Section Headings (High Contrast & Luminous Accents) */
+.signal-simulator-section,
+.camera-tunnel-section,
+.bento-section,
+.patchbay-section,
+.split-lens-section,
+.telemetry-section,
+.reference-proof,
+.reference-privacy,
+.reference-pricing,
+.reference-faq {
+  color:#f7f2e8;
+}
+
+.signal-simulator-section .reference-kicker,
+.camera-tunnel-section .reference-kicker,
+.bento-section .reference-kicker,
+.patchbay-section .reference-kicker,
+.split-lens-section .reference-kicker,
+.telemetry-section .reference-kicker,
+.reference-proof .reference-kicker,
+.reference-privacy .reference-kicker,
+.reference-pricing .reference-kicker,
+.reference-faq .reference-kicker {
+  color:#dfff5b !important;
+}
+
+.signal-simulator-section .reference-kicker i,
+.camera-tunnel-section .reference-kicker i,
+.bento-section .reference-kicker i,
+.patchbay-section .reference-kicker i,
+.split-lens-section .reference-kicker i,
+.telemetry-section .reference-kicker i,
+.reference-proof .reference-kicker i,
+.reference-privacy .reference-kicker i,
+.reference-pricing .reference-kicker i,
+.reference-faq .reference-kicker i {
+  background:#dfff5b !important;
+  box-shadow:0 0 10px #dfff5b !important;
+}
+
+.signal-simulator-section .section-title,
+.camera-tunnel-section .section-title,
+.bento-section .section-title,
+.patchbay-section .section-title,
+.split-lens-section .section-title,
+.telemetry-section .section-title,
+.reference-proof-head h2,
+.reference-proof h2,
+.reference-privacy h2,
+.reference-pricing h2,
+.reference-faq-head h2 {
+  color:#f7f2e8 !important;
+  font:850 clamp(2.4rem,4.4vw,4.2rem)/1.08 var(--sans) !important;
+  letter-spacing:-.045em !important;
+}
+
+.signal-simulator-section .section-title em,
+.camera-tunnel-section .section-title em,
+.bento-section .section-title em,
+.patchbay-section .section-title em,
+.split-lens-section .section-title em,
+.telemetry-section .section-title em,
+.reference-proof-head h2 em,
+.reference-proof h2 em,
+.reference-privacy h2 em,
+.reference-pricing h2 em,
+.reference-faq-head h2 em {
+  color:#dfff5b !important;
+  font-style:normal !important;
+  text-shadow:0 0 24px rgba(223,255,91,0.3) !important;
+}
+
+.signal-simulator-section .section-copy,
+.camera-tunnel-section .section-copy,
+.bento-section .section-copy,
+.patchbay-section .section-copy,
+.split-lens-section .section-copy,
+.telemetry-section .section-copy {
+  color:#c4ded2 !important;
+}
+
+/* Light Theme Section Headings (Warm Contrast & Coral Accents) */
+.reference-trust .reference-kicker,
+.reference-statement .reference-kicker,
+.pipeline-calc-section .reference-kicker {
+  color:#df6344 !important;
+}
+
+.reference-trust .reference-kicker i,
+.reference-statement .reference-kicker i,
+.pipeline-calc-section .reference-kicker i {
+  background:#df6344 !important;
+  box-shadow:0 0 8px rgba(223,99,68,0.4) !important;
+}
+
+.pipeline-calc-section .section-title {
+  color:#143934 !important;
+  font:850 clamp(2.4rem,4.4vw,4.2rem)/1.08 var(--sans) !important;
+  letter-spacing:-.045em !important;
+}
+
+.pipeline-calc-section .section-title em {
+  color:#df6344 !important;
+  font-style:normal !important;
+}
+
+.pipeline-calc-section .section-copy {
+  color:#556c64 !important;
+}
+
+/* Hero Kickers */
+.reference-hero .reference-kicker {
+  color:rgba(20,57,52,0.9) !important;
+}
+.reference-hero .reference-kicker i {
+  background:#143934 !important;
+  box-shadow:0 0 0 4px rgba(20,57,52,0.2) !important;
+}
 

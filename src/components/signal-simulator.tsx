@@ -126,7 +126,7 @@ export function SignalSimulator() {
     <section className="signal-simulator-section section-pad" id="simulator" aria-labelledby="simulator-title">
       <div className="simulator-header">
         <div className="simulator-header-copy">
-          <p className="reference-kicker">INTERACTIVE PRODUCT PLAYGROUND</p>
+          <p className="reference-kicker"><i /> INTERACTIVE PRODUCT PLAYGROUND</p>
           <h2 id="simulator-title" className="section-title">
             Test the signal route<br /><em>in real time.</em>
           </h2>

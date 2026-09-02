@@ -45,7 +45,7 @@ export function BentoGrid() {
   return (
     <section className="bento-section section-pad" id="how-it-works" aria-labelledby="bento-title">
       <div className="bento-head">
-        <p className="reference-kicker">THE SIGNAL ARCHITECTURE</p>
+        <p className="reference-kicker"><i /> THE SIGNAL ARCHITECTURE</p>
         <h2 id="bento-title" className="section-title">
           How context travels from<br /><em>outbound link to closed deal.</em>
         </h2>
