@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OdometerNumber } from "./odometer-counter";
 import { MagneticButton } from "./magnetic-button";
+import { playSwitchSound, playSuccessSound } from "@/lib/sound";
 
 const proofScenarios = [
   {
@@ -97,19 +97,76 @@ const faqItems = [
 ];
 
 export function ReferenceEntry() {
-  return (
-    <div className="reference-entry" aria-hidden="true">
-      <div className="reference-entry-orb">C<span>+</span></div>
-      <p>signal received</p>
-      <strong>context attached</strong>
-      <div className="reference-entry-bar"><i /></div>
-    </div>
-  );
+  // Zero-latency instant entrance (blocking veil removed for instantaneous load)
+  return null;
 }
+
+interface HeroProbePreset {
+  id: string;
+  name: string;
+  domain: string;
+  persona: string;
+  rep: string;
+  headline: string;
+  subhead: string;
+  cta: string;
+  score: number;
+}
+
+const HERO_PRESETS: Record<string, HeroProbePreset> = {
+  stripe: {
+    id: "stripe",
+    name: "Stripe",
+    domain: "stripe.com",
+    persona: "VP of Growth",
+    rep: "Sarah Jenkins",
+    headline: "Deterministic pipeline intelligence for Stripe's revenue team.",
+    subhead: "Carry outbound context directly into the site visit in 11ms.",
+    cta: "Book demo with Sarah",
+    score: 94,
+  },
+  figma: {
+    id: "figma",
+    name: "Figma",
+    domain: "figma.com",
+    persona: "Head of Design Systems",
+    rep: "Alex Chen",
+    headline: "Turn design team momentum into closed deals for Figma.",
+    subhead: "Recognize known design leads the moment they open your outreach link.",
+    cta: "Explore Figma enterprise routing",
+    score: 91,
+  },
+  ramp: {
+    id: "ramp",
+    name: "Ramp",
+    domain: "ramp.com",
+    persona: "VP of Sales Operations",
+    rep: "Marcus Vance",
+    headline: "Stop losing known Ramp prospects at the moment of highest intent.",
+    subhead: "Automatic headline, ROI calculator and rep calendar embeds.",
+    cta: "Schedule 15-min pilot setup",
+    score: 86,
+  },
+  linear: {
+    id: "linear",
+    name: "Linear",
+    domain: "linear.app",
+    persona: "Head of Product",
+    rep: "Elena Rostova",
+    headline: "Developer-grade outbound signal routing built for Linear.",
+    subhead: "Zero cookies. Zero IP guesswork. Pure deterministic intent.",
+    cta: "Request Linear technical pilot",
+    score: 89,
+  },
+};
 
 export function ReferenceHero() {
   const [scrollY, setScrollY] = useState(0);
-  const [hoveredBadge, setHoveredBadge] = useState<string | null>(null);
+  const [selectedProbe, setSelectedProbe] = useState<string>("stripe");
+  const [customInput, setCustomInput] = useState<string>("");
+  const [isCustom, setIsCustom] = useState<boolean>(false);
+  const [isMutating, setIsMutating] = useState<boolean>(false);
+  const [cardTilt, setCardTilt] = useState({ rx: 0, ry: 0 });
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -117,15 +174,74 @@ export function ReferenceHero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const perspectiveTilt = Math.min(10, Math.max(0, scrollY * 0.016));
-  const perspectiveScale = Math.max(0.95, 1 - scrollY * 0.00012);
+  const activePreset: HeroProbePreset = isCustom
+    ? {
+        id: "custom",
+        name: customInput || "Acme Corp",
+        domain: `${(customInput || "acme").toLowerCase().replace(/[^a-z0-9]/g, "")}.com`,
+        persona: "VP of Revenue",
+        rep: "Sarah Jenkins",
+        headline: `Deterministic personalization for ${(customInput || "Acme Corp")}'s revenue team.`,
+        subhead: "Carry outbound outreach context into the website visit in real time.",
+        cta: `Schedule 15-min demo with Sarah`,
+        score: 88,
+      }
+    : HERO_PRESETS[selectedProbe] || HERO_PRESETS.stripe;
+
+  const handleSelectPreset = (id: string) => {
+    playSwitchSound();
+    setIsCustom(false);
+    setSelectedProbe(id);
+    setIsMutating(true);
+    setTimeout(() => {
+      setIsMutating(false);
+      playSuccessSound();
+    }, 280);
+  };
+
+  const handleCustomSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!customInput.trim()) return;
+    playSwitchSound();
+    setIsCustom(true);
+    setIsMutating(true);
+    setTimeout(() => {
+      setIsMutating(false);
+      playSuccessSound();
+    }, 280);
+  };
+
+  const handleInstrumentMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const rx = ((y - cy) / cy) * -5;
+    const ry = ((x - cx) / cx) * 5;
+    setCardTilt({ rx, ry });
+    card.style.setProperty("--hero-mouse-x", `${(x / rect.width) * 100}%`);
+    card.style.setProperty("--hero-mouse-y", `${(y / rect.height) * 100}%`);
+  };
+
+  const handleInstrumentMouseLeave = () => {
+    setCardTilt({ rx: 0, ry: 0 });
+  };
+
+  const perspectiveTilt = Math.min(8, Math.max(0, scrollY * 0.012));
+  const perspectiveScale = Math.max(0.96, 1 - scrollY * 0.0001);
 
   return (
     <section className="reference-hero" id="hero" aria-labelledby="reference-hero-title">
+      {/* Blueprint Coordinate Grid & Ambient Sky */}
       <div className="reference-hero-sky" aria-hidden="true">
-        <i /><i /><i />
+        <div className="hero-blueprint-grid" />
+        <div className="hero-ambient-spotlight" />
       </div>
+
       <div className="reference-hero-inner">
+        {/* Left Column: Copy, CTAs, and 3-Second Signal Probe */}
         <div className="reference-hero-copy">
           <p className="reference-kicker"><i /> DETERMINISTIC PERSONALIZATION FOR OUTBOUND</p>
           <h1 id="reference-hero-title">
@@ -135,6 +251,7 @@ export function ReferenceHero() {
           <p className="reference-hero-lede">
             Churnaut carries the context from your outbound link into the visit, then turns that moment into a clear sales action.
           </p>
+
           <div className="reference-hero-actions">
             <MagneticButton
               href="https://cal.com/sharath.mb/demo"
@@ -154,8 +271,53 @@ export function ReferenceHero() {
               See how it works <span>↓</span>
             </MagneticButton>
           </div>
+
+          {/* Instant 3-Second Signal Probe Bar */}
+          <div className="hero-signal-probe-bar">
+            <div className="probe-bar-top">
+              <span className="probe-live-pip" />
+              <span className="probe-title">PROVE 11MS DETERMINISTIC ROUTE:</span>
+              <span className="probe-badge">LIVE ENGINE</span>
+            </div>
+
+            <div className="probe-chips-row">
+              {Object.values(HERO_PRESETS).map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`probe-chip ${!isCustom && selectedProbe === p.id ? "is-active" : ""}`}
+                  onClick={() => handleSelectPreset(p.id)}
+                  data-cursor="Probe"
+                >
+                  <span className="chip-domain">{p.name}</span>
+                </button>
+              ))}
+            </div>
+
+            <form onSubmit={handleCustomSubmit} className="probe-input-form">
+              <input
+                type="text"
+                placeholder="Or type prospect company (e.g. Brex, Datadog)..."
+                value={customInput}
+                onChange={(e) => setCustomInput(e.target.value)}
+                className="probe-custom-input"
+              />
+              <button type="submit" className="probe-submit-btn" data-cursor="Inject">
+                ⚡ Test
+              </button>
+            </form>
+
+            <div className="probe-footer">
+              <span>LATENCY: <b>11.2MS</b></span>
+              <span>•</span>
+              <span>ZERO COOKIES REQUIRED</span>
+              <span>•</span>
+              <span>100% DETERMINISTIC</span>
+            </div>
+          </div>
         </div>
 
+        {/* Right Column: The Living Signal Instrument */}
         <div
           className="reference-hero-product-container"
           style={{
@@ -163,78 +325,89 @@ export function ReferenceHero() {
             transition: "transform 0.15s ease-out",
           }}
         >
-          {/* Fiber-Optic SVG Splines */}
-          <svg className="hero-spline-canvas" aria-hidden="true">
-            <path
-              d="M 120 50 C 240 50, 200 160, 320 180"
-              fill="none"
-              stroke="rgba(223, 255, 91, 0.25)"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-            />
-            <circle cx="320" cy="180" r="3" fill="#dfff5b" className="hero-spline-pulse-1" />
-
-            <path
-              d="M 820 120 C 700 120, 680 220, 560 240"
-              fill="none"
-              stroke="rgba(223, 99, 68, 0.25)"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-            />
-            <circle cx="560" cy="240" r="3" fill="#df6344" className="hero-spline-pulse-2" />
-          </svg>
-
-          {/* Floating Live Signal Badges */}
           <div
-            className={`hero-floating-badge hero-badge-left ${hoveredBadge === "maya" ? "is-hovered" : ""}`}
-            onMouseEnter={() => setHoveredBadge("maya")}
-            onMouseLeave={() => setHoveredBadge(null)}
+            className="living-instrument-chassis"
+            onMouseMove={handleInstrumentMouseMove}
+            onMouseLeave={handleInstrumentMouseLeave}
+            style={{
+              transform: `perspective(1000px) rotateX(${cardTilt.rx}deg) rotateY(${cardTilt.ry}deg)`,
+            }}
           >
-            <span className="badge-pulse-dot" />
-            <div>
-              <strong>Maya @ Northstar</strong>
-              <small>Clicked outbound link · 3m ago</small>
+            {/* Top Hardware Chrome Bar */}
+            <div className="living-chassis-topbar">
+              <div className="living-topbar-dots">
+                <span className="dot dot-red" />
+                <span className="dot dot-yellow" />
+                <span className="dot dot-green" />
+              </div>
+              <div className="living-topbar-url">
+                <span className="lock-icon">🔒</span>
+                <span>https://yourproduct.com/<b>?ref=churnaut&target={activePreset.domain}</b></span>
+              </div>
+              <div className="living-topbar-latency">
+                <span className="latency-bolt">⚡</span> 11.2ms Swap
+              </div>
             </div>
-          </div>
 
-          <div
-            className={`hero-floating-badge hero-badge-right ${hoveredBadge === "swap" ? "is-hovered" : ""}`}
-            onMouseEnter={() => setHoveredBadge("swap")}
-            onMouseLeave={() => setHoveredBadge(null)}
-          >
-            <span className="badge-bolt">⚡</span>
-            <div>
-              <strong>Personalized in 12ms</strong>
-              <small>Headline & CTA tailored to intent</small>
+            {/* Live Webpage Mock Viewport */}
+            <div className="living-viewport-content">
+              {/* Laser Scanline Beam on DOM mutation */}
+              {isMutating && <div className="living-laser-scanline" />}
+
+              {/* CRM Context Badge */}
+              <div className="living-context-banner">
+                <span className="living-pulse-dot" />
+                <span>KNOWN PROSPECT: <b>{activePreset.name.toUpperCase()}</b> ({activePreset.persona}) · SENT BY {activePreset.rep.toUpperCase()}</span>
+              </div>
+
+              {/* Dynamic Headline */}
+              <div className="living-headline-box">
+                <span className="living-devtools-tag">#hero-title [480×64] · Deterministic</span>
+                <h3 className="living-headline">{activePreset.headline}</h3>
+                <p className="living-subhead">{activePreset.subhead}</p>
+              </div>
+
+              {/* Dynamic CTA & Sales Rep Bar */}
+              <div className="living-cta-row">
+                <button type="button" className="living-cta-btn">
+                  {activePreset.cta} <span>↗</span>
+                </button>
+                <div className="living-rep-status">
+                  <span className="rep-avatar">✦</span>
+                  <div>
+                    <strong>{activePreset.rep}</strong>
+                    <small>Assigned Account Rep</small>
+                  </div>
+                </div>
+              </div>
+
+              {/* Scout Deal Intelligence Brief Overlay */}
+              <div className="living-scout-overlay">
+                <div className="scout-overlay-left">
+                  <span className="scout-spark">✦</span>
+                  <div>
+                    <small>SCOUT DEAL INTEL</small>
+                    <strong>Score: {activePreset.score}/100 · High Intent</strong>
+                  </div>
+                </div>
+                <span className="scout-status-pill">SLACK DISPATCHED</span>
+              </div>
             </div>
-          </div>
 
-          <div
-            className={`hero-floating-badge hero-badge-bottom ${hoveredBadge === "scout" ? "is-hovered" : ""}`}
-            onMouseEnter={() => setHoveredBadge("scout")}
-            onMouseLeave={() => setHoveredBadge(null)}
-          >
-            <span className="badge-spark">✦</span>
-            <div>
-              <strong>Scout Deal Score: 82</strong>
-              <small>High momentum · Ready for outreach</small>
+            {/* Hardware Bottom Bar */}
+            <div className="living-chassis-bottombar">
+              <div className="hardware-screws">
+                <span className="screw" /><span className="screw" />
+              </div>
+              <span className="bus-spec">CHURNAUT EDGE FABRIC · 11MS ZERO-IP DETERMINISTIC BUS</span>
+              <div className="hardware-screws">
+                <span className="screw" /><span className="screw" />
+              </div>
             </div>
-          </div>
-
-          <div className="reference-hero-product" aria-label="Churnaut dashboard showing the known buyer journey">
-            {hoveredBadge && (
-              <div className={`hero-dashboard-target-glow target-${hoveredBadge}`} />
-            )}
-            <Image
-              src="/media/hero-dashboard-static.png"
-              alt="Churnaut signal route dashboard showing a known account, return visit, and next action"
-              fill
-              priority
-              sizes="(max-width: 900px) 92vw, 1080px"
-            />
           </div>
         </div>
       </div>
+
       <div className="reference-hero-bottom">
         <span>CONTEXT THAT SURVIVES THE VISIT</span>
         <span>SCROLL TO CONTINUE ↓</span>
