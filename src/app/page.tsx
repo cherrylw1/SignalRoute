@@ -9,7 +9,7 @@ import { DynamicIsland } from "@/components/dynamic-island";
 import { CablePatchBay } from "@/components/cable-patch-bay";
 import { CameraTunnel } from "@/components/camera-tunnel";
 import { TelemetryTerminal } from "@/components/telemetry-terminal";
-import { SpatialDeckSection } from "@/components/spatial-deck-section";
+import { RevolvingChamberSection } from "@/components/revolving-chamber-section";
 import {
   ReferenceCursor,
   ReferenceFaq,
@@ -24,10 +24,10 @@ export default function Home() {
       <ReferenceCursor />
       <DynamicIsland />
 
-      {/* Plate 1: Hero Stage (Vibrant Orange Canvas & Center Tablet) */}
+      {/* Chamber Stage 1: Hero */}
       <ReferenceHero />
 
-      {/* Plate 2: Trust Pillars & Identity Statement (Warm Paper) */}
+      {/* Chamber Stage 2: Trust Pillars & Identity Statement */}
       <section className="reference-trust" aria-label="Churnaut product pillars">
         <p className="reference-kicker">A SIGNAL SYSTEM FOR REVENUE TEAMS</p>
         <div className="reference-trust-row">
@@ -40,48 +40,48 @@ export default function Home() {
 
       <ProgressiveStatement />
 
-      {/* Plate 3: Signal Simulator (Interactive Account Simulation) */}
-      <SpatialDeckSection id="simulator" zIndex={10} theme="paper">
+      {/* Chamber Stage 3: Signal Simulator */}
+      <RevolvingChamberSection id="simulator" zIndex={10} theme="paper">
         <SignalSimulator />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 4: 11ms Camera Tunnel (Hardware-Grade Resolution Bus) */}
-      <SpatialDeckSection id="tunnel" zIndex={20} theme="dark">
+      {/* Chamber Stage 4: 11ms Camera Tunnel */}
+      <RevolvingChamberSection id="tunnel" zIndex={20} theme="dark">
         <CameraTunnel />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 5: Deal Intelligence Bento Grid */}
-      <SpatialDeckSection id="bento" zIndex={30} theme="paper">
+      {/* Chamber Stage 5: Deal Intelligence Bento Grid */}
+      <RevolvingChamberSection id="bento" zIndex={30} theme="paper">
         <BentoGrid />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 6: Cable Patch Bay (Interactive Node Wiring) */}
-      <SpatialDeckSection id="patchbay" zIndex={40} theme="dark">
+      {/* Chamber Stage 6: Cable Patch Bay */}
+      <RevolvingChamberSection id="patchbay" zIndex={40} theme="dark">
         <CablePatchBay />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 7: Split Lens (Before / After Transformation) */}
-      <SpatialDeckSection id="lens" zIndex={50} theme="paper">
+      {/* Chamber Stage 7: Split Lens */}
+      <RevolvingChamberSection id="lens" zIndex={50} theme="paper">
         <SplitLens />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 8: Reference Proof (Scout Deal Briefs) */}
-      <SpatialDeckSection id="proof" zIndex={60} theme="paper">
+      {/* Chamber Stage 8: Reference Proof */}
+      <RevolvingChamberSection id="proof" zIndex={60} theme="paper">
         <ReferenceProof />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 9: Telemetry Terminal (Real-time Packet Bus) */}
-      <SpatialDeckSection id="telemetry" zIndex={70} theme="dark">
+      {/* Chamber Stage 9: Telemetry Terminal */}
+      <RevolvingChamberSection id="telemetry" zIndex={70} theme="dark">
         <TelemetryTerminal />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 10: Pipeline Calculator (Interactive ROI Simulator) */}
-      <SpatialDeckSection id="calculator" zIndex={80} theme="paper">
+      {/* Chamber Stage 10: Pipeline Calculator */}
+      <RevolvingChamberSection id="calculator" zIndex={80} theme="paper">
         <PipelineCalculator />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 11: Privacy Boundary (The Identity Boundary) */}
-      <SpatialDeckSection id="privacy" zIndex={90} theme="paper" ariaLabelledby="reference-privacy-title">
+      {/* Chamber Stage 11: Privacy Boundary */}
+      <RevolvingChamberSection id="privacy" zIndex={90} theme="paper" ariaLabelledby="reference-privacy-title">
         <div className="reference-privacy" aria-labelledby="reference-privacy-title">
           <div>
             <p className="reference-kicker"><i /> THE IDENTITY BOUNDARY</p>
@@ -96,10 +96,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 12: Precision Edge-Lit Pricing (Dark Forest & Lime Luxury Chassis) */}
-      <SpatialDeckSection id="pricing" zIndex={100} theme="forest" ariaLabelledby="reference-pricing-title">
+      {/* Chamber Stage 12: Precision Edge-Lit Pricing */}
+      <RevolvingChamberSection id="pricing" zIndex={100} theme="forest" ariaLabelledby="reference-pricing-title">
         <div className="reference-pricing" aria-labelledby="reference-pricing-title">
           <div className="reference-pricing-head">
             <div>
@@ -115,12 +115,12 @@ export default function Home() {
             Monthly and annual billing are available. Annual billing saves two months; usage limits reset monthly.
           </p>
         </div>
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
 
-      {/* Plate 13: Technical FAQ Accordion */}
-      <SpatialDeckSection id="faq" zIndex={110} theme="dark">
+      {/* Chamber Stage 13: Technical FAQ Accordion */}
+      <RevolvingChamberSection id="faq" zIndex={110} theme="dark">
         <ReferenceFaq />
-      </SpatialDeckSection>
+      </RevolvingChamberSection>
     </PageShell>
   );
 }
