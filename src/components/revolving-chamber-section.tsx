@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 interface RevolvingChamberSectionProps {
@@ -22,6 +22,14 @@ export function RevolvingChamberSection({
 }: RevolvingChamberSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Track the section's position as it enters, traverses, and leaves the viewport
   const { scrollYProgress } = useScroll({
@@ -29,30 +37,31 @@ export function RevolvingChamberSection({
     offset: ["start end", "end start"],
   });
 
-  // 3D Revolving Signal Chamber Transform Curves
-  // [0 = entering bottom, 0.28 = locked flat, 0.72 = begins revolving out, 1 = exiting top]
+  const disable3D = prefersReducedMotion || isMobile;
+
+  // 3D Revolving Signal Chamber Transform Curves (disabled on mobile for rock-solid stability)
   const rotateX = useTransform(
     scrollYProgress,
     [0, 0.28, 0.72, 1],
-    prefersReducedMotion ? [0, 0, 0, 0] : [-24, 0, 0, 24]
+    disable3D ? [0, 0, 0, 0] : [-24, 0, 0, 24]
   );
 
   const translateZ = useTransform(
     scrollYProgress,
     [0, 0.28, 0.72, 1],
-    prefersReducedMotion ? [0, 0, 0, 0] : [-320, 0, 0, -320]
+    disable3D ? [0, 0, 0, 0] : [-320, 0, 0, -320]
   );
 
   const scale = useTransform(
     scrollYProgress,
     [0, 0.28, 0.72, 1],
-    prefersReducedMotion ? [1, 1, 1, 1] : [0.92, 1, 1, 0.92]
+    disable3D ? [1, 1, 1, 1] : [0.92, 1, 1, 0.92]
   );
 
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.18, 0.82, 1],
-    [0.35, 1, 1, 0.35]
+    disable3D ? [1, 1, 1, 1] : [0.35, 1, 1, 0.35]
   );
 
   return (
@@ -71,7 +80,7 @@ export function RevolvingChamberSection({
         className={`revolving-chamber-facet ${className}`}
       >
         {/* Optical 3D Horizon Seam (Glows when chamber locks to 0 deg) */}
-        <div className="chamber-horizon-seam" aria-hidden="true" />
+        {!disable3D && <div className="chamber-horizon-seam" aria-hidden="true" />}
 
         {/* Content */}
         <div className="chamber-content-wrap">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { playSwitchSound, playSuccessSound } from "@/lib/sound";
 
 interface SignalDetail {
@@ -136,6 +136,14 @@ export function InteractiveHeroDashboard({ hoveredBadge }: InteractiveHeroDashbo
   const [activeSignalIndex, setActiveSignalIndex] = useState<number>(0);
   const [activeNavTab, setActiveNavTab] = useState<string>("signals");
   const [isDispatched, setIsDispatched] = useState<boolean>(false);
+  const [mobileTab, setMobileTab] = useState<"signals" | "route" | "summary">("signals");
+
+  // Sync mobile tab if a badge is hovered
+  useEffect(() => {
+    if (hoveredBadge === "maya") setMobileTab("signals");
+    else if (hoveredBadge === "swap") setMobileTab("route");
+    else if (hoveredBadge === "scout") setMobileTab("summary");
+  }, [hoveredBadge]);
 
   const currentAccount = ACCOUNTS[selectedAccountKey] || ACCOUNTS.northstar;
 
@@ -244,10 +252,50 @@ export function InteractiveHeroDashboard({ hoveredBadge }: InteractiveHeroDashbo
         </div>
       </aside>
 
+      {/* Mobile Tab Switcher */}
+      <div className="ihd-mobile-tab-bar" role="tablist" aria-label="Dashboard views">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mobileTab === "signals"}
+          className={`ihd-tab-btn ${mobileTab === "signals" ? "is-active" : ""}`}
+          onClick={() => {
+            playSwitchSound();
+            setMobileTab("signals");
+          }}
+        >
+          ✦ Signals ({currentAccount.signals.length})
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mobileTab === "route"}
+          className={`ihd-tab-btn ${mobileTab === "route" ? "is-active" : ""}`}
+          onClick={() => {
+            playSwitchSound();
+            setMobileTab("route");
+          }}
+        >
+          ⚡ Live Route
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mobileTab === "summary"}
+          className={`ihd-tab-btn ${mobileTab === "summary" ? "is-active" : ""}`}
+          onClick={() => {
+            playSwitchSound();
+            setMobileTab("summary");
+          }}
+        >
+          🎯 Scout Action
+        </button>
+      </div>
+
       {/* 2. Main Dashboard Application Body */}
       <main className="ihd-body">
         {/* Column 1: SIGNALS */}
-        <section className="ihd-col ihd-col-signals">
+        <section className={`ihd-col ihd-col-signals ${mobileTab === "signals" ? "is-mobile-active" : ""}`}>
           <div className="ihd-col-header">
             <h3>SIGNALS</h3>
             <div className="ihd-account-pill-switch">
@@ -321,7 +369,7 @@ export function InteractiveHeroDashboard({ hoveredBadge }: InteractiveHeroDashbo
         </section>
 
         {/* Column 2: SIGNAL ROUTE */}
-        <section className="ihd-col ihd-col-route">
+        <section className={`ihd-col ihd-col-route ${mobileTab === "route" ? "is-mobile-active" : ""}`}>
           <div className="ihd-col-header">
             <h3>SIGNAL ROUTE</h3>
             <span className="ihd-route-live-badge">
@@ -399,7 +447,7 @@ export function InteractiveHeroDashboard({ hoveredBadge }: InteractiveHeroDashbo
         </section>
 
         {/* Column 3: ACCOUNT SUMMARY & NEXT ACTION */}
-        <section className="ihd-col ihd-col-summary">
+        <section className={`ihd-col ihd-col-summary ${mobileTab === "summary" ? "is-mobile-active" : ""}`}>
           <div className="ihd-col-header">
             <h3>ACCOUNT SUMMARY</h3>
           </div>

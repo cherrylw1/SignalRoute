@@ -1,12 +1,26 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { playSlideSound, playSwitchSound } from "@/lib/sound";
 
 export function SplitLens() {
   const [sliderPos, setSliderPos] = useState(50); // percentage (0 to 100)
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile && sliderPos > 30 && sliderPos <= 70) {
+        setSliderPos(0); // Default to With Churnaut view on mobile
+      }
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [sliderPos]);
 
   const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -23,6 +37,7 @@ export function SplitLens() {
   }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (isMobile) return;
     isDragging.current = true;
     handleMove(e.clientX);
   };
@@ -32,11 +47,12 @@ export function SplitLens() {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current) return;
+    if (!isDragging.current || isMobile) return;
     handleMove(e.clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    if (isMobile) return;
     if (e.touches[0]) {
       handleMove(e.touches[0].clientX);
     }
@@ -57,6 +73,9 @@ export function SplitLens() {
     setSliderPos(50);
   };
 
+  // On mobile, show full card (either 100% or 0%) to prevent text collision
+  const effectiveSliderPos = isMobile ? (sliderPos >= 50 ? 100 : 0) : sliderPos;
+
   return (
     <section className="split-lens-section section-pad" id="split-lens" aria-labelledby="split-title">
       <div className="split-lens-header">
@@ -71,23 +90,25 @@ export function SplitLens() {
           <div className="split-pill-toggle">
             <button
               type="button"
-              className={`split-toggle-btn ${sliderPos > 70 ? "is-active" : ""}`}
+              className={`split-toggle-btn ${effectiveSliderPos > 50 ? "is-active" : ""}`}
               onClick={setToBlind}
               data-cursor="Blind"
             >
               ✕ Blind Outbound
             </button>
+            {!isMobile && (
+              <button
+                type="button"
+                className={`split-toggle-btn ${effectiveSliderPos > 30 && effectiveSliderPos <= 70 ? "is-active" : ""}`}
+                onClick={setSplit50}
+                data-cursor="Compare"
+              >
+                Split View
+              </button>
+            )}
             <button
               type="button"
-              className={`split-toggle-btn ${sliderPos > 30 && sliderPos <= 70 ? "is-active" : ""}`}
-              onClick={setSplit50}
-              data-cursor="Compare"
-            >
-              Split View
-            </button>
-            <button
-              type="button"
-              className={`split-toggle-btn ${sliderPos <= 30 ? "is-active" : ""}`}
+              className={`split-toggle-btn ${effectiveSliderPos <= 50 ? "is-active" : ""}`}
               onClick={setToChurnaut}
               data-cursor="Signal"
             >
@@ -96,7 +117,9 @@ export function SplitLens() {
           </div>
         </div>
         <p className="section-copy">
-          Drag the lens or click the toggle to compare what happens when a prospect clicks your outreach link with and without Churnaut.
+          {isMobile
+            ? "Tap the toggle above to compare what happens when a prospect clicks your outreach link with and without Churnaut."
+            : "Drag the lens or click the toggle to compare what happens when a prospect clicks your outreach link with and without Churnaut."}
         </p>
       </div>
 
@@ -108,7 +131,7 @@ export function SplitLens() {
         onMouseLeave={handleMouseUp}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
-        data-cursor="Drag"
+        data-cursor={isMobile ? undefined : "Drag"}
       >
         {/* Right Side (With Churnaut - Underlying Layer) */}
         <div className="split-layer layer-after">
@@ -145,7 +168,12 @@ export function SplitLens() {
         {/* Left Side (Blind Outbound - Clipped Layer) */}
         <div
           className="split-layer layer-before"
-          style={{ clipPath: `polygon(0 0, ${sliderPos}% 0, ${sliderPos}% 100%, 0 100%)` }}
+          style={{
+            clipPath: `polygon(0 0, ${effectiveSliderPos}% 0, ${effectiveSliderPos}% 100%, 0 100%)`,
+            opacity: isMobile && effectiveSliderPos === 0 ? 0 : 1,
+            pointerEvents: isMobile && effectiveSliderPos === 0 ? "none" : "auto",
+            transition: isMobile ? "opacity 0.2s ease" : "none",
+          }}
         >
           <div className="split-card-inner card-blind">
             <div className="split-status-pill pill-gray">
@@ -177,16 +205,18 @@ export function SplitLens() {
           </div>
         </div>
 
-        {/* Draggable Divider Handle */}
-        <div className="split-divider-line" style={{ left: `${sliderPos}%` }}>
-          <div className="split-handle-knob">
-            <span className="knob-arrows">‹ ›</span>
-            <span className="knob-sparkle" />
+        {/* Draggable Divider Handle (Desktop Only) */}
+        {!isMobile && (
+          <div className="split-divider-line" style={{ left: `${effectiveSliderPos}%` }}>
+            <div className="split-handle-knob">
+              <span className="knob-arrows">‹ ›</span>
+              <span className="knob-sparkle" />
+            </div>
+            <span className="split-laser-glow" />
+            <span className="split-laser-particle p-top" />
+            <span className="split-laser-particle p-bottom" />
           </div>
-          <span className="split-laser-glow" />
-          <span className="split-laser-particle p-top" />
-          <span className="split-laser-particle p-bottom" />
-        </div>
+        )}
       </div>
     </section>
   );
